@@ -1,0 +1,184 @@
+/**
+    Author : Isidahomen Benjamin
+    Version : 1.0.0
+    For : Andela Bootcamp
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900');
+
+:root {
+    --main-bg-color: #3F5866;
+    --accent-color-2: #e3e5e9;
+    --btn-text-color: white;
+    --default-text-color:  rgba(0, 0, 0, 0.87);
+    --branding-text-color: white;
+    --dark-bg-color: #2B3A42;
+    --footer-text-color: white;
+    --accent-color: #FF9000;
+  }
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+*:focus {
+    outline-style:none;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    transition: all .3s ease-in;
+}
+
+.branding-text{
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+}
+.brand-img{
+    width: 50px;
+}
+.brand-img img {
+    width: 100%;
+}
+.container-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--main-bg-color); 
+}
+.card{
+    box-shadow: 0 4px 8px 0 var(--dark-bg-color);
+    transition: 0.3s;
+    -webkit-box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
+    -moz-box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
+    box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
+}
+.form-container {
+    width: 90%;
+    padding: 1rem 1.5rem;
+    background-color: var(--btn-text-color);
+}
+
+.form-control{
+    width: 100%;
+    margin: 2rem 0;
+}
+.form-control label {
+    display: block;
+    margin-bottom: .8rem;
+    font-weight: bold;
+    color: var(--main-bg-color);
+}
+
+.form-control input{
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.3rem;
+    background-color: var(--accent-color-2);;
+    border: 2px solid transparent;
+}
+.form-control input:focus{
+    border: 2px solid var(--accent-color);
+}
+.form-submit{
+    padding: .7rem 2rem;
+    color:var(--btn-text-color);
+    background: var(--main-bg-color);
+    border: .2rem solid transparent;
+    font-weight: bold;
+    float: right;
+    transition: all .3s ease-in-out;
+}
+.form-submit:hover{
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    -webkit-box-shadow: 3px 10px 14px 1px rgba(00,00,00,0.2);
+    box-shadow: 3px 10px 14px 1px rgba(00,00,00,0.2);
+}
+
+.form-submit:active {
+    transform: translateY(0);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(00,00,00,0.2);
+    box-shadow: 3px 3px 5px 0px rgba(00,00,00,0.2);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--dark-bg-color);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--footer-text-color);
+}
+.footer-link{
+    color: var(--accent-color);
+}
+.footer-link:hover{
+    color: var(--accent-color-2);
+}
+.label-link{
+    font-weight: normal;
+    float: right;
+    color: var(--main-bg-color);
+}
+.label-link:hover{
+    color: var(--accent-color);
+}
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .branding-text{
+        font-size: 1.5rem;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .form-container {
+        width: 60%;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .form-container {
+        width: 60%;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .form-container {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .form-control label {
+        font-size: .7rem;
+    }
+
+    .brand-img{
+        width: 40px;
+    }
+    .branding-text {
+        margin: .5rem;
+    }
+} 

@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign in</title>
+    <title>Sign in - Banka</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <div>
-        <div>
+    <div class="container-center">
+        <div class="brand-img">
+            <img alt="Banka logo" src="asset/logo.png">
+        </div>
+        <h2 class="branding-text">Sign in to Banka</h2>
+        <div class="form-container card">
             <form>
-                <div>
+                <div class="form-control">
                     <label for="email">Enter email</label>
-                    <input id="email" type="text" placeholder="Enter email">
+                    <input id="email" type="email" placeholder="john@doe.com" autocomplete="email">
                 </div>
-                <div>
-                    <label for="password">Enter email</label>
-                    <input id="password" type="password">
+                <div class="form-control">
+                    <label for="password">Enter password<a class="label-link" href="#">Forgot password?</a></label>
+                    <input id="password" type="password" autocomplete="current-password">
                 </div>
-                <input type="submit" id="submit">
+                <button class="form-submit" id="submit">Submit</button>
             </form>
         </div>
+        <footer>
+            <p>New to Banka? <a class="footer-link" href="#">create an account</a></p>
+        </footer>
     </div>
 </body>
 </html>
