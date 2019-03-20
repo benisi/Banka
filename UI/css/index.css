@@ -90,7 +90,8 @@ a{
     color: var(--main-bg-color);
 }
 
-.form-control input{
+.form-control input, 
+.form-control select{
     width: 100%;
     padding: 1rem;
     margin: 0;
@@ -124,14 +125,17 @@ a{
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     background-color: var(--dark-bg-color);
     width: 100%;
     display: flex;
     justify-content: center;
     color: var(--footer-text-color);
+}
+
+.fixed-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 .footer-link{
     color: var(--accent-color);
