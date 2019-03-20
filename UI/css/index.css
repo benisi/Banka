@@ -42,9 +42,13 @@ a{
 }
 .brand-img{
     width: 50px;
+    margin-top: 2rem;
 }
 .brand-img img {
     width: 100%;
+}
+.clear-fix{
+    clear: both;
 }
 .container-center {
     display: flex;
@@ -52,7 +56,8 @@ a{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     background-color: var(--main-bg-color); 
 }
 .card{
@@ -61,6 +66,10 @@ a{
     -webkit-box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
     -moz-box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
     box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
+}
+
+.mg-4-b {
+    margin-bottom: 4rem;
 }
 .form-container {
     width: 90%;
@@ -113,7 +122,7 @@ a{
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     background-color: var(--dark-bg-color);
