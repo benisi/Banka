@@ -6,12 +6,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,900');
 
 :root {
-    --main-bg-color: #3F5866;
+    --main-bg-color: rgb(14, 58, 83);
     --accent-color-2: #e3e5e9;
     --btn-text-color: white;
     --default-text-color:  rgba(0, 0, 0, 0.87);
     --branding-text-color: white;
-    --dark-bg-color: #2B3A42;
+    --dark-bg-color: rgb(12, 26, 34);
     --footer-text-color: white;
     --accent-color: #FF9000;
   }
