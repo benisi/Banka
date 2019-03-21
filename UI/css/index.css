@@ -52,16 +52,18 @@ a{
 .clear-fix{
     clear: both;
 }
+.container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
 .container-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    background-color: var(--main-bg-color); 
 }
+
 .card{
     box-shadow: 0 4px 8px 0 var(--dark-bg-color);
     transition: 0.3s;
@@ -69,7 +71,12 @@ a{
     -moz-box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
     box-shadow: 2px 9px 24px -1px var(--dark-bg-color);
 }
-
+.blue{
+    background-color: var(--main-bg-color);   
+}
+.dark {
+    background-color: var(--dark-bg-color); 
+}
 .mg-4-b {
     margin-bottom: 4rem;
 }
@@ -147,6 +154,12 @@ footer {
 .footer-link:hover{
     color: var(--accent-color-2);
 }
+.hidden{
+    transform: translateX(-650px);
+}
+.img-circle{
+    border-radius: 50%;
+}
 .label-link{
     font-weight: normal;
     float: right;
@@ -156,7 +169,128 @@ footer {
     color: var(--accent-color);
 }
 
-  /* Extra small devices (phones, 600px and down) */
+.light{
+    background-color: var(--accent-color-2);
+}
+.navbar-brand a{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: .3rem;
+}
+.side-bar{
+    position: fixed;
+    top: 4.3rem;
+    left: 0;
+    background: var(--main-bg-color);
+    height: 100%;
+    width: 100%;
+    color: white;
+    z-index: 1;
+    overflow-y: hidden;
+    overflow-x: hidden; 
+    transition: transform .6s ease-in;
+}
+.side-bar:hover{
+    overflow-y: scroll;
+}
+.side-bar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .side-bar::-webkit-scrollbar-track {
+    visibility: hidden; 
+  }
+  .side-bar::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+  }
+  
+.nav-end{
+    background: var(--accent-color);
+    height: 4rem;
+    margin-bottom: 0.2rem;
+}
+.side-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 4.3rem;
+    margin-top: 0;
+}
+.side-bar li {
+    border-bottom: 0.5px solid var(--dark-bg-color);
+}
+.side-bar li a {
+    color: white;
+    padding: 1.3rem 0.5rem 1.3rem 2rem;
+    font-size: 1.1rem;
+    display: block;
+}
+.side-bar li a:hover {
+    background-color: var(--accent-color);
+}
+.side-bar li a:hover i{
+    color: var(--dark-bg-color);
+}
+.side-bar li a i {
+    color: var(--accent-color);
+    padding-right: 1rem; 
+}
+.top-bar{
+    width: 100%;
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.turn{
+    animation: turn .5s ease-in-out;
+}
+.topbar-img {
+    width: 50px;
+}
+.topbar-img img{
+    width: 100%;
+}
+.toggle-btn{
+    display: inline-block;
+    width: 2rem;
+}
+.user-profile{
+    display:flex;
+    align-items: center;
+    padding: 0 2rem;
+    background: var(--accent-color);
+    color: var(--dark-bg-color);
+    border-bottom: 1rem solid var(--dark-bg-color);
+}
+.user-profile img{
+    width: 90px;
+}
+.user-profile-details{
+    padding: 1rem;
+    text-transform: capitalize;
+}
+.user-profile h3{
+    font-size: 1rem;
+    margin: .5rem 0;
+    text-transform: uppercase;
+}
+.user-profile p{
+    margin: 0;
+}
+/* Animations */
+@keyframes turn {
+    0%{
+        transform: rotate(2deg)
+    }
+    100%{
+        transform: rotate(180deg)
+    }
+}
+/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .branding-text{
         font-size: 1.5rem;
@@ -165,13 +299,21 @@ footer {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
+    .hidden{
+        transform: translateX(-700px);
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .form-container {
         width: 60%;
+    }
+    .side-bar{
+        width: 60%;
+    }
+    .hidden{
+        transform: translateX(-700px);
     }
 } 
 
@@ -180,12 +322,21 @@ footer {
     .form-container {
         width: 60%;
     }
+    .hidden{
+        transform: translateX(-900px);
+    }
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .form-container {
         width: 40%;
+    }
+    .side-bar{
+        width: 35%;
+    }
+    .hidden{
+        transform: translateX(-1000px);
     }
 }
 
