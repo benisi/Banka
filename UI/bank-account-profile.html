@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container light container-center">
-        <div class="top-bar dark">
+        <header class="top-bar dark">
             <div class="navbar-brand">
                 <a class="toggle-btn" href>
                     <i class="fa fa-bars"></i>
@@ -18,10 +18,11 @@
                 <a href="#">Banka</a>
             </div>
             <div class="topbar-img">
+                <span class="acc-indicator" title="active account"><i class="fa fa-circle active"></i></span>
                 <img class="img-circle" src="asset/user.jpg" alt="user profile image">
             </div>
-        </div>
-        <nav class="side-bar hidden">
+        </header>
+        <nav class="side-bar remove-sidebar">
             <div class="user-profile">
                 <img class="img-circle" src="asset/user.jpg" alt="user photo">
                 <div class="user-profile-details" >
@@ -33,20 +34,35 @@
             <ul>
                 <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
                 <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
-                <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
-                <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
-                <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
-                <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
-                <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
-                <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
-                <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
-                <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
-                <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
-                <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
             </ul>
         </nav>
+        <main>
+            <div class="content-container">
+                <div class="paper-card">
+                    <div>
+                        <img src="asset/user.jpg" alt="user photo">
+                    </div>
+                    <p>Name : <span>Benjamin Isidahomen</span></p>
+                    <p>Sex : <span>Male</span></p>
+                    <p>Phone : <span>08035361846</span></p>
+                    <p>Email : <span class="lower-case">oseikwemeisidahomen@gmail.com</span></p>
+                </div>
+                <div class="paper-card">
+                    <div>
+                        <h3 class="accent">Available Balance</h3>
+                        <span class="acc-bal">&#8358;100,000.00</span>
+                    </div>
+                    <div>
+                        <p>Account Number : <span>002234455</span></p>
+                        <p>Account Type : <span>Savings</span></p>
+                        <p>Account Category : <span>Individual</span></p>
+                        <p><span><i class="fa fa-circle active"></i></span>Active</p>
+                    </div>
+                </div>
+            </div>
+        </main>
         <footer class="bottom-footer">
-            <p>&copy Banka - 2019</p>
+            <p>&copy; Banka - 2019</p>
         </footer>
     </div>
     <script src="js/index.js"></script>
