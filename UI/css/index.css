@@ -85,8 +85,21 @@ a{
     transition: 0.3s;
 }
 .content-container{
-    margin: 6rem 0 1.5rem 0;
     width: 100%;
+    color: var(--dark-bg-color);
+    margin: 1rem 0 1rem 0;
+}
+.breadcrum{
+    width: 100%;
+    background: white;
+    padding: 1rem 1rem;
+}
+.breadcrum h1{
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-transform: uppercase;
     color: var(--dark-bg-color);
 }
 .blue{
@@ -206,6 +219,7 @@ footer {
 
 .light{
     background-color: var(--accent-color-2);
+    padding: 4.4rem 0 0 0;
 }
 .navbar-brand a{
     color: white;
@@ -421,7 +435,7 @@ footer {
         margin: 0 1rem;
     }
     .acc-bal{
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 } 
 
@@ -432,6 +446,9 @@ footer {
     }
     .side-bar{
         width: 35%;
+    }
+    .acc-bal{
+        font-size: 3.5rem;
     }
 }
 
