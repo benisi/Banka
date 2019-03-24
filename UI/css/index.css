@@ -239,6 +239,10 @@ footer {
 .paper-strip{
     border-bottom: 5px solid var(--accent-color);
 }
+
+.paper-single{
+    max-width: 100%;
+}
 .paper-card p {
     font-size: 1rem;
     border-bottom: 2px solid var(--accent-color-2);
@@ -324,6 +328,13 @@ footer {
     color: var(--accent-color);
     padding-right: 1rem; 
 }
+.action-icon{
+    color: var(--dark-bg-color);
+    font-size: 1rem;
+}
+.action-icon:hover{
+    font-size: 1.3rem;
+}
 .top-bar{
     width: 100%;
     padding: .5rem 1rem;
@@ -345,9 +356,37 @@ footer {
 .topbar-img img{
     width: 100%;
 }
+.transaction h3 {
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 0 0 .5rem 0;
+}
+.table-responsive th, .table-responsive td{
+    min-width: 2rem;
+    padding: .5rem 2rem;
+    text-align: center;
+    border: 1px solid var(--dark-bg-color);
+    height: 3rem;
+}   
+table{
+    width: 100%;
+}
+table, th, td {
+    border-collapse: collapse;
+}
+.table-responsive th{
+    background-color: var(--accent-color);
+    color: var(--dark-bg-color); 
+    font-weight: 400;
+    text-transform: capitalize;
+}
 .toggle-btn{
     display: inline-block;
     width: 2rem;
+}
+.table-responsive{
+    overflow-x: auto;
+    width: 100%;
 }
 .user-profile{
     display:flex;
@@ -405,13 +444,16 @@ footer {
     .side-bar{
         width: 60%;
     }
+    .paper-single{
+        width: 90%;
+    }
     .content-container{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .paper-card{
-        width: 70%;
+    .paper-double {
+        width: 70%;  
     }
    .acc-bal{
        font-size: 2rem;
@@ -429,7 +471,7 @@ footer {
         flex-direction: row;
         align-items: stretch;
     }
-    .paper-card{
+    .paper-double{
         width: 40%;
         padding: 2rem;
         margin: 0 1rem;
