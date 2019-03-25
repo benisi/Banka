@@ -35,8 +35,8 @@
                 </div>
             </div>
             <ul>
-                <li><a href="#"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
-                <li><a href="#"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
+                <li><a href="bank-account-profile.html"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
+                <li><a href="transaction-history.html"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
             </ul>
         </nav>
         <main>
@@ -62,7 +62,7 @@
                                     <td>Credit</td>
                                     <td>&#8358;20,000.00</td>
                                     <td>12/03/2019</td>
-                                    <td><a href="#"><i class="action-icon fa fa-eye"></i></a></td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -70,7 +70,7 @@
                                     <td>Credit</td>
                                     <td>&#8358;60,000.00</td>
                                     <td>14/03/2019</td>
-                                    <td><a href="#"><i class="action-icon fa fa-eye"></i></a></td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal2"><i class="action-icon fa fa-eye"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
@@ -78,7 +78,7 @@
                                     <td>Debit</td>
                                     <td>&#8358;80,750.00</td>
                                     <td>20/03/2019</td>
-                                    <td><a href="#"><i class="action-icon fa fa-eye"></i></a></td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal3"><i class="action-icon fa fa-eye"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -86,12 +86,79 @@
                                     <td>Debit</td>
                                     <td>&#8358;9,000.00</td>
                                     <td>23/03/2019</td>
-                                    <td><a href="#"><i class="action-icon fa fa-eye"></i></a></td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal4"><i class="action-icon fa fa-eye"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>                    
+                    </div> 
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a class="active" href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">&raquo;</a>
+                    </div>                   
                 </div>
+                <!-- start of modal -->
+                <div id="modal1" class="modal">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12345</p>
+                            <p>Transaction type : credit</p>
+                            <p>Amount : &#8358;20,000.00</p>
+                            <p>Transaction Date : 12/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal2" class="modal">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12346</p>
+                            <p>Transaction type : credit</p>
+                            <p>Amount : &#8358;60,000.00</p>
+                            <p>Transaction Date : 14/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal3" class="modal">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12355</p>
+                            <p>Transaction type : debit</p>
+                            <p>Amount : &#8358;80,750.00</p>
+                            <p>Transaction Date : 20/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal4" class="modal">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12456</p>
+                            <p>Transaction type : debit</p>
+                            <p>Amount : &#8358;9,000.00</p>
+                            <p>Transaction Date : 23/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End-->
             </div>
         </main>
         <footer class="bottom-footer">

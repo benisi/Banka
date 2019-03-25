@@ -17,9 +17,31 @@ document.querySelector(".toggle-btn").addEventListener("click", ( event ) => {
 
 window.addEventListener("scroll", () => {
     const topBar = document.querySelector(".top-bar");
-    if (window.scrollY > 10){
+    if (window.scrollY > 10) {
         topBar.classList.add("floating-nav");
     } else {
         topBar.classList.remove("floating-nav");
     }
+});
+// modal
+document.querySelectorAll(".modal-action").forEach((element) => {
+    element.addEventListener("click", (event) => {
+       const id = event.target.parentNode.dataset.modalid;
+       document.querySelector("#"+id).style.display = "block";
+    });
+});
+
+document.querySelectorAll(".modal").forEach((element) => {
+    element.addEventListener("click", (event) => {
+        if (event.currentTarget !== event.target) {
+            return;
+          }
+            event.target.style.display = "none";
+    });
+});
+
+document.querySelectorAll(".close").forEach((element) => {
+    element.addEventListener("click", (event) => {
+            event.target.parentNode.style.display = "none";
+    });
 });
