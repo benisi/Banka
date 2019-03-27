@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin - Account List</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container light container-center">
+        <header class="top-bar dark">
+            <div class="navbar-brand">
+                <a class="toggle-btn" href="#">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a href="#">Banka</a>
+            </div>
+            <div class="topbar-img">
+                <span class="acc-indicator" title="active account"><i class="fa fa-circle active"></i></span>
+                <img class="img-circle" src="asset/staff.jpg" alt="user profile image">
+            </div>
+        </header>
+        <div class="breadcrum">
+            <h1>Account list</h1>
+        </div>
+        <nav class="side-bar remove-sidebar">
+            <div class="user-profile">
+                <img class="img-circle" src="asset/staff.jpg" alt="user photo">
+                <div class="user-profile-details" >
+                    <h3>John Doe</h3>
+                    <p>Role : Staff</p>
+                    <p>Staff id : 120</p>
+                </div>
+            </div>
+            <ul>
+                <li><a href="debit-account.html"><i class="far fa-money-bill-alt"></i>Debit Account</a></li>
+                <li><a href="credit-account.html"><i class="fas fa-funnel-dollar"></i>Credit Account</a></li>
+                <li><a href="account-list.html"><i class="fas fa-funnel-dollar"></i>Account List</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content-container">
+                <div class="paper-card paper-single transaction">
+                        <h3>List of bank accounts</h3>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Account Name</th>
+                                        <th>Account type</th>
+                                        <th>Account Balance</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Benjamin Isidahomen</td>
+                                        <td>Savings</td>
+                                        <td>&#8358;1000,000.00</td>
+                                        <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Bill Gates</td>
+                                        <td>Savings</td>
+                                        <td>&#8358;50,000.00</td>
+                                        <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>John Dangote>
+                                        <td>Savings</td>
+                                        <td>&#8358;500,000.00</td>
+                                        <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mathew Azuka</td>
+                                        <td>Savings</td>
+                                        <td>&#8358;10,000.00</td>
+                                        <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a class="active" href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">&raquo;</a>
+                        </div>                   
+                    </div>
+                </div>
+        </main>
+        <footer class="bottom-footer">
+            <p>&copy; Banka - 2019</p>
+        </footer>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
