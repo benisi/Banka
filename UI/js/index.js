@@ -45,3 +45,35 @@ document.querySelectorAll(".close").forEach((element) => {
             event.target.parentNode.style.display = "none";
     });
 });
+
+
+document.querySelector("#confirm-no").addEventListener( "click", () => {
+    document.querySelector(".modal").style.display = "none";
+});
+
+function alert(time = 1000, backgroundClass = "success", message = "hello"){
+    let alertContainer = document.querySelector(".alert-container");
+    const alertElement = document.createElement("div");
+    alertElement.className = ["alert", backgroundClass].join(" ");
+    const body = document.createElement("p");
+    body.textContent = message;
+    alertElement.appendChild(body);
+    if(!alertContainer){
+        alertContainer = document.createElement("div");
+        alertContainer.className = "alert-container";
+        alertContainer.appendChild(alertElement);
+        document.querySelector("body").appendChild(alertContainer);
+    }else{
+        alertContainer.appendChild(alertElement);
+    }
+    
+   
+    setTimeout(() => {
+        alertContainer.removeChild(alertElement);
+    }, time)
+
+}
+document.querySelector("#confirm-yes").addEventListener( "click", () => {
+    document.querySelector(".modal").style.display = "none";
+    alert(2000, "success", "Account was debited successfully");
+});
