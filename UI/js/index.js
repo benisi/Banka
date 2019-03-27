@@ -66,8 +66,6 @@ function alert(time = 1000, backgroundClass = "success", message = "hello"){
     }else{
         alertContainer.appendChild(alertElement);
     }
-    
-   
     setTimeout(() => {
         alertContainer.removeChild(alertElement);
     }, time)
@@ -75,5 +73,5 @@ function alert(time = 1000, backgroundClass = "success", message = "hello"){
 }
 document.querySelector("#confirm-yes").addEventListener( "click", () => {
     document.querySelector(".modal").style.display = "none";
-    alert(2000, "success", "Account was debited successfully");
+    alert(2000, "success", "Account transaction was successfully");
 });
