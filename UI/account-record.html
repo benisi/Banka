@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Credit account</title>
+    <title>Admin - Bank account Profile</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -19,21 +19,21 @@
             </div>
             <div class="topbar-img">
                 <span class="acc-indicator" title="active account"><i class="fa fa-circle active"></i></span>
-                <img class="img-circle" src="asset/staff.jpg" alt="user profile image">
+                <img class="img-circle" src="asset/user.jpeg" alt="user profile image">
             </div>
         </header>
         <div class="breadcrum">
-            <h1>Credit account</h1>
+            <h1>Account Profile</h1>
         </div>
         <nav class="side-bar remove-sidebar">
-            <div class="user-profile">
-                <img class="img-circle" src="asset/staff.jpg" alt="user photo">
-                <div class="user-profile-details" >
-                    <h3>John Doe</h3>
-                    <p>Role : Staff</p>
-                    <p>Staff id : 120</p>
+                <div class="user-profile">
+                     <img class="img-circle" src="asset/staff.jpg" alt="user photo">
+                     <div class="user-profile-details" >
+                         <h3>John Doe</h3>
+                         <p>Role : Staff</p>
+                         <p>Staff id : 120</p>
+                     </div>
                 </div>
-            </div>
             <ul>
                 <li><a href="debit-account.html"><i class="far fa-money-bill-alt"></i>Debit Account</a></li>
                 <li><a href="credit-account.html"><i class="fas fa-funnel-dollar"></i>Credit Account</a></li>
@@ -42,36 +42,28 @@
         </nav>
         <main>
             <div class="content-container">
-                <div class="paper-card paper-single lg-w-50 transaction">
-                    <div class="search-acc">
-                        <div class="search">
-                            <label for="search">Search Account Number</label>
-                            <form>
-                                <div class="search-input">
-                                    <input id="search" type="number" >
-                                    <button class="form-submit"><i class="fa fa-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
+                <div class="paper-card paper-double">
+                    <div>
+                        <img src="asset/user.jpeg" alt="user photo">
                     </div>
-                    <div class="lg-col-2">
-                        <div>
-                            <img src="asset/user.jpeg" alt="user photo">
-                        </div>
-                        <div>
-                            <p>Name : Benjamin Isidahomen</p>
-                            <p>Account Number : 002234455</p>
-                            <p>Account type : Savings</p>
-                            <p>Available Balance : <span>&#8358;</span>1000,000.00</p>
-                        </div>
+                    <p>Name : <span>Benjamin Isidahomen</span></p>
+                    <p>Sex : <span>Male</span></p>
+                    <p>Phone : <span>08035361846</span></p>
+                    <p>Email : <span class="lower-case">oseikwemeisidahomen@gmail.com</span></p>
+                </div>
+                <div data-modalId="confirm" class="paper-card paper-double">
+                    <div>
+                        <h3 class="accent">Available Balance</h3>
+                        <span class="acc-bal">&#8358;1000,000.00</span>
                     </div>
-                    <div data-modalId="confirm">
-                        <div class="icon-input">
-                            <span>&#8358;</span><input placeholder="10000" type="number">
-                        </div>
-                        <button class="form-submit w-100 pt-1 modal-action">Credit Account</button>
+                    <div>
+                        <p>Account Number : <span>002234455</span></p>
+                        <p>Account Type : <span>Savings</span></p>
+                        <p>Account Category : <span>Individual</span></p>
+                        <p><span><i class="fa fa-circle active"></i></span>Active</p>
                     </div>
-                </div>    
+                    <button class="form-submit w-100 pt-1 modal-action">Deactivate Account</button>
+                </div>
             </div>
             <div id="confirm" class="modal">
                 <i class="close fa fa-times"></i>
@@ -80,7 +72,7 @@
                         <h3>Confirm Transaction</h3>
                     </div>
                     <div class="modal-content">
-                        <p>Are you sure you want to credit account?</p>
+                        <p>Are you sure you want to deactivate account?</p>
                         <div class="confirm-btn">
                             <button id="confirm-yes" class="form-submit btn-success">Yes</button>
                             <button id="confirm-no" class="form-submit btn-danger">No</button>
@@ -101,7 +93,7 @@
         });
         document.querySelector("#confirm-yes").addEventListener( "click", () => {
             document.querySelector(".modal").style.display = "none";
-            alert(2000, "success", "Account was credited successfully");
+            alert(2000, "success", "Account was successfully deactivated");
         });
     </script>
 </body>

@@ -42,7 +42,7 @@
         </nav>
         <main>
             <div class="content-container">
-                <div class="paper-card paper-single lg-w-60 transaction">
+                <div class="paper-card paper-single lg-w-50 transaction">
                     <div class="search-acc">
                         <div class="search">
                             <label for="search">Search Account Number</label>
@@ -94,5 +94,15 @@
         </footer>
     </div>
     <script src="js/index.js"></script>
+    <script>
+        modal();
+        document.querySelector("#confirm-no").addEventListener( "click", () => {
+            document.querySelector(".modal").style.display = "none";
+        });
+        document.querySelector("#confirm-yes").addEventListener( "click", () => {
+            document.querySelector(".modal").style.display = "none";
+            alert(2000, "success", "Account was debited successfully");
+        });
+    </script>
 </body>
 </html>

@@ -24,34 +24,32 @@ window.addEventListener("scroll", () => {
     }
 });
 // modal
-document.querySelectorAll(".modal-action").forEach((element) => {
-    element.addEventListener("click", (event) => {
-       const id = event.target.parentNode.dataset.modalid;
-       document.querySelector("#"+id).style.display = "block";
+const modal = () => {
+    document.querySelectorAll(".modal-action").forEach((element) => {
+        element.addEventListener("click", (event) => {
+           const id = event.target.parentNode.dataset.modalid;
+           document.querySelector("#"+id).style.display = "block";
+        });
     });
-});
-
-document.querySelectorAll(".modal").forEach((element) => {
-    element.addEventListener("click", (event) => {
-        if (event.currentTarget !== event.target) {
-            return;
-          }
-            event.target.style.display = "none";
+    
+    document.querySelectorAll(".modal").forEach((element) => {
+        element.addEventListener("click", (event) => {
+            if (event.currentTarget !== event.target) {
+                return;
+              }
+                event.target.style.display = "none";
+        });
     });
-});
-
-document.querySelectorAll(".close").forEach((element) => {
-    element.addEventListener("click", (event) => {
-            event.target.parentNode.style.display = "none";
+    
+    document.querySelectorAll(".close").forEach((element) => {
+        element.addEventListener("click", (event) => {
+                event.target.parentNode.style.display = "none";
+        });
     });
-});
+    
+}
 
-
-document.querySelector("#confirm-no").addEventListener( "click", () => {
-    document.querySelector(".modal").style.display = "none";
-});
-
-function alert(time = 1000, backgroundClass = "success", message = "hello"){
+const alert = (time = 1000, backgroundClass = "success", message = "hello") => {
     let alertContainer = document.querySelector(".alert-container");
     const alertElement = document.createElement("div");
     alertElement.className = ["alert", backgroundClass].join(" ");
@@ -71,7 +69,4 @@ function alert(time = 1000, backgroundClass = "success", message = "hello"){
     }, time)
 
 }
-document.querySelector("#confirm-yes").addEventListener( "click", () => {
-    document.querySelector(".modal").style.display = "none";
-    alert(2000, "success", "Account transaction was successfully");
-});
+
