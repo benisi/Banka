@@ -125,6 +125,13 @@ a{
     box-shadow: 0 4px 12px 0 var(--dark-bg-color);
     transition: 0.3s;
 }
+.sign-out a{
+    color: white;
+    font-weight: bold;
+}
+.sign-out i{
+    margin-right: 1rem;
+}
 .content-container{
     width: 100%;
     color: var(--dark-bg-color);
@@ -547,7 +554,7 @@ table, th, td {
     text-transform: uppercase;
 }
 .user-profile p{
-    margin: 0;
+    margin: 0 0 .5rem 0;
     font-weight: 400;
 }
 .lower-case{
@@ -629,22 +636,16 @@ table, th, td {
         width: 50%;
     }
     .search{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        
     }
     .search-input{
         width: 100%;
     }
     .search-input input{
-        width: 72%;
+        width: 75%;
     }
     .icon-input input {
         width: 95%;
-    }
-    .lg-col-2{
-        display: flex;
-        justify-content: space-between;
     }
 } 
 
@@ -658,6 +659,9 @@ table, th, td {
     }
     .acc-bal{
         font-size: 3.5rem;
+    }
+    .search-input input{
+        width: 85%;
     }
 }
 
