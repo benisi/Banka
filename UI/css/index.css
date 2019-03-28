@@ -114,7 +114,10 @@ a{
     justify-content: center;
     align-items: center;
 }
-
+.is-admin{
+    font-weight: bold;
+    color: var(--main-bg-color);
+}
 .card{
     box-shadow: 0 4px 12px 0 var(--dark-bg-color);
     -webkit-box-shadow: 0 4px 12px 0 var(--dark-bg-color);
