@@ -116,7 +116,7 @@ function Ui(){
                     yesCallback(data);
                 });
                 noBtn.addEventListener("click", (event) => {
-                    if(event.currentTarget != event.target){
+                    if(event.currentTarget !== event.target){
                         return;
                     }
                     this.removeFromDom(backDrop);
