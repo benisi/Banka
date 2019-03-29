@@ -68,28 +68,13 @@
                             <p>Available Balance : <span>&#8358;</span>1000,000.00</p>
                         </div>
                     </div>
-                    <div data-modalId="confirm">
+                    <div>
                         <div class="icon-input">
-                            <span>&#8358;</span><input placeholder="10000" type="number">
+                            <span>&#8358;</span><input id="amount" value="2000" placeholder="10000" type="number">
                         </div>
-                        <button class="form-submit w-100 pt-1 modal-action">Debit Account</button>
+                        <button data-confirmdata="yes" class="form-submit w-100 pt-1 modal-action">Debit Account</button>
                     </div>
                 </div>    
-            </div>
-            <div id="confirm" class="modal">
-                <i class="close fa fa-times"></i>
-                <div class="modal-card paper-card">
-                    <div class="modal-head">
-                        <h3>Confirm Transaction</h3>
-                    </div>
-                    <div class="modal-content">
-                        <p>Are you sure you want to debit account?</p>
-                        <div class="confirm-btn">
-                            <button id="confirm-yes" class="form-submit btn-success">Yes</button>
-                            <button id="confirm-no" class="form-submit btn-danger">No</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
         <footer class="bottom-footer">
@@ -98,13 +83,9 @@
     </div>
     <script src="js/index.js"></script>
     <script>
-        modal();
-        document.querySelector("#confirm-no").addEventListener( "click", () => {
-            document.querySelector(".modal").style.display = "none";
-        });
-        document.querySelector("#confirm-yes").addEventListener( "click", () => {
-            document.querySelector(".modal").style.display = "none";
-            alert(2000, "success", "Account was debited successfully");
+        ui.confirm(".modal-action", "Confirm Transaction", "Are you sure you want to debit account", () => {
+            const data = document.querySelector("#amount").value;
+            ui.alert( 2000, "success", `Account debit of ${data} was successful`)
         });
     </script>
 </body>

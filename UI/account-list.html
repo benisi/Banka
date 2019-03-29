@@ -68,7 +68,7 @@
                                         <td>Active <i class="fa fa-circle active"></i></td>
                                         <td>
                                             <a href="account-record.html" title="view account"><i class="action-icon fa fa-eye"></i></a>
-                                            <a href="#" data-modalId="confirm" class="modal-action" title="delete account"><i class="action-icon fa fa-trash"></i></a>
+                                            <a href="#" class="modal-action" title="delete account"><i class="action-icon delete-action fa fa-trash" data-confirmdata="Benjamin's"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -79,7 +79,7 @@
                                         <td>Draft <i class="fa fa-circle draft"></i></td>
                                         <td>
                                             <a href="account-record.html" title="view account"><i class="action-icon fa fa-eye"></i></a>
-                                            <a href="#" data-modalId="confirm" class="modal-action" title="delete account"><i class="action-icon fa fa-trash"></i></a>
+                                            <a href="#" class="modal-action" title="delete account"><i class="action-icon delete-action fa fa-trash" data-confirmdata="Bill's"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,7 +90,7 @@
                                         <td>Dormant <i class="fa fa-circle dormant"></i></td>
                                         <td>
                                             <a href="account-record.html" title="view account"><i class="action-icon fa fa-eye"></i></a>
-                                            <a href="#" data-modalId="confirm" class="modal-action" title="delete account"><i class="action-icon fa fa-trash"></i></a>
+                                            <a href="#" class="modal-action" title="delete account"><i class="action-icon delete-action fa fa-trash" data-confirmdata="John's"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -101,7 +101,7 @@
                                         <td>Active <i class="fa fa-circle active"></i></td>
                                         <td>
                                             <a href="account-record.html" title="view account"><i class="action-icon fa fa-eye"></i></a>
-                                            <a href="#" data-modalId="confirm" class="modal-action" title="delete account"><i class="action-icon fa fa-trash"></i></a>
+                                            <a href="#" class="modal-action" title="delete account"><i class="action-icon delete-action fa fa-trash" data-confirmdata="Azuka's"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -118,21 +118,6 @@
                         </div>                   
                     </div>
                 </div>
-                <div id="confirm" class="modal">
-                        <i class="close fa fa-times"></i>
-                        <div class="modal-card paper-card">
-                            <div class="modal-head">
-                                <h3>Confirm Transaction</h3>
-                            </div>
-                            <div class="modal-content">
-                                <p>Are you sure you want to delete account?</p>
-                                <div class="confirm-btn">
-                                    <button id="confirm-yes" class="form-submit btn-success">Yes</button>
-                                    <button id="confirm-no" class="form-submit btn-danger">No</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
         </main>
         <footer class="bottom-footer">
             <p>&copy; Banka - 2019</p>
@@ -140,13 +125,8 @@
     </div>
     <script src="js/index.js"></script>
     <script>
-        modal();
-        document.querySelector("#confirm-no").addEventListener( "click", () => {
-            document.querySelector(".modal").style.display = "none";
-        });
-        document.querySelector("#confirm-yes").addEventListener( "click", () => {
-            document.querySelector(".modal").style.display = "none";
-            alert(2000, "danger", "Failed to delete Account");
+         ui.confirm(".delete-action", "Confirm Transaction", "Are you sure you want to delete this account", (data) => {
+            ui.alert( 2000, "success", `${data} account was deleted successful`)
         });
     </script>
 </body>

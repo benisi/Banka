@@ -68,21 +68,6 @@
                     <button class="form-submit w-100 pt-1 modal-action">Deactivate Account</button>
                 </div>
             </div>
-            <div id="confirm" class="modal">
-                <i class="close fa fa-times"></i>
-                <div class="modal-card paper-card">
-                    <div class="modal-head">
-                        <h3>Confirm Transaction</h3>
-                    </div>
-                    <div class="modal-content">
-                        <p>Are you sure you want to deactivate account?</p>
-                        <div class="confirm-btn">
-                            <button id="confirm-yes" class="form-submit btn-success">Yes</button>
-                            <button id="confirm-no" class="form-submit btn-danger">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
         <footer class="bottom-footer">
             <p>&copy; Banka - 2019</p>
@@ -90,13 +75,8 @@
     </div>
     <script src="js/index.js"></script>
     <script>
-        modal();
-        document.querySelector("#confirm-no").addEventListener( "click", () => {
-            document.querySelector(".modal").style.display = "none";
-        });
-        document.querySelector("#confirm-yes").addEventListener( "click", () => {
-            document.querySelector(".modal").style.display = "none";
-            alert(2000, "success", "Account was successfully deactivated");
+        ui.confirm(".modal-action", "Confirm Transaction", "Are you sure you want to deactivate this account", () => {
+            ui.alert( 2000, "success", `Account was deactivated successfully`)
         });
     </script>
 </body>
