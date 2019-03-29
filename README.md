@@ -8,7 +8,7 @@ creation, customer deposit and withdrawals. This app is meant to support a singl
 users can signup and create bank accounts online, but must visit the branch to withdraw or
 deposit money..
 
-# Navigation
+##Navigation
 
 [For user template](https://benisi.github.io/Banka/UI/bank-account-profile.html)
 
