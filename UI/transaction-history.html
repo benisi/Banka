@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banka - Transaction History</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container light container-center">
+        <header class="top-bar dark">
+            <div class="navbar-brand">
+                <a class="toggle-btn" href="#">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a href="#">Banka</a>
+            </div>
+            <div class="topbar-img">
+                <span class="acc-indicator" title="active account"><i class="fa fa-circle active"></i></span>
+                <img class="img-circle" src="asset/user.jpeg" alt="user profile image">
+            </div>
+        </header>
+        <div class="breadcrum">
+            <h1>Transaction History</h1>
+        </div>
+        <nav class="side-bar remove-sidebar">
+            <div class="user-profile">
+                <img class="img-circle" src="asset/user.jpeg" alt="user photo">
+                <div class="user-profile-details" >
+                    <h3>Benjamin Isidahomen</h3>
+                    <p>Savings Account</p>
+                    <p>002234455</p>
+                    <br>
+                    <p class="sign-out"><a href="signin.html"><i class="fa fa-power-off"></i>Sign Out</a></p>
+                </div>
+            </div>
+            <ul>
+                <li><a href="bank-account-profile.html"><i class="far fa-money-bill-alt"></i>Account Profile</a></li>
+                <li><a href="transaction-history.html"><i class="fas fa-funnel-dollar"></i>Account Transaction History</a></li>
+                <li><a href="create-account.html"><i class="fas fa-piggy-bank"></i>Create Account</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content-container">
+                <div class="paper-card paper-single transaction">
+                    <h3>Transaction History of Benjamin Isidahomen</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Transaction id</th>
+                                    <th>Transaction type</th>
+                                    <th>Amount</th>
+                                    <th>Transaction date</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>12345</td>
+                                    <td>Credit</td>
+                                    <td>&#8358;20,000.00</td>
+                                    <td>12/03/2019</td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>12346</td>
+                                    <td>Credit</td>
+                                    <td>&#8358;60,000.00</td>
+                                    <td>14/03/2019</td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal2"><i class="action-icon fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>12355</td>
+                                    <td>Debit</td>
+                                    <td>&#8358;80,750.00</td>
+                                    <td>20/03/2019</td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal3"><i class="action-icon fa fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>12456</td>
+                                    <td>Debit</td>
+                                    <td>&#8358;9,000.00</td>
+                                    <td>23/03/2019</td>
+                                    <td><a href="#" class="modal-action" data-modalId="modal4"><i class="action-icon fa fa-eye"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a class="active" href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">&raquo;</a>
+                    </div>                   
+                </div>
+                <!-- start of modal -->
+                <div id="modal1" class="modal backdrop">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12345</p>
+                            <p>Transaction type : credit</p>
+                            <p>Amount : &#8358;20,000.00</p>
+                            <p>Transaction Date : 12/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal2" class="modal backdrop">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12346</p>
+                            <p>Transaction type : credit</p>
+                            <p>Amount : &#8358;60,000.00</p>
+                            <p>Transaction Date : 14/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal3" class="modal backdrop">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12355</p>
+                            <p>Transaction type : debit</p>
+                            <p>Amount : &#8358;80,750.00</p>
+                            <p>Transaction Date : 20/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal4" class="modal backdrop">
+                    <i class="close fa fa-times"></i>
+                    <div class="modal-card paper-card">
+                        <div class="modal-head">
+                            <h3>Transaction details</h3>
+                        </div>
+                        <div class="modal-content">
+                            <p>Transaction id : 12456</p>
+                            <p>Transaction type : debit</p>
+                            <p>Amount : &#8358;9,000.00</p>
+                            <p>Transaction Date : 23/03/2019</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End-->
+            </div>
+        </main>
+        <footer class="bottom-footer">
+            <p>&copy; Banka - 2019</p>
+        </footer>
+    </div>
+    <script src="js/index.js"></script>
+    <script>
+        ui.modal();
+    </script>
+</body>
+</html>
