@@ -14,8 +14,7 @@ function Ui(){
             } else {
                 toggleIcon.classList.remove("fa-times", "turn");
                 toggleIcon.classList.add("fa-bars");
-            }
-            
+            } 
         });
     };
     // creates floating navs for nav bar
