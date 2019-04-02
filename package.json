@@ -1,5 +1,5 @@
 {
-  "name": "Banka",
+  "name": "banka",
   "version": "1.0.0",
   "description": "a light weight banking api for Banka",
   "main": "index.js",

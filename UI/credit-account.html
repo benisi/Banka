@@ -83,9 +83,9 @@
     </div>
     <script src="js/index.js"></script>
     <script>
-         ui.confirm(".modal-action", "Confirm Transaction", "Are you sure you want to credit this account", () => {
+         confirm(".modal-action", "Confirm Transaction", "Are you sure you want to credit this account", () => {
             const data = document.querySelector("#amount").value;
-            ui.alert( 2000, "success", `Account was credited with ${data} successfully`)
+            alert( 2000, "success", `Account was credited with ${data} successfully`)
         });
     </script>
 </body>
