@@ -20,6 +20,16 @@ class UserController {
       error: 'User validation error'
     });
   }
+
+  static signIn(req, res) {
+    const data = req.body.foundUser;
+    delete data.password;
+    data.token = auth.createToken(data.id);
+    return res.status(200).json({
+      status: 200,
+      data
+    });
+  }
 }
 
 export default UserController;

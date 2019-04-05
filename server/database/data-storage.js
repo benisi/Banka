@@ -97,10 +97,7 @@ const struct = {
 
 const user = new User(struct);
 user.create({
-  email: 'bisidahomen@gmail.com', firstName: 'Benjamin', lastName: 'Isidahomen', password: 'hfhhfhfhfh', type: 'client', isAdmin: false
-});
-user.create({
-  email: 'judeokos@gmail.com', firstName: 'jude', lastName: 'okolosi', password: 'fjnfdjndfjnfdjnm', type: 'staff', isAdmin: true
+  email: 'bisidahomen@gmail.com', firstName: 'Benjamin', lastName: 'Isidahomen', password: 'hfhh5fhfhfh', type: 'client', isAdmin: false
 });
 
 export default user;

@@ -8,5 +8,6 @@ const router = express.Router();
 
 // User Auth Routes
 router.post('/api/v1/auth/signup', userValidator.signUpValidator, UserController.createUser);
+router.post('/api/v1/auth/signin', userValidator.signInValidator, UserController.signIn);
 
 export default router;

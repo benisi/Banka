@@ -64,10 +64,17 @@ const invalidType = {
 const invalidPassword = {
   email: 'bisidahomen8@gmail.com', firstName: 'Isidahomen', lastName: 'ben', password: '_hfhhfhfhfh3', type: 'client', isAdmin: true
 };
+const validLoginData = {
+  email: 'bisidahomen@gmail.com', password: 'hfhh5fhfhfh'
+};
+const invalidLoginData = {
+  email: 'doe@gmail.com', password: 'ytyttyty4'
+};
 
 export {
   validUser, emptyEmail, invalidEmail, undefineEmail, alreadyInUseUser,
   nonStringEmail, emptyFirstName, invalidFirstName, undefineFirstName,
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
-  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword
+  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
+  validLoginData, invalidLoginData
 };
