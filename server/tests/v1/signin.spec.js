@@ -3,7 +3,7 @@ import chaiHttp from 'chai-http';
 import app from '../../../app';
 import { validLoginData, invalidLoginData } from '../test-data/users';
 import validator from '../../helper/validator';
-import user from '../../database/data-storage';
+import user from '../../database/user';
 
 chai.use(chaiHttp);
 

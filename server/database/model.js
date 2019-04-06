@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 /* eslint-disable no-underscore-dangle */
 
 class Model {
@@ -83,22 +82,5 @@ class Model {
   }
 }
 
-class User extends Model {
 
-}
-
-const struct = {
-  email: String,
-  firstName: String,
-  lastName: String,
-  password: String,
-  type: String,
-  isAdmin: Boolean
-};
-
-const user = new User(struct);
-user.create({
-  email: 'bisidahomen@gmail.com', firstName: 'Benjamin', lastName: 'Isidahomen', password: bcrypt.hashSync('hfhh5fhfhfh', 10), type: 'client', isAdmin: false
-});
-
-export default user;
+export default Model;

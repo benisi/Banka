@@ -1,4 +1,4 @@
-import user from '../database/data-storage';
+import user from '../database/user';
 import validator from '../helper/validator';
 
 class UserValidator {

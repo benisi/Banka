@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import user from '../../database/data-storage';
+import user from '../../database/user';
 import auth from '../../helper/auth';
 
 class UserController {
