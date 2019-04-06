@@ -2,6 +2,8 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../../app';
 import { validLoginData, invalidLoginData } from '../test-data/users';
+import validator from '../../helper/validator';
+import user from '../../database/data-storage';
 
 chai.use(chaiHttp);
 
@@ -23,16 +25,24 @@ describe('Tests for valid input for user login', () => {
         done();
       });
   });
-  it('should give a status code 400', (done) => {
+  it('should give a status code 403', (done) => {
     chai.request(app)
       .post(url)
       .send(invalidLoginData)
       .end((err, res) => {
-        res.body.should.have.status(400);
+        res.body.should.have.status(403);
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.be.equal('Wrong email and password combination');
         done();
       });
+  });
+});
+describe('Test for bcrypt password match', () => {
+  it('should return true when password are compared', (done) => {
+    const users = user.findAll();
+    const foundUser = users.find(entry => entry.email === validLoginData.email);
+    validator.checkPassword(validLoginData.password, foundUser.password).should.be.equal(true);
+    done();
   });
 });

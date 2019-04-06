@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt';
+
 class Validator {
   static isUndefined(data) {
     if (data === undefined) {
@@ -54,6 +56,10 @@ class Validator {
       return true;
     }
     return false;
+  }
+
+  static checkPassword(myPlaintextPassword, hash) {
+    return bcrypt.compareSync(myPlaintextPassword, hash);
   }
 }
 

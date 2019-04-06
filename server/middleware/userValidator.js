@@ -109,10 +109,10 @@ class UserValidator {
 
   static signInValidator(req, res, next) {
     const users = user.findAll();
-    const foundUser = users.find(entry => entry.email === req.body.email);
-    if (!foundUser) {
-      return res.status(400).json({
-        status: 400,
+    const foundUser = users.find(entry => entry.email === req.body.email.trim());
+    if (!foundUser || !validator.checkPassword(req.body.password, foundUser.password)) {
+      return res.status(403).json({
+        status: 403,
         error: 'Wrong email and password combination'
       });
     }

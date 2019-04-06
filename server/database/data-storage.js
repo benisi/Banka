@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 /* eslint-disable no-underscore-dangle */
 
 class Model {
@@ -25,7 +26,7 @@ class Model {
     let valid = true;
     keys.forEach((key) => {
       if (typeof obj[key] === typeof this._dataType[key]()) {
-        data[key] = obj[key];
+        data[key] = typeof obj[key] === 'string' ? obj[key].trim() : obj[key];
       } else {
         console.error(`${this.constructor.name} model says that ${obj[key]} is not a valid type of ${typeof this._dataType[key]()}`);
         valid = false;
@@ -97,7 +98,7 @@ const struct = {
 
 const user = new User(struct);
 user.create({
-  email: 'bisidahomen@gmail.com', firstName: 'Benjamin', lastName: 'Isidahomen', password: 'hfhh5fhfhfh', type: 'client', isAdmin: false
+  email: 'bisidahomen@gmail.com', firstName: 'Benjamin', lastName: 'Isidahomen', password: bcrypt.hashSync('hfhh5fhfhfh', 10), type: 'client', isAdmin: false
 });
 
 export default user;
