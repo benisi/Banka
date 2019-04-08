@@ -61,6 +61,15 @@ class Validator {
   static checkPassword(myPlaintextPassword, hash) {
     return bcrypt.compareSync(myPlaintextPassword, hash);
   }
+
+  static isPhoneNumber(data) {
+    // eslint-disable-next-line no-useless-escape
+    const phoneRegEx = /^[+]?[0-9]{11,14}$/;
+    if (phoneRegEx.test(data)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 export default Validator;

@@ -5,7 +5,8 @@ import app from '../../../app';
 import {
   validUser, emptyEmail, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
   nonStringFirstName, emptyFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
-  emptyLastName, undefineLastName, invalidLastName, invalidIsAdmin, invalidType, invalidPassword
+  emptyLastName, undefineLastName, invalidLastName, invalidIsAdmin, invalidType, invalidPassword,
+  invalidPhoneNumber, invalidSex
 } from '../test-data/users';
 
 chai.use(chaiHttp);
@@ -279,6 +280,34 @@ describe('Tests for invalid password', () => {
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equal('Password must have a length of 8 to 20 aplhanumeric characters, can not start with a digit, underscore or special character and must contain at least one digit');
+        done();
+      });
+  });
+});
+describe('Tests for invalid phone number', () => {
+  it('should return 400 error code', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(invalidPhoneNumber)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        res.body.should.be.a('object');
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Invalid phone number');
+        done();
+      });
+  });
+});
+describe('Tests for invalid sex', () => {
+  it('should return 400 error code', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(invalidSex)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        res.body.should.be.a('object');
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Invalid sex, only accept [ male, female ]');
         done();
       });
   });

@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
 import Model from './model';
+import { defaultUser } from '../tests/test-data/users';
 
 class User extends Model {
 
@@ -15,22 +15,12 @@ const structure = {
   stateOfResidence: String,
   phoneNumber: String,
   title: String,
-  dateOfBirth: String
+  dateOfBirth: String,
+  sex: String
 };
 
 const user = new User(structure);
 
-user.create({
-  email: 'bisidahomen@gmail.com',
-  firstName: 'Benjamin',
-  lastName: 'Isidahomen',
-  password: bcrypt.hashSync('hfhh5fhfhfh', 10),
-  type: 'client',
-  isAdmin: false,
-  stateOfResidence: 'edo',
-  phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
-  title: 'master'
-});
+user.create(defaultUser);
 
 export default user;

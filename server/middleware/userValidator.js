@@ -5,7 +5,7 @@ class UserValidator {
   static signUp(req, res, next) {
     const {
       firstName, lastName, email, password, isAdmin, type, stateOfResidence,
-      phoneNumber, dateOfBirth, title
+      phoneNumber, dateOfBirth, title, sex
     } = req.body;
     if (validator.isUndefined(firstName)) {
       return res.status(400).json({
@@ -182,10 +182,22 @@ class UserValidator {
         error: 'Invalid type, only accept [ staff, client ]'
       });
     }
+    if (!['male', 'female'].includes(sex)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Invalid sex, only accept [ male, female ]'
+      });
+    }
     if (!validator.isPassword(password)) {
       return res.status(400).json({
         status: 400,
         error: 'Password must have a length of 8 to 20 aplhanumeric characters, can not start with a digit, underscore or special character and must contain at least one digit'
+      });
+    }
+    if (!validator.isPhoneNumber(phoneNumber)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Invalid phone number'
       });
     }
     return next();

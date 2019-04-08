@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../../app';
+import { validLoginData } from '../test-data/users';
 import { validAccountData, invalidAccountType, invalidAccountCategory } from '../test-data/account';
 
 chai.use(chaiHttp);
@@ -15,7 +16,7 @@ describe('User should be able to login', () => {
   it('should give a status code of 200 and set user token variable', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
-      .send({ email: 'bisidahomen@gmail.com', password: 'hfhh5fhfhfh' })
+      .send(validLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
         const { token } = res.body.data;

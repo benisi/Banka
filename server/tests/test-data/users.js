@@ -1,3 +1,18 @@
+import bcrypt from 'bcrypt';
+
+const defaultUser = {
+  email: 'bisidahomen@gmail.com',
+  firstName: 'Benjamin',
+  lastName: 'Isidahomen',
+  password: bcrypt.hashSync('hfhh5fhfhfh', 10),
+  type: 'client',
+  isAdmin: false,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09/1960',
+  title: 'master',
+  sex: 'male'
+};
 const validUser = {
   email: 'bisidahomen222@gmail.com',
   firstName: 'Benjamin',
@@ -8,7 +23,8 @@ const validUser = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const emptyEmail = {
@@ -21,7 +37,8 @@ const emptyEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const invalidEmail = {
@@ -34,7 +51,8 @@ const invalidEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const undefineEmail = {
@@ -47,7 +65,8 @@ const undefineEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 const alreadyInUseUser = {
   email: 'bisidahomen@gmail.com',
@@ -59,7 +78,8 @@ const alreadyInUseUser = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 const nonStringEmail = {
   email: 12344,
@@ -71,7 +91,8 @@ const nonStringEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 // eslint-disable-next-line import/prefer-default-export
@@ -87,7 +108,8 @@ const emptyFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const invalidFirstName = {
@@ -100,7 +122,8 @@ const invalidFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const undefineFirstName = {
@@ -113,7 +136,8 @@ const undefineFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 const nonStringFirstName = {
   email: 'bisidahomen11@gmail.com',
@@ -125,7 +149,8 @@ const nonStringFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 // last name mock data
@@ -139,7 +164,8 @@ const emptyLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const invalidLastName = {
@@ -152,7 +178,8 @@ const invalidLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const undefineLastName = {
@@ -165,7 +192,8 @@ const undefineLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 const nonStringLastName = {
   email: 'bisidahomen8@gmail.com',
@@ -177,7 +205,8 @@ const nonStringLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const invalidIsAdmin = {
@@ -190,7 +219,8 @@ const invalidIsAdmin = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 const invalidType = {
   email: 'bisidahomen8@gmail.com',
@@ -202,7 +232,8 @@ const invalidType = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
 };
 
 const invalidPassword = {
@@ -215,7 +246,34 @@ const invalidPassword = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
-  title: 'master'
+  title: 'master',
+  sex: 'male'
+};
+const invalidPhoneNumber = {
+  email: 'bisidahomen8@gmail.com',
+  firstName: 'Isidahomen',
+  lastName: 'ben',
+  password: 'hfhhfhfhfh3',
+  type: 'client',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361uiio',
+  dateOfBirth: '02/09/1960',
+  title: 'master',
+  sex: 'male'
+};
+const invalidSex = {
+  email: 'bisidahomen8@gmail.com',
+  firstName: 'Isidahomen',
+  lastName: 'ben',
+  password: 'hfhhfhfhfh3',
+  type: 'client',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09/1960',
+  title: 'master',
+  sex: 'mammal'
 };
 const validLoginData = {
   email: 'bisidahomen@gmail.com',
@@ -231,5 +289,6 @@ export {
   nonStringEmail, emptyFirstName, invalidFirstName, undefineFirstName,
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
   nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
-  validLoginData, invalidLoginData
+  validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber,
+  invalidSex
 };
