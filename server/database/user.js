@@ -11,12 +11,26 @@ const structure = {
   lastName: String,
   password: String,
   type: String,
-  isAdmin: Boolean
+  isAdmin: Boolean,
+  stateOfResidence: String,
+  phoneNumber: String,
+  title: String,
+  dateOfBirth: String
 };
 
 const user = new User(structure);
+
 user.create({
-  email: 'bisidahomen@gmail.com', firstName: 'Benjamin', lastName: 'Isidahomen', password: bcrypt.hashSync('hfhh5fhfhfh', 10), type: 'client', isAdmin: false
+  email: 'bisidahomen@gmail.com',
+  firstName: 'Benjamin',
+  lastName: 'Isidahomen',
+  password: bcrypt.hashSync('hfhh5fhfhfh', 10),
+  type: 'client',
+  isAdmin: false,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09/1960',
+  title: 'master'
 });
 
 export default user;

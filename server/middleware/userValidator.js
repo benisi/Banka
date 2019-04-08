@@ -2,9 +2,10 @@ import user from '../database/user';
 import validator from '../helper/validator';
 
 class UserValidator {
-  static signUpValidator(req, res, next) {
+  static signUp(req, res, next) {
     const {
-      firstName, lastName, email, password, isAdmin, type
+      firstName, lastName, email, password, isAdmin, type, stateOfResidence,
+      phoneNumber, dateOfBirth, title
     } = req.body;
     if (validator.isUndefined(firstName)) {
       return res.status(400).json({
@@ -55,6 +56,89 @@ class UserValidator {
         error: 'Invalid last name'
       });
     }
+    // state of residence
+    if (validator.isUndefined(stateOfResidence)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'State of residence field is required'
+      });
+    }
+    if (!validator.isString(stateOfResidence)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'State of residence must be a string'
+      });
+    }
+    if (validator.isEmpty(stateOfResidence)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'State of residence should not be empty'
+      });
+    }
+    if (!validator.itIsAName(stateOfResidence)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Invalid state of residence'
+      });
+    }
+    // title
+    if (validator.isUndefined(title)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Title field is required'
+      });
+    }
+    if (!validator.isString(title)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Title must be a string'
+      });
+    }
+    if (validator.isEmpty(title)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Title should not be empty'
+      });
+    }
+    // phone number
+    if (validator.isUndefined(phoneNumber)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Phone number field is required'
+      });
+    }
+    if (!validator.isString(phoneNumber)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Phone number must be a string'
+      });
+    }
+    if (validator.isEmpty(phoneNumber)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Phone number should not be empty'
+      });
+    }
+    // date of Birth
+    if (validator.isUndefined(dateOfBirth)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Date of birth field is required'
+      });
+    }
+    if (!validator.isString(dateOfBirth)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Date of birth must be a string'
+      });
+    }
+    if (validator.isEmpty(dateOfBirth)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Date of birth should not be empty'
+      });
+    }
+
     if (validator.isEmpty(email)) {
       return res.status(400).json({
         status: 400,
@@ -104,10 +188,10 @@ class UserValidator {
         error: 'Password must have a length of 8 to 20 aplhanumeric characters, can not start with a digit, underscore or special character and must contain at least one digit'
       });
     }
-    next();
+    return next();
   }
 
-  static signInValidator(req, res, next) {
+  static signIn(req, res, next) {
     const users = user.findAll();
     const foundUser = users.find(entry => entry.email === req.body.email.trim());
     if (!foundUser || !validator.checkPassword(req.body.password, foundUser.password)) {
@@ -117,7 +201,7 @@ class UserValidator {
       });
     }
     req.body.foundUser = foundUser;
-    next();
+    return next();
   }
 }
 

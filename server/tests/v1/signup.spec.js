@@ -20,7 +20,21 @@ describe('A test for default response', () => {
       .get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('should have a data type of object at req.body', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
         res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('should return a message of welcome to Banka', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
         expect(res.body.message).to.equal('Hello there, Welcome to Banka');
         done();
       });

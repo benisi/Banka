@@ -27,7 +27,7 @@ class Model {
       if (typeof obj[key] === typeof this._dataType[key]()) {
         data[key] = typeof obj[key] === 'string' ? obj[key].trim() : obj[key];
       } else {
-        console.error(`${this.constructor.name} model says that ${obj[key]} is not a valid type of ${typeof this._dataType[key]()}`);
+        console.error(`${this.constructor.name} model says that ${key} is not a valid type of ${typeof this._dataType[key]()}`);
         valid = false;
       }
     });

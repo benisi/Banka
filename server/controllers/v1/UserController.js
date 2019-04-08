@@ -3,7 +3,7 @@ import user from '../../database/user';
 import auth from '../../helper/auth';
 
 class UserController {
-  static createUser(req, res) {
+  static create(req, res) {
     const userObj = req.body;
     userObj.password = bcrypt.hashSync(req.body.password, 10);
     const refData = user.create(userObj);

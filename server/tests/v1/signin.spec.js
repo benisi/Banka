@@ -19,9 +19,33 @@ describe('Tests for valid input for user login', () => {
       .send(validLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('should have a property called data', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(validLoginData)
+      .end((err, res) => {
         expect(res.body).to.have.property('data');
+        done();
+      });
+  });
+  it('should have a property called token at req.body.data', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(validLoginData)
+      .end((err, res) => {
         expect(res.body.data).to.have.property('token');
+        done();
+      });
+  });
+  it('should have a data type of object at req.body.data', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(validLoginData)
+      .end((err, res) => {
+        res.body.should.be.a('object');
         done();
       });
   });
@@ -38,6 +62,7 @@ describe('Tests for valid input for user login', () => {
       });
   });
 });
+
 describe('Test for bcrypt password match', () => {
   it('should return true when password are compared', (done) => {
     const users = user.findAll();
