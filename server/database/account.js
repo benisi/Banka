@@ -4,7 +4,7 @@ import Model from './model';
 class Account extends Model {
   constructor(structure) {
     super(structure);
-    this._baseAccount = 8900000000;
+    this._baseAccount = 8900001;
   }
 
   generateAccountNumber() {
