@@ -64,22 +64,6 @@ class Model {
     this._data.splice(index, 1);
     return true;
   }
-
-  update(obj) {
-    const { id } = obj;
-    const data = this._validateData(obj);
-    if (!data) {
-      console.log('Fail to update data entry, validation failed');
-      return false;
-    }
-    const index = this._findIndex(id);
-    if (!index && index !== 0) {
-      return false;
-    }
-    obj.id = id;
-    this._data[index] = obj;
-    return true;
-  }
 }
 
 

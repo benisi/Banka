@@ -5,7 +5,7 @@ const defaultUser = {
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: bcrypt.hashSync('hfhh5fhfhfh', 10),
-  type: 'client',
+  type: 'staff',
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
