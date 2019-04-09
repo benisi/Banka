@@ -31,5 +31,6 @@ router.delete('/api/v1/accounts/:accountNumber', [auth.verifyToken, auth.allowOn
 
 // Transaction route
 router.post('/api/v1/transactions/:accountNumber/credit', [auth.verifyToken, auth.allowOnlyStaff, transactionValidator], TransactionController.credit);
+router.post('/api/v1/transactions/:accountNumber/debit', [auth.verifyToken, auth.allowOnlyStaff, transactionValidator], TransactionController.debit);
 
 export default router;
