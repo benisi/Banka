@@ -41,6 +41,13 @@ class AccountController {
   }
 
   static delete(req, res) {
+    const { accountId } = req.body;
+    if (!account.delete(accountId)) {
+      return res.status(500).json({
+        status: 500,
+        error: 'failed to delete account'
+      });
+    }
     return res.status(200).json({
       status: 200,
       message: 'Account successfully deleted'

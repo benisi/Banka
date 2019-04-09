@@ -76,6 +76,21 @@ class AccountValidator {
 
     next();
   }
+
+  static delete(req, res, next) {
+    const { accountNumber } = req.params;
+    const accountRef = account.getAccount(parseInt(accountNumber, 10));
+
+    if (!accountRef) {
+      return res.status(400).json({
+        status: 400,
+        error: `Account ${accountNumber} does not exist`
+      });
+    }
+    const { id } = accountRef;
+    req.body.accountId = id;
+    return next();
+  }
 }
 
 export default AccountValidator;

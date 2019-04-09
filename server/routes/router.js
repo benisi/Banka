@@ -16,6 +16,6 @@ router.post('/api/v1/auth/signin', userValidator.signIn, UserController.signIn);
 // Bank account route
 router.post('/api/v1/accounts', [auth.verifyToken, accountValidator.create], AccountController.create);
 router.patch('/api/v1/account/:accountNumber', [auth.verifyToken, auth.allowOnlyAdminStaff, accountValidator.status], AccountController.status);
-router.delete('/api/v1/accounts/:accountNumber', [auth.verifyToken, auth.allowOnlyAdminStaff], AccountController.delete);
+router.delete('/api/v1/accounts/:accountNumber', [auth.verifyToken, auth.allowOnlyAdminStaff, accountValidator.delete], AccountController.delete);
 
 export default router;
