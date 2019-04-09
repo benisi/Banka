@@ -39,6 +39,13 @@ class AccountController {
       error: `failed to ${status} account`
     });
   }
+
+  static delete(req, res) {
+    return res.status(200).json({
+      status: 200,
+      message: 'Account successfully deleted'
+    });
+  }
 }
 
 export default AccountController;
