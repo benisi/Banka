@@ -1,8 +1,23 @@
 import user from '../database/user';
+import account from '../database/account';
 
 class AccountValidator {
   static create(req, res, next) {
     const { type, category } = req.body;
+
+    if (type === undefined) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Type is a required field'
+      });
+    }
+
+    if (category === undefined) {
+      return res.status(400).json({
+        status: 400,
+        error: 'cayegory is a required field'
+      });
+    }
 
     if (!['current', 'savings'].includes(type)) {
       return res.status(400).json({
@@ -32,15 +47,33 @@ class AccountValidator {
   }
 
   static status(req, res, next) {
-    const userId = parseInt(req.body.decoded, 10);
-    const userData = user.find(userId);
-    const { type, isAdmin } = userData;
-    if ((!isAdmin && type !== 'staff')) {
-      return res.status(401).json({
-        status: 401,
-        error: 'You are not Authorize to perform this operation'
+    const { status } = req.body;
+
+    if (status === undefined) {
+      return res.status(400).json({
+        status: 400,
+        error: 'status is a required field'
       });
     }
+    if (!['activate', 'deactivate'].includes(status)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Invalid status, only accept [ activate, deactivate ]'
+      });
+    }
+    const { accountNumber } = req.params;
+    const accountRef = account.getAccount(parseInt(accountNumber, 10));
+
+    if (!accountRef) {
+      return res.status(400).json({
+        status: 400,
+        error: `Account ${accountNumber} does not exist`
+      });
+    }
+
+    req.body.accountRef = accountRef;
+    req.body.accountNumber = accountNumber;
+
     next();
   }
 }

@@ -1,5 +1,5 @@
 import Model from './model';
-import { defaultUser } from '../tests/test-data/users';
+import { defaultUser, defaultClient } from '../tests/test-data/users';
 
 class User extends Model {
 
@@ -22,5 +22,6 @@ const structure = {
 const user = new User(structure);
 
 user.create(defaultUser);
+user.create(defaultClient);
 
 export default user;

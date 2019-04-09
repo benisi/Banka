@@ -23,14 +23,20 @@ class AccountController {
   }
 
   static status(req, res) {
-    const { accountNumber } = req.params;
-    const { status } = req.body;
-    return res.status(200).json({
-      status: 200,
-      data: {
-        accountNumber,
-        status
-      }
+    const { status, accountRef, accountNumber } = req.body;
+    if (account.changeStatus(accountRef, status)) {
+      const newStatus = status === 'activate' ? 'active' : 'dormant';
+      return res.status(200).json({
+        status: 200,
+        data: {
+          accountNumber,
+          status: newStatus
+        }
+      });
+    }
+    return res.status(500).json({
+      status: 500,
+      error: `failed to ${status} account`
     });
   }
 }

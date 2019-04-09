@@ -6,6 +6,19 @@ const defaultUser = {
   lastName: 'Isidahomen',
   password: bcrypt.hashSync('hfhh5fhfhfh', 10),
   type: 'client',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09/1960',
+  title: 'master',
+  sex: 'male'
+};
+const defaultClient = {
+  email: 'bisidahomen999@gmail.com',
+  firstName: 'Benjamin',
+  lastName: 'Isidahomen',
+  password: bcrypt.hashSync('hfhh5fhfhfh', 10),
+  type: 'client',
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
@@ -279,6 +292,14 @@ const validLoginData = {
   email: 'bisidahomen@gmail.com',
   password: 'hfhh5fhfhfh'
 };
+const adminLoginData = {
+  email: 'bisidahomen@gmail.com',
+  password: 'hfhh5fhfhfh'
+};
+const clientLoginData = {
+  email: 'bisidahomen999@gmail.com',
+  password: 'hfhh5fhfhfh'
+};
 const invalidLoginData = {
   email: 'doe@gmail.com',
   password: 'ytyttyty4'
@@ -290,5 +311,5 @@ export {
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
   nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
   validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber,
-  invalidSex
+  invalidSex, clientLoginData, adminLoginData, defaultClient
 };

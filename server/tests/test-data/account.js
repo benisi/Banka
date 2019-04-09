@@ -11,7 +11,7 @@ const invalidAccountCategory = {
   category: 'cooperate'
 };
 const activateAccountData = {
-  status: 'active'
+  status: 'deactivate'
 };
 
 export {

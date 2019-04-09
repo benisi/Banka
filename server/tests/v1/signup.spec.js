@@ -5,7 +5,7 @@ import app from '../../../app';
 import {
   validUser, emptyEmail, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
   nonStringFirstName, emptyFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
-  emptyLastName, undefineLastName, invalidLastName, invalidIsAdmin, invalidType, invalidPassword,
+  emptyLastName, undefineLastName, invalidLastName, invalidPassword,
   invalidPhoneNumber, invalidSex
 } from '../test-data/users';
 
@@ -241,35 +241,6 @@ describe('Tests for invalid Last name', () => {
       });
   });
 });
-describe('Tests for invalid isAdmin', () => {
-  it('should return 400 error code', (done) => {
-    chai.request(app)
-      .post(url)
-      .send(invalidIsAdmin)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        res.body.should.be.a('object');
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('isAdmin must be boolean');
-        done();
-      });
-  });
-});
-describe('Tests for invalid type, supplying wrong value', () => {
-  it('should return 400 error code', (done) => {
-    chai.request(app)
-      .post(url)
-      .send(invalidType)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        res.body.should.be.a('object');
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Invalid type, only accept [ staff, client ]');
-        done();
-      });
-  });
-});
-
 describe('Tests for invalid password', () => {
   it('should return 400 error code', (done) => {
     chai.request(app)

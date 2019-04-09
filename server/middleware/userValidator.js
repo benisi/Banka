@@ -4,7 +4,7 @@ import validator from '../helper/validator';
 class UserValidator {
   static signUp(req, res, next) {
     const {
-      firstName, lastName, email, password, isAdmin, type, stateOfResidence,
+      firstName, lastName, email, password, stateOfResidence,
       phoneNumber, dateOfBirth, title, sex
     } = req.body;
     if (validator.isUndefined(firstName)) {
@@ -170,16 +170,16 @@ class UserValidator {
         error: 'Invalid email address'
       });
     }
-    if (!validator.itIsBoolean(isAdmin)) {
+    if (password === undefined) {
       return res.status(400).json({
         status: 400,
-        error: 'isAdmin must be boolean'
+        error: 'password is a required field'
       });
     }
-    if (!['client', 'staff'].includes(type)) {
+    if (sex === undefined) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid type, only accept [ staff, client ]'
+        error: 'sex is a required field'
       });
     }
     if (!['male', 'female'].includes(sex)) {
@@ -204,6 +204,19 @@ class UserValidator {
   }
 
   static signIn(req, res, next) {
+    const { email, password } = req.body;
+    if (email === undefined) {
+      return res.status(400).json({
+        status: 400,
+        error: 'email is a required field'
+      });
+    }
+    if (password === undefined) {
+      return res.status(400).json({
+        status: 400,
+        error: 'password is a required field'
+      });
+    }
     const users = user.findAll();
     const foundUser = users.find(entry => entry.email === req.body.email.trim());
     if (!foundUser || !validator.checkPassword(req.body.password, foundUser.password)) {

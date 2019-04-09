@@ -6,6 +6,8 @@ class UserController {
   static create(req, res) {
     const userObj = req.body;
     userObj.password = bcrypt.hashSync(req.body.password, 10);
+    userObj.isAdmin = false;
+    userObj.type = 'client';
     const refData = user.create(userObj);
     if (refData) {
       const data = { ...refData };
