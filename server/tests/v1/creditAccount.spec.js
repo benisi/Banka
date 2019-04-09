@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http';
 import app from '../../../app';
 import { validLoginData } from '../test-data/users';
 import { validAccountData } from '../test-data/account';
+import { creditAccountData } from '../test-data/transaction';
 
 
 chai.use(chaiHttp);
@@ -59,6 +60,7 @@ describe('Test to credit account', () => {
     chai.request(app)
       .post(`/api/v1/transactions/${accNumber}/credit`)
       .set('authorization', globalToken)
+      .send(creditAccountData)
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();

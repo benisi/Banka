@@ -280,7 +280,7 @@ const invalidSex = {
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
-  type: 'client',
+  type: 'staff',
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',

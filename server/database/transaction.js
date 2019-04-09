@@ -1,8 +1,6 @@
 import Model from './model';
 
-class Transaction extends Model {
-
-}
+class Transaction extends Model {}
 
 const structure = {
   createdOn: Object,
@@ -11,7 +9,7 @@ const structure = {
   cashier: Number,
   amount: Number,
   oldBalance: Number,
-  newNumber: Number
+  newBalance: Number
 };
 const transaction = new Transaction(structure);
 

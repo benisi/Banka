@@ -40,6 +40,19 @@ class Auth {
     }
     return next();
   }
+
+  static allowOnlyStaff(req, res, next) {
+    const userId = parseInt(req.body.decoded, 10);
+    const userData = user.find(userId);
+    const { type } = userData;
+    if (type !== 'staff') {
+      return res.status(401).json({
+        status: 401,
+        error: 'You are not Authorize to perform this operation'
+      });
+    }
+    return next();
+  }
 }
 
 export default Auth;
