@@ -10,7 +10,10 @@ const invalidAccountCategory = {
   type: 'savings',
   category: 'cooperate'
 };
+const activateAccountData = {
+  status: 'active'
+};
 
 export {
-  validAccountData, invalidAccountType, invalidAccountCategory
+  validAccountData, invalidAccountType, invalidAccountCategory, activateAccountData
 };

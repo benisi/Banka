@@ -30,6 +30,19 @@ class AccountValidator {
     req.body.owner = ownerId;
     return next();
   }
+
+  static status(req, res, next) {
+    const userId = parseInt(req.body.decoded, 10);
+    const userData = user.find(userId);
+    const { type, isAdmin } = userData;
+    if ((!isAdmin && type !== 'staff')) {
+      return res.status(401).json({
+        status: 401,
+        error: 'You are not Authorize to perform this operation'
+      });
+    }
+    next();
+  }
 }
 
 export default AccountValidator;

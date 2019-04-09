@@ -21,6 +21,18 @@ class AccountController {
       data
     });
   }
+
+  static status(req, res) {
+    const { accountNumber } = req.params;
+    const { status } = req.body;
+    return res.status(200).json({
+      status: 200,
+      data: {
+        accountNumber,
+        status
+      }
+    });
+  }
 }
 
 export default AccountController;
