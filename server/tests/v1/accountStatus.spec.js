@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http';
 import app from '../../../app';
 import { activateAccountData, validAccountData } from '../test-data/account';
 import { clientLoginData, adminLoginData } from '../test-data/users';
+import account from '../../database/account';
 
 chai.use(chaiHttp);
 
@@ -90,5 +91,21 @@ describe('Test for permission for user in staff admin route', () => {
         expect(res).to.have.status(401);
         done();
       });
+  });
+});
+
+describe('Test to show if we can activate account', () => {
+  it('should return true', (done) => {
+    const activateData = { status: 'active' };
+    expect(account.activate(activateData)).to.be.equal(true);
+    done();
+  });
+});
+
+describe('Test to show if we can deactivate account', () => {
+  it('should return true', (done) => {
+    const activateData = { status: 'dormant' };
+    expect(account.activate(activateData)).to.be.equal(true);
+    done();
   });
 });
