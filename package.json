@@ -11,6 +11,10 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
+  "engines": {
+    "node": ">=8.10.0",
+    "npm": ">=6.9.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/benisi/Banka.git"
