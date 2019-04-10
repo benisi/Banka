@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 const { should, expect } = chai;
 should();
 
-const url = '/api/v1/account/8900002';
+let accNumb;
 
 let globalToken;
 let clientToken;
@@ -34,17 +34,18 @@ describe('Test to create a user bank account', () => {
   it('should return a status code of 201, i.e account was created successfully', (done) => {
     chai.request(app)
       .post('/api/v1/accounts')
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
         expect(res).to.have.status(201);
+        accNumb = res.body.data.accountNumber;
         done();
       });
   });
   it('should have a property called data', (done) => {
     chai.request(app)
       .post('/api/v1/accounts')
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
         expect(res.body).to.have.a.property('data');
@@ -57,10 +58,11 @@ describe('Test to create a user bank account', () => {
 describe('Test to activate user account', () => {
   it('should return a status of 200', (done) => {
     chai.request(app)
-      .patch(url)
-      .set('authorization', globalToken)
+      .patch(`/api/v1/account/${accNumb}`)
+      .set('Authorization', globalToken)
       .send(activateAccountData)
       .end((err, res) => {
+        console.log(res.body);
         expect(res).to.have.status(200);
         done();
       });
@@ -84,8 +86,8 @@ describe('Client should be able to login', () => {
 describe('Test for permission for user in staff admin route', () => {
   it('should return a status of 401 permission denied', (done) => {
     chai.request(app)
-      .patch(url)
-      .set('authorization', clientToken)
+      .patch(`/api/v1/account/${accNumb}`)
+      .set('Authorization', clientToken)
       .send(activateAccountData)
       .end((err, res) => {
         expect(res).to.have.status(401);

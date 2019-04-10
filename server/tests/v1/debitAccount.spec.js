@@ -34,7 +34,7 @@ describe('Test to create a user bank account', () => {
   it('should return a status code of 201, i.e account was created successfully', (done) => {
     chai.request(app)
       .post(createUrl)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData, 'watin be this')
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -46,7 +46,7 @@ describe('Test to create a user bank account', () => {
   it('should have a property called data', (done) => {
     chai.request(app)
       .post(createUrl)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
         expect(res.body).to.have.a.property('data');
@@ -59,7 +59,7 @@ describe('Test to credit account', () => {
   it('should return a status 200', (done) => {
     chai.request(app)
       .post(`/api/v1/transactions/${accNumber}/credit`)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(creditAccountData)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -73,7 +73,7 @@ describe('Test to debit account', () => {
   it('should return a status 200', (done) => {
     chai.request(app)
       .post(`/api/v1/transactions/${accNumber}/debit`)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(debitAccountData)
       .end((err, res) => {
         expect(res).to.have.status(200);

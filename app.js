@@ -3,12 +3,15 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
 import router from './server/routes/router';
 
 const app = express();
 dotenv.config();
+// logger middleware
+app.use(morgan('dev'));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const corsOptions = {
   origin: '*',
   credentials: true

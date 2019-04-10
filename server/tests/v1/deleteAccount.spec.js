@@ -33,7 +33,7 @@ describe('Test to create a user bank account', () => {
   it('should return a status code of 201, i.e account was created successfully', (done) => {
     chai.request(app)
       .post(createUrl)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData, 'watin be this')
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -45,7 +45,7 @@ describe('Test to create a user bank account', () => {
   it('should have a property called data', (done) => {
     chai.request(app)
       .post(createUrl)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
         expect(res.body).to.have.a.property('data');
@@ -58,7 +58,7 @@ describe('Test for successful deleted account', () => {
   it('should return a status 200', (done) => {
     chai.request(app)
       .delete(`/api/v1/accounts/${accNumber}`)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();

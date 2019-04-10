@@ -3,7 +3,7 @@ import user from '../database/user';
 
 class Auth {
   static createToken(payload) {
-    return jwt.sign(payload, 'key');
+    return jwt.sign(payload, process.env.SECRET);
   }
 
   static verifyToken(req, res, next) {
@@ -15,7 +15,7 @@ class Auth {
       });
     }
 
-    jwt.verify(token, 'key', (err, decoded) => {
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
       if (err) {
         return res.status(400).json({
           status: 400,

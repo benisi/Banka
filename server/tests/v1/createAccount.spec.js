@@ -30,7 +30,7 @@ describe('Test to create a user bank account', () => {
   it('should return a status code of 201, i.e account was created successfully', (done) => {
     chai.request(app)
       .post(url)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -40,7 +40,7 @@ describe('Test to create a user bank account', () => {
   it('should have a property called data', (done) => {
     chai.request(app)
       .post(url)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
         expect(res.body).to.have.a.property('data');
@@ -53,7 +53,7 @@ describe('Test for invalid account type', () => {
   it('should return status code 400 for wrong account type', (done) => {
     chai.request(app)
       .post(url)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(invalidAccountType)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -64,7 +64,7 @@ describe('Test for invalid account type', () => {
     chai.request(app)
       .post(url)
       .send(invalidAccountType)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .end((err, res) => {
         expect(res.body.error).to.equal('Invalid type, only accept [ current, savings ]');
       });
@@ -76,7 +76,7 @@ describe('Test for invalid account category', () => {
   it('should return status code 400 for wrong account category', (done) => {
     chai.request(app)
       .post(url)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .send(invalidAccountCategory)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -87,7 +87,7 @@ describe('Test for invalid account category', () => {
     chai.request(app)
       .post(url)
       .send(invalidAccountCategory)
-      .set('authorization', globalToken)
+      .set('Authorization', globalToken)
       .end((err, res) => {
         expect(res.body.error).to.equal('Invalid category, only accept [ individual, organization ]');
       });
