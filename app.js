@@ -1,10 +1,21 @@
 /* jslint es6 */
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
 import router from './server/routes/router';
 
 const app = express();
+dotenv.config();
+
 const PORT = 3000;
+const corsOptions = {
+  origin: '*',
+  credentials: true
+};
+
+// adding cors middleware
+app.use(cors(corsOptions));
 
 // body parser middleware
 app.use(bodyParser.json());
@@ -15,7 +26,5 @@ app.listen(PORT, () => {
 });
 
 app.use(router);
-
-app.get('/', (req, resp) => resp.status(200).json({ message: 'Hello there, Welcome to Banka' }));
 
 export default app;
