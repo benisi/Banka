@@ -40,8 +40,8 @@ Below are the basic features of BANKA Application at this point
 
 ## Default user credentials for testing
 
--   Admin : email: bisidahomen999@gmail.com, password: adminpass1
--   Client: email: doe@gmail.com, password: clientpass1
+-   Admin : email: bisidahomen@gmail.com, password: adminpass1
+-   Client: email: bisidahomen999@gmail.com, password: clientpass1
 
 Make sure you remove all default users if you are running in production, the above users are for 
 testing purposes and it is not recommended to have them if you are using this app for production purposes

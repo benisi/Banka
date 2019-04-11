@@ -4,7 +4,7 @@ const defaultUser = {
   email: 'bisidahomen@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('hfhh5fhfhfh', 10),
+  password: bcrypt.hashSync('adminpass1', 10),
   type: 'staff',
   isAdmin: true,
   stateOfResidence: 'edo',
@@ -17,7 +17,7 @@ const defaultClient = {
   email: 'bisidahomen999@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('hfhh5fhfhfh', 10),
+  password: bcrypt.hashSync('clientpass1', 10),
   type: 'client',
   isAdmin: false,
   stateOfResidence: 'edo',
@@ -290,7 +290,7 @@ const invalidSex = {
 };
 const validLoginData = {
   email: 'bisidahomen@gmail.com',
-  password: 'hfhh5fhfhfh'
+  password: 'adminpass1'
 };
 const adminLoginData = {
   email: 'bisidahomen@gmail.com',
@@ -298,7 +298,7 @@ const adminLoginData = {
 };
 const clientLoginData = {
   email: 'bisidahomen999@gmail.com',
-  password: 'hfhh5fhfhfh'
+  password: 'clientpass1'
 };
 const invalidLoginData = {
   email: 'doe@gmail.com',
