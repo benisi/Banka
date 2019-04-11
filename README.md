@@ -29,18 +29,26 @@ Below are the basic features of BANKA Application at this point
 
 ###
 
--   Users can signup 
--   Users can login 
--   User create bank account 
+-   Users can signup
+
+-   Users can login
+
+-   User create bank account
+
 -   Admin/Staff can activate or deactivate an account
+
 -   Admin/Staff can delete an account
+
 -   Staff (cashier) can credit an account
+
 -   Staff (cashier) can debit an account
+
   <br/>
 
 ## Default user credentials for testing
 
 -   Admin : email: bisidahomen@gmail.com, password: adminpass1
+
 -   Client: email: bisidahomen999@gmail.com, password: clientpass1
 
 Make sure you remove all default users if you are running in production, the above users are for 
@@ -127,31 +135,31 @@ Make sure you supply an Authorization header or a token param of the token retur
 
 ## Installation
 
-1. Clone this repository below:
+1.  Clone this repository below:
 
 ```
 https://github.com/benisi/Banka.git
 ```
 
-2. cd into the repository:
+2.  cd into the repository:
 
 ```
 cd Banka
 ```
 
-3. Open the repository in terminal and Install dependencies by running:
+3.  Open the repository in terminal and Install dependencies by running:
 
 ```
 npm install
 ```
 
-5. Create a .env file in the root directory and setup your token SECRET
+5.  Create a .env file in the root directory and setup your token SECRET
 
-6. Run "npm start" to start the app or "npm run start:dev" for development
+6.  Run "npm start" to start the app or "npm run start:dev" for development
 
-7. Use Postman to test all endpoints
+7.  Use Postman to test all endpoints
 
-8. Run "npm test" to test all endpoints or "npm run test:dev" for development
+8.  Run "npm test" to test all endpoints or "npm run test:dev" for development
 
 ## Technologies
 
@@ -164,4 +172,3 @@ ExpressJS: This is the web application framework for Node.js Visit [here](https:
 Airbnb JavaScript style guide was adopted as a coding convention, see [here](https://github.com/airbnb/javascript) for details.
 
 **_This project is still under development phase. PLS CHECK BACK FOR UPDATES_**
-
