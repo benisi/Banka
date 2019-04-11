@@ -32,27 +32,20 @@ Below are the basic features of BANKA Application at this point
 ###
 
 -   Users can signup
-
 -   Users can login
-
 -   User can create bank account
-
 -   Admin/Staff can activate or deactivate an account
-
 -   Admin/Staff can delete an account
-
 -   Staff (cashier) can credit an account
-
 -   Staff (cashier) can debit an account
 
 ## Default user credentials for testing
 
 -   Admin : email: bisidahomen@gmail.com, password: adminpass1
-
 -   Client: email: bisidahomen999@gmail.com, password: clientpass1
 
 Make sure you remove all default users if you are running in production, the above users are for 
-testing purposes and it is not recommended to have them if you are using this app for production purposes
+testing purposes and it is not recommended to have them if you are using this app for production purpose or atleast just change the credentials
 <br>
 
 ## API Endpoints
@@ -135,26 +128,26 @@ Make sure you supply an Authorization header or a token param of the token retur
 
 ## Installation
 
-1.  Clone this repository below:
-```bash
+1.  Clone the repository by running the code below:
+```shell
 git clone https://github.com/benisi/Banka.git
 ```
 2.  cd into the repository:
-```bash
+```shell
 cd Banka
 ```
 3.  Open the repository in terminal and Install dependencies by running:
-```bash
+```shell
 npm install
 ```
 4.  Create a .env file in the root directory and setup your token SECRET
 5.  Run "npm start" to start the app or "npm run start:dev" for nodemon to watch
-```bash
+```shell
 npm run start:dev
 ```
 6.  Use Postman to test all endpoints
 7.  Run "npm test" to test all endpoints or "npm run test:dev" for development
-```bash
+```shell
 npm run test:dev
 ```
 
