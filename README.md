@@ -6,7 +6,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/benisi/Banka/badge.png?branch=develop)](https://coveralls.io/github/benisi/Banka?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f79362259d34a1443406/maintainability)](https://codeclimate.com/github/benisi/Banka/maintainability)
 
-
 ## Description
 
 Banka is a light-weight core banking application that powers banking operations like account
@@ -14,7 +13,7 @@ creation, customer deposit and withdrawals. This app is meant to support a singl
 users can signup and create bank accounts online, but must visit the branch to withdraw or
 deposit money..
 
-<br/><b>Project Planned with PIVOTAL TRACKER:</b>  https://www.pivotaltracker.com/projects/2319945
+[Project Planned with PIVOTAL TRACKER](https://www.pivotaltracker.com/projects/2319945)
 
 <br/><b>UI-pages:</b>
 
@@ -22,7 +21,7 @@ deposit money..
 
 [For admin Template](https://benisi.github.io/Banka/UI/account-list.html)
 
-<br/><b> Hosted API on Heroku: </b> https://benisi-banka.herokuapp.com/
+[Hosted API on Heroku](https://benisi-banka.herokuapp.com/)
 
 ## Features
 
@@ -30,23 +29,27 @@ Below are the basic features of BANKA Application at this point
 
 ###
 
-- Users can signup <br>
-- Users can login <br>
-- User create bank account <br>
-- Admin/Staff can activate or deactivate an account<br>
-- Admin/Staff can delete an account<br>
-- Staff (cashier) can credit an account<br>
-- Staff (cashier) can debit an account<br>
+-   Users can signup 
+-   Users can login 
+-   User create bank account 
+-   Admin/Staff can activate or deactivate an account
+-   Admin/Staff can delete an account
+-   Staff (cashier) can credit an account
+-   Staff (cashier) can debit an account
   <br/>
 
-## DEFAULT USERS CREDENTIALS FOR EASY TESTING
-- Admin : email: bisidahomen999@gmail.com, password: adminpass1
-- Client: email: doe@gmail.com, password: clientpass1
+## Default user credentials for testing
 
+-   Admin : email: bisidahomen999@gmail.com, password: adminpass1
+-   Client: email: doe@gmail.com, password: clientpass1
+
+Make sure you remove all default users if you are running in production, the above users are for 
+testing purposes and it is not recommended to have them if you are using this app for production purposes
 <br>
 
 ## API Endpoints
 
+Make sure you supply an Authorization header or a token param of the token returned when registering/ login in order to have access to application
 <table>
 
 <tr><th>HTTP VERB</th><th>API ENDPOINTS VERSION 1</th><th>FUNCTION</th><th>INPUT</th><th>OUTPUT</th></tr>
