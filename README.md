@@ -136,30 +136,27 @@ Make sure you supply an Authorization header or a token param of the token retur
 ## Installation
 
 1.  Clone this repository below:
-
 ```bash
 git clone https://github.com/benisi/Banka.git
 ```
-
 2.  cd into the repository:
-
 ```bash
 cd Banka
 ```
-
 3.  Open the repository in terminal and Install dependencies by running:
-
 ```bash
 npm install
 ```
-
 4.  Create a .env file in the root directory and setup your token SECRET
-
-5.  Run "npm start" to start the app or "npm run start:dev" for development
-
+5.  Run "npm start" to start the app or "npm run start:dev" for nodemon to watch
+```bash
+npm run start:dev
+```
 6.  Use Postman to test all endpoints
-
 7.  Run "npm test" to test all endpoints or "npm run test:dev" for development
+```bash
+npm run test:dev
+```
 
 ## Technologies
 
