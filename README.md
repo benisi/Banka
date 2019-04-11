@@ -35,7 +35,7 @@ Below are the basic features of BANKA Application at this point
 
 -   Users can login
 
--   User create bank account
+-   User can create bank account
 
 -   Admin/Staff can activate or deactivate an account
 
@@ -65,7 +65,7 @@ Make sure you supply an Authorization header or a token param of the token retur
 <tr>
 <td>POST</td> <td>api/v1/auth/signup</td><td>User Sign Up</td>
 <td>
-{<br> firstName: "string",<br>lastName: "string",<br>email: "string",<br> password: "string"<br>,<br> stateOfResidence: "string",<br> phoneNumber: "string",<br> title: "string",<br> dataOfBirth: "string",<br> sex: "string"<br>}
+{<br> firstName: "string",<br>lastName: "string",<br>email: "string",<br> password: "string",<br>stateOfResidence: "string",<br> phoneNumber: "string",<br> title: "string",<br> dataOfBirth: "string",<br> sex: "string"<br>}
 </td>
 <td>
 {<br> status: "integer",<br>data: "object"<br>}
@@ -137,29 +137,29 @@ Make sure you supply an Authorization header or a token param of the token retur
 
 1.  Clone this repository below:
 
-```
-https://github.com/benisi/Banka.git
+```bash
+git clone https://github.com/benisi/Banka.git
 ```
 
 2.  cd into the repository:
 
-```
+```bash
 cd Banka
 ```
 
 3.  Open the repository in terminal and Install dependencies by running:
 
-```
+```bash
 npm install
 ```
 
-5.  Create a .env file in the root directory and setup your token SECRET
+4.  Create a .env file in the root directory and setup your token SECRET
 
-6.  Run "npm start" to start the app or "npm run start:dev" for development
+5.  Run "npm start" to start the app or "npm run start:dev" for development
 
-7.  Use Postman to test all endpoints
+6.  Use Postman to test all endpoints
 
-8.  Run "npm test" to test all endpoints or "npm run test:dev" for development
+7.  Run "npm test" to test all endpoints or "npm run test:dev" for development
 
 ## Technologies
 
