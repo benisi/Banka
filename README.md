@@ -39,6 +39,12 @@ Below are the basic features of BANKA Application at this point
 - Staff (cashier) can debit an account<br>
   <br/>
 
+## DEFAULT USERS CREDENTIALS FOR EASY TESTING
+- Admin : email: bisidahomen999@gmail.com, password: adminpass1
+- Client: email: doe@gmail.com, password: clientpass1
+
+<br>
+
 ## API Endpoints
 
 <table>
@@ -106,7 +112,7 @@ Below are the basic features of BANKA Application at this point
 </tr>
 
 <tr>
-<td>POST</td><td>api/v1//transactions/<account-number>/credit<td><td>Credit a bank account</td>
+<td>POST</td><td>api/v1//transactions/<account-number>/credit</td><td>Credit a bank account</td>
 <td>
 {<br>amount: float <br>}
 </td>

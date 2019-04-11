@@ -294,7 +294,7 @@ const validLoginData = {
 };
 const adminLoginData = {
   email: 'bisidahomen@gmail.com',
-  password: 'hfhh5fhfhfh'
+  password: 'adminpass1'
 };
 const clientLoginData = {
   email: 'bisidahomen999@gmail.com',
@@ -302,7 +302,7 @@ const clientLoginData = {
 };
 const invalidLoginData = {
   email: 'doe@gmail.com',
-  password: 'ytyttyty4'
+  password: 'clientpass1'
 };
 
 export {
