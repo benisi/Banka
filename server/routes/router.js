@@ -6,19 +6,10 @@ import userValidator from '../middleware/userValidator';
 import accountValidator from '../middleware/accountValidator';
 import auth from '../helper/auth';
 import transactionValidator from '../middleware/transactionValidator';
-import user from '../database/user';
-import account from '../database/account';
-import transaction from '../database/transaction';
 
 // Router middleware
 
 const router = express.Router();
-
-router.get('/all', (req, res) => res.status(200).json({
-  users: user.findAll(),
-  accounts: account.findAll(),
-  transactions: transaction.findAll()
-}));
 
 router.get('/', (req, resp) => resp.status(200).json({ message: 'Hello there, Welcome to Banka' }));
 

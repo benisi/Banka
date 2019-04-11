@@ -6,13 +6,153 @@
 [![Coverage Status](https://coveralls.io/repos/github/benisi/Banka/badge.png?branch=develop)](https://coveralls.io/github/benisi/Banka?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f79362259d34a1443406/maintainability)](https://codeclimate.com/github/benisi/Banka/maintainability)
 
+
+## Description
+
 Banka is a light-weight core banking application that powers banking operations like account
 creation, customer deposit and withdrawals. This app is meant to support a single bank, where
 users can signup and create bank accounts online, but must visit the branch to withdraw or
 deposit money..
 
-## Navigation
+<br/><b>Project Planned with PIVOTAL TRACKER:</b>  https://www.pivotaltracker.com/projects/2319945
+
+<br/><b>UI-pages:</b>
 
 [For user template](https://benisi.github.io/Banka/UI/bank-account-profile.html)
 
 [For admin Template](https://benisi.github.io/Banka/UI/account-list.html)
+
+<br/><b> Hosted API on Heroku: </b> https://benisi-banka.herokuapp.com/
+
+## Features
+
+Below are the basic features of BANKA Application at this point
+
+###
+
+- Users can signup <br>
+- Users can login <br>
+- User create bank account <br>
+- Admin/Staff can activate or deactivate an account<br>
+- Admin/Staff can delete an account<br>
+- Staff (cashier) can credit an account<br>
+- Staff (cashier) can debit an account<br>
+  <br/>
+
+## API Endpoints
+
+<table>
+
+<tr><th>HTTP VERB</th><th>API ENDPOINTS VERSION 1</th><th>FUNCTION</th><th>INPUT</th><th>OUTPUT</th></tr>
+
+<tr>
+<td>POST</td> <td>api/v1/auth/signup</td>  <td>User Sign Up</td>
+<td>
+{<br> firstName: "string",<br>lastName: "string",<br>email: "string",<br> password: "string"<br>,<br> stateOfResidence: "string"<br>,<br> phoneNumber: "string"<br>,<br> title: "string"<br>,,<br> dataOfBirth: "string"<br>,,<br> sex: "string"<br>}
+</td>
+<td>
+{<br> status: "integer",<br>data: "object"<br>}
+</td>
+</tr>
+
+<tr>
+<td>POST</td> <td>api/v1/auth/login</td>  <td>User Login</td>
+<td>
+{<br> email: "string",<br>password: "string"<br>}
+</td>
+<td>
+{<br> status: "integer",<br>data: "object"<br>}
+</td>
+</tr>
+
+<tr>
+<td>POST</td> <td>api/v1/accounts</td>  <td>Create bank account</td>
+<td>
+{<br> type: "string",<br>category: "string"<br>}
+</td>
+<td>
+{<br> status: "integer",<br>data: "object"<br>}
+</td>
+</tr>
+
+<tr>
+<td>PATCH</td> <td>api/v1//account/<account-number></td>  <td>Admin/Staff can activate or deactivate an account</td>
+<td>
+{<br>status: "string" <br>}
+</td>
+<td>
+{<br> status: "integer",<br>data: "object"<br>}
+</td>
+</tr>
+
+<tr>
+<td>DELETE</td> <td>api/v1//accounts/<account-number></td>  <td>Delete a specific bank account</td>
+<td>
+{<br> <br>}
+</td>
+<td>
+{<br> status: "integere",<br>data: "object"<br>}
+</td>
+</tr>
+
+<tr>
+<td>POST</td> <td>api/v1//transactions/<account-number>/debit</td>  <td>Debit a bank account</td>
+<td>
+{<br>amount: "float <br>}
+</td>
+<td>
+{<br> status: "integer",<br>data: "object"<br>}
+</td>
+</tr>
+
+<tr>
+<td>POST</td> <td>api/v1//transactions/<account-number>/credit<td>  <td>Credit a bank account</td>
+<td>
+{<br>amount: float <br>}
+</td>
+<td>
+{<br> status: "integer",<br>data: "object"<br>}
+</td>
+</tr>
+
+
+## Installation
+
+1. Clone this repository below:
+
+```
+https://github.com/benisi/Banka.git
+```
+
+2. cd into the repository:
+
+```
+cd Banka
+```
+
+3. Open the repository in terminal and Install dependencies by running:
+
+```
+npm install
+```
+
+5. Create a .env file in the root directory and setup your token SECRET
+
+6. Run "npm start" to start the app or "npm run start:dev" for development
+
+7. Use Postman to test all endpoints
+
+8. Run "npm test" to test all endpoints or "npm run test:dev" for development
+
+## Technologies
+
+ES6: See [here](https://en.wikipedia.org/wiki/ECMAScript) for details.
+
+NodeJS: An open-source, cross-platform JavaScript run-time environment which allows you enjoy the features of Javascript off the web browsers and implement server-side web development. Visit [here](https://nodejs.org/en/) for details.
+
+ExpressJS: This is the web application framework for Node.js Visit [here](https://expressjs.com) for details.
+
+Airbnb JavaScript style guide was adopted as a coding convention, see [here](https://github.com/airbnb/javascript) for details.
+
+**_This project is still under development phase. PLS CHECK BACK FOR UPDATES_**
+
