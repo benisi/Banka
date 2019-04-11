@@ -106,7 +106,7 @@ Below are the basic features of BANKA Application at this point
 </tr>
 
 <tr>
-<td>POST</td> <td>api/v1//transactions/<account-number>/credit<td>  <td>Credit a bank account</td>
+<td>POST</td><td>api/v1//transactions/<account-number>/credit<td><td>Credit a bank account</td>
 <td>
 {<br>amount: float <br>}
 </td>
@@ -114,7 +114,7 @@ Below are the basic features of BANKA Application at this point
 {<br> status: "integer",<br>data: "object"<br>}
 </td>
 </tr>
-
+</table>
 
 ## Installation
 
