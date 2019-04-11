@@ -4,7 +4,7 @@ import user from '../database/user';
 class Auth {
   static createToken(payload) {
     const key = process.env.SECRET || 'key';
-    return jwt.sign(payload, key);
+    return jwt.sign(payload, key, { expiresIn: '2d' });
   }
 
   static verifyToken(req, res, next) {
@@ -26,7 +26,7 @@ class Auth {
         });
       }
 
-      req.body.decoded = decoded;
+      req.body.decoded = decoded.id;
       return next();
     });
   }

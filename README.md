@@ -15,11 +15,13 @@ deposit money..
 
 [Project Planned with PIVOTAL TRACKER](https://www.pivotaltracker.com/projects/2319945)
 
-<br/><b>UI-pages:</b>
+<br/><b>UI pages:</b>
 
 [For user template](https://benisi.github.io/Banka/UI/bank-account-profile.html)
 
 [For admin Template](https://benisi.github.io/Banka/UI/account-list.html)
+
+<b>Api Url:</b>
 
 [Hosted API on Heroku](https://benisi-banka.herokuapp.com/)
 
@@ -43,8 +45,6 @@ Below are the basic features of BANKA Application at this point
 
 -   Staff (cashier) can debit an account
 
-  <br/>
-
 ## Default user credentials for testing
 
 -   Admin : email: bisidahomen@gmail.com, password: adminpass1
@@ -63,9 +63,9 @@ Make sure you supply an Authorization header or a token param of the token retur
 <tr><th>HTTP VERB</th><th>API ENDPOINTS VERSION 1</th><th>FUNCTION</th><th>INPUT</th><th>OUTPUT</th></tr>
 
 <tr>
-<td>POST</td> <td>api/v1/auth/signup</td>  <td>User Sign Up</td>
+<td>POST</td> <td>api/v1/auth/signup</td><td>User Sign Up</td>
 <td>
-{<br> firstName: "string",<br>lastName: "string",<br>email: "string",<br> password: "string"<br>,<br> stateOfResidence: "string"<br>,<br> phoneNumber: "string"<br>,<br> title: "string"<br>,,<br> dataOfBirth: "string"<br>,,<br> sex: "string"<br>}
+{<br> firstName: "string",<br>lastName: "string",<br>email: "string",<br> password: "string"<br>,<br> stateOfResidence: "string",<br> phoneNumber: "string",<br> title: "string",<br> dataOfBirth: "string",<br> sex: "string"<br>}
 </td>
 <td>
 {<br> status: "integer",<br>data: "object"<br>}

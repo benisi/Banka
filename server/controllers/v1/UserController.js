@@ -11,7 +11,7 @@ class UserController {
     const refData = user.create(userObj);
     if (refData) {
       const data = { ...refData };
-      data.token = auth.createToken(data.id);
+      data.token = auth.createToken({ id: data.id });
       delete data.password;
       return res.status(201).json({
         status: 201,
@@ -27,7 +27,7 @@ class UserController {
   static signIn(req, res) {
     const data = { ...req.body.foundUser };
     delete data.password;
-    data.token = auth.createToken(data.id);
+    data.token = auth.createToken({ id: data.id });
     return res.status(200).json({
       status: 200,
       data
