@@ -10,9 +10,8 @@ class UserController {
     userObj.type = 'client';
     const refData = user.create(userObj);
     if (refData) {
-      const data = { ...refData };
+      const { password, ...data } = refData;
       data.token = auth.createToken({ id: data.id });
-      delete data.password;
       return res.status(201).json({
         status: 201,
         data,
@@ -25,8 +24,7 @@ class UserController {
   }
 
   static signIn(req, res) {
-    const data = { ...req.body.foundUser };
-    delete data.password;
+    const { password, ...data } = req.body.foundUser;
     data.token = auth.createToken({ id: data.id });
     return res.status(200).json({
       status: 200,
