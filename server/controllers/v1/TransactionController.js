@@ -15,7 +15,7 @@ class TransactionController {
       cashier: id,
       amount,
       oldBalance,
-      newBalance: balance
+      newBalance: accountData.balance
     };
 
     const transac = transaction.create(transactionData);
