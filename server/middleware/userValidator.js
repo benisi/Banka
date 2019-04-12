@@ -188,10 +188,10 @@ class UserValidator {
         error: 'Invalid sex, only accept [ male, female ]'
       });
     }
-    if (!validator(dateOfBirth)) {
+    if (!validator.isDateOfBirth(dateOfBirth)) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid date of birth use mm/dd/yyyy format'
+        error: 'Invalid date of birth accepts mm/dd/yyyy or dd/mm/yyyyformat'
       });
     }
     if (!validator.isPassword(password)) {

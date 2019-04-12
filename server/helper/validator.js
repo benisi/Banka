@@ -72,8 +72,8 @@ class Validator {
   }
 
   static isDateOfBirth(data) {
-    // stack overflow https://stackoverflow.com/questions/22160079/date-of-birth-validation-by-using-regular-expression/22160167
-    const dateRegex = /^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$/;
+    // stack overflow https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html
+    const dateRegex = /^[0-3]?[0-9]\/[0-3]?[0-9]\/(?:[0-9]{2})?[0-9]{2}$/;
     if (dateRegex.test(data)) {
       return true;
     }
