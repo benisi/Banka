@@ -44,6 +44,14 @@ class TransactionController {
 
   static debit(req, res) {
     const { accountData, amount } = req.body;
+
+    if (accountData.status === 'dormant') {
+      return res.status(400).json({
+        status: 400,
+        error: 'Cant withdraw from a dormant account, please activate account'
+      });
+    }
+
     const accNumber = parseInt(accountData.accountNumber, 10);
     const id = parseInt(req.body.decoded, 10);
     const oldBalance = parseFloat(accountData.balance);
@@ -53,6 +61,7 @@ class TransactionController {
         error: 'Insufficient fund'
       });
     }
+
     accountData.balance -= parseFloat(amount);
     const transactionData = {
       createdOn: new Date(),
