@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 const defaultUser = {
-  email: 'bisidahomen@gmail.com',
+  email: 'admin@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: bcrypt.hashSync('adminpass1', 10),
@@ -14,7 +14,7 @@ const defaultUser = {
   sex: 'male'
 };
 const defaultClient = {
-  email: 'bisidahomen999@gmail.com',
+  email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: bcrypt.hashSync('clientpass1', 10),
@@ -27,7 +27,7 @@ const defaultClient = {
   sex: 'male'
 };
 const validUser = {
-  email: 'bisidahomen222@gmail.com',
+  email: 'user222@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: 'hfh3hfhfhfh',
@@ -82,7 +82,7 @@ const undefineEmail = {
   sex: 'male'
 };
 const alreadyInUseUser = {
-  email: 'bisidahomen@gmail.com',
+  email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: 'hfhhfhf3hfh',
@@ -112,7 +112,7 @@ const nonStringEmail = {
 
 // first name mock data
 const emptyFirstName = {
-  email: 'bisidahomen33@gmail.com',
+  email: 'user33@gmail.com',
   firstName: '',
   lastName: 'Isidahomen',
   password: 'hfh3hfhfhfh',
@@ -126,7 +126,7 @@ const emptyFirstName = {
 };
 
 const invalidFirstName = {
-  email: 'bisidahomen15@gmail.com',
+  email: 'user15@gmail.com',
   firstName: 'ben@3#',
   lastName: 'Isidahomen',
   password: 'hfhh3fhfhfh',
@@ -140,7 +140,7 @@ const invalidFirstName = {
 };
 
 const undefineFirstName = {
-  email: 'bisidahomen16@gmail.com',
+  email: 'user16@gmail.com',
   firstName: undefined,
   lastName: 'Isidahomen',
   password: 'hfhhfh3fhfh',
@@ -153,7 +153,7 @@ const undefineFirstName = {
   sex: 'male'
 };
 const nonStringFirstName = {
-  email: 'bisidahomen11@gmail.com',
+  email: 'user11@gmail.com',
   firstName: 1234,
   lastName: 'Isidahomen',
   password: 'hfhh3fhfhfh',
@@ -168,7 +168,7 @@ const nonStringFirstName = {
 
 // last name mock data
 const emptyLastName = {
-  email: 'bisidahomen3@gmail.com',
+  email: 'user3@gmail.com',
   firstName: 'Isidahomen',
   lastName: '',
   password: 'hfhhfhf3hfh',
@@ -182,7 +182,7 @@ const emptyLastName = {
 };
 
 const invalidLastName = {
-  email: 'bisidahomen5@gmail.com',
+  email: 'user5@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'Isidahomen@54',
   password: 'hfhhf3hfhfh',
@@ -196,7 +196,7 @@ const invalidLastName = {
 };
 
 const undefineLastName = {
-  email: 'bisidahomen6@gmail.com',
+  email: 'user6@gmail.com',
   firstName: 'Isidahomen',
   lastName: undefined,
   password: 'hfhhfhf3hfh',
@@ -209,7 +209,7 @@ const undefineLastName = {
   sex: 'male'
 };
 const nonStringLastName = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 12345,
   password: 'hfh3hfhfhfh',
@@ -223,7 +223,7 @@ const nonStringLastName = {
 };
 
 const invalidIsAdmin = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
@@ -236,7 +236,7 @@ const invalidIsAdmin = {
   sex: 'male'
 };
 const invalidType = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfh3fh',
@@ -250,7 +250,7 @@ const invalidType = {
 };
 
 const invalidPassword = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: '_hfhhfhfhfh3',
@@ -263,7 +263,7 @@ const invalidPassword = {
   sex: 'male'
 };
 const invalidPhoneNumber = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
@@ -276,7 +276,7 @@ const invalidPhoneNumber = {
   sex: 'male'
 };
 const invalidSex = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
@@ -289,15 +289,15 @@ const invalidSex = {
   sex: 'mammal'
 };
 const validLoginData = {
-  email: 'bisidahomen@gmail.com',
+  email: 'admin@gmail.com',
   password: 'adminpass1'
 };
 const adminLoginData = {
-  email: 'bisidahomen@gmail.com',
+  email: 'admin@gmail.com',
   password: 'adminpass1'
 };
 const clientLoginData = {
-  email: 'bisidahomen999@gmail.com',
+  email: 'user@gmail.com',
   password: 'clientpass1'
 };
 const invalidLoginData = {

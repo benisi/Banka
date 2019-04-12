@@ -41,8 +41,8 @@ Below are the basic features of BANKA Application at this point
 
 ## Default user credentials for testing
 
--   Admin : email: bisidahomen@gmail.com, password: adminpass1
--   Client: email: bisidahomen999@gmail.com, password: clientpass1
+-   Admin : email: admin@gmail.com, password: adminpass1
+-   Client: email: user@gmail.com, password: clientpass1
 
 Make sure you remove all default users if you are running in production, the above users are for 
 testing purposes and it is not recommended to have them if you are using this app for production purpose or atleast just change the credentials
@@ -101,7 +101,7 @@ Make sure you supply an Authorization header or a token param of the token retur
 {<br> <br>}
 </td>
 <td>
-{<br> status: "integere",<br>data: "object"<br>}
+{<br> status: "integere",<br>message: "string"<br>}
 </td>
 </tr>
 
@@ -161,4 +161,6 @@ ExpressJS: This is the web application framework for Node.js Visit [here](https:
 
 Airbnb JavaScript style guide was adopted as a coding convention, see [here](https://github.com/airbnb/javascript) for details.
 
-**_This project is still under development phase. PLS CHECK BACK FOR UPDATES_**
+[Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) for testing
+
+**Note: Project is still under development**
