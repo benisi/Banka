@@ -67,9 +67,9 @@ describe('Client should be able to login', function () {
   });
 });
 describe('Test for permission for user in staff admin route', function () {
-  it('should return a status of 401 permission denied', function (done) {
+  it('should return a status of 403 permission denied', function (done) {
     _chai["default"].request(_app["default"]).patch("/api/v1/account/".concat(accNumb)).set('Authorization', clientToken).send(_account.activateAccountData).end(function (err, res) {
-      expect(res).to.have.status(401);
+      expect(res).to.have.status(403);
       done();
     });
   });

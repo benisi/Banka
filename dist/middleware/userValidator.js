@@ -301,8 +301,8 @@ function () {
       });
 
       if (!foundUser || !_validator["default"].checkPassword(req.body.password, foundUser.password)) {
-        return res.status(403).json({
-          status: 403,
+        return res.status(401).json({
+          status: 401,
           error: 'Wrong email and password combination'
         });
       }

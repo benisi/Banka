@@ -45,9 +45,9 @@ describe('Tests for valid input for user login', function () {
       done();
     });
   });
-  it('should give a status code 403', function (done) {
+  it('should give a status code 401', function (done) {
     _chai["default"].request(_app["default"]).post(url).send(_users.invalidLoginData).end(function (err, res) {
-      res.body.should.have.status(403);
+      res.body.should.have.status(401);
       res.body.should.be.a('object');
       expect(res.body).to.have.property('error');
       expect(res.body.error).to.be.equal('Wrong email and password combination');
