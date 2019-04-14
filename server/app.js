@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
-import router from './server/routes/router';
+import router from './routes/router';
 
 const app = express();
 dotenv.config();
