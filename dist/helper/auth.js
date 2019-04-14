@@ -69,8 +69,8 @@ function () {
           isAdmin = userData.isAdmin;
 
       if (!isAdmin && type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           error: 'You are not Authorize to perform this operation'
         });
       }
@@ -87,8 +87,8 @@ function () {
       var type = userData.type;
 
       if (type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           error: 'You are not Authorize to perform this operation'
         });
       }
