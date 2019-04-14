@@ -84,13 +84,13 @@ describe('Client should be able to login', () => {
 });
 
 describe('Test for permission for user in staff admin route', () => {
-  it('should return a status of 401 permission denied', (done) => {
+  it('should return a status of 403 permission denied', (done) => {
     chai.request(app)
       .patch(`/api/v1/account/${accNumb}`)
       .set('Authorization', clientToken)
       .send(activateAccountData)
       .end((err, res) => {
-        expect(res).to.have.status(401);
+        expect(res).to.have.status(403);
         done();
       });
   });

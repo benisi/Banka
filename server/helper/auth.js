@@ -36,8 +36,8 @@ class Auth {
     const userData = user.find(userId);
     const { type, isAdmin } = userData;
     if ((!isAdmin && type !== 'staff')) {
-      return res.status(401).json({
-        status: 401,
+      return res.status(403).json({
+        status: 403,
         error: 'You are not Authorize to perform this operation'
       });
     }
@@ -49,8 +49,8 @@ class Auth {
     const userData = user.find(userId);
     const { type } = userData;
     if (type !== 'staff') {
-      return res.status(401).json({
-        status: 401,
+      return res.status(403).json({
+        status: 403,
         error: 'You are not Authorize to perform this operation'
       });
     }
