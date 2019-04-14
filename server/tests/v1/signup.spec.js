@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../../app';
+import app from '../../app';
 import {
   validUser, emptyEmail, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
   nonStringFirstName, emptyFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
