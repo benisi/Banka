@@ -7,8 +7,8 @@ const transactionValidator = (req, res, next) => {
   const accountRef = account.getAccount(parseInt(accountNumber, 10));
 
   if (!accountRef) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(404).json({
+      status: 404,
       error: `Account ${accountNumber} does not exist`
     });
   }

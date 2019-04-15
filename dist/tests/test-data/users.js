@@ -10,7 +10,7 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var defaultUser = {
-  email: 'bisidahomen@gmail.com',
+  email: 'admin@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: _bcrypt["default"].hashSync('adminpass1', 10),
@@ -24,7 +24,7 @@ var defaultUser = {
 };
 exports.defaultUser = defaultUser;
 var defaultClient = {
-  email: 'bisidahomen999@gmail.com',
+  email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: _bcrypt["default"].hashSync('clientpass1', 10),
@@ -38,7 +38,7 @@ var defaultClient = {
 };
 exports.defaultClient = defaultClient;
 var validUser = {
-  email: 'bisidahomen222@gmail.com',
+  email: 'user222@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: 'hfh3hfhfhfh',
@@ -94,7 +94,7 @@ var undefineEmail = {
 };
 exports.undefineEmail = undefineEmail;
 var alreadyInUseUser = {
-  email: 'bisidahomen@gmail.com',
+  email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
   password: 'hfhhfhf3hfh',
@@ -124,7 +124,7 @@ var nonStringEmail = {
 
 exports.nonStringEmail = nonStringEmail;
 var emptyFirstName = {
-  email: 'bisidahomen33@gmail.com',
+  email: 'user33@gmail.com',
   firstName: '',
   lastName: 'Isidahomen',
   password: 'hfh3hfhfhfh',
@@ -138,7 +138,7 @@ var emptyFirstName = {
 };
 exports.emptyFirstName = emptyFirstName;
 var invalidFirstName = {
-  email: 'bisidahomen15@gmail.com',
+  email: 'user15@gmail.com',
   firstName: 'ben@3#',
   lastName: 'Isidahomen',
   password: 'hfhh3fhfhfh',
@@ -152,7 +152,7 @@ var invalidFirstName = {
 };
 exports.invalidFirstName = invalidFirstName;
 var undefineFirstName = {
-  email: 'bisidahomen16@gmail.com',
+  email: 'user16@gmail.com',
   firstName: undefined,
   lastName: 'Isidahomen',
   password: 'hfhhfh3fhfh',
@@ -166,7 +166,7 @@ var undefineFirstName = {
 };
 exports.undefineFirstName = undefineFirstName;
 var nonStringFirstName = {
-  email: 'bisidahomen11@gmail.com',
+  email: 'user11@gmail.com',
   firstName: 1234,
   lastName: 'Isidahomen',
   password: 'hfhh3fhfhfh',
@@ -181,7 +181,7 @@ var nonStringFirstName = {
 
 exports.nonStringFirstName = nonStringFirstName;
 var emptyLastName = {
-  email: 'bisidahomen3@gmail.com',
+  email: 'user3@gmail.com',
   firstName: 'Isidahomen',
   lastName: '',
   password: 'hfhhfhf3hfh',
@@ -195,7 +195,7 @@ var emptyLastName = {
 };
 exports.emptyLastName = emptyLastName;
 var invalidLastName = {
-  email: 'bisidahomen5@gmail.com',
+  email: 'user5@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'Isidahomen@54',
   password: 'hfhhf3hfhfh',
@@ -209,7 +209,7 @@ var invalidLastName = {
 };
 exports.invalidLastName = invalidLastName;
 var undefineLastName = {
-  email: 'bisidahomen6@gmail.com',
+  email: 'user6@gmail.com',
   firstName: 'Isidahomen',
   lastName: undefined,
   password: 'hfhhfhf3hfh',
@@ -223,7 +223,7 @@ var undefineLastName = {
 };
 exports.undefineLastName = undefineLastName;
 var nonStringLastName = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 12345,
   password: 'hfh3hfhfhfh',
@@ -237,7 +237,7 @@ var nonStringLastName = {
 };
 exports.nonStringLastName = nonStringLastName;
 var invalidIsAdmin = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
@@ -251,7 +251,7 @@ var invalidIsAdmin = {
 };
 exports.invalidIsAdmin = invalidIsAdmin;
 var invalidType = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfh3fh',
@@ -265,7 +265,7 @@ var invalidType = {
 };
 exports.invalidType = invalidType;
 var invalidPassword = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: '_hfhhfhfhfh3',
@@ -279,7 +279,7 @@ var invalidPassword = {
 };
 exports.invalidPassword = invalidPassword;
 var invalidPhoneNumber = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
@@ -293,7 +293,7 @@ var invalidPhoneNumber = {
 };
 exports.invalidPhoneNumber = invalidPhoneNumber;
 var invalidSex = {
-  email: 'bisidahomen8@gmail.com',
+  email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
   password: 'hfhhfhfhfh3',
@@ -307,17 +307,17 @@ var invalidSex = {
 };
 exports.invalidSex = invalidSex;
 var validLoginData = {
-  email: 'bisidahomen@gmail.com',
+  email: 'admin@gmail.com',
   password: 'adminpass1'
 };
 exports.validLoginData = validLoginData;
 var adminLoginData = {
-  email: 'bisidahomen@gmail.com',
+  email: 'admin@gmail.com',
   password: 'adminpass1'
 };
 exports.adminLoginData = adminLoginData;
 var clientLoginData = {
-  email: 'bisidahomen999@gmail.com',
+  email: 'user@gmail.com',
   password: 'clientpass1'
 };
 exports.clientLoginData = clientLoginData;

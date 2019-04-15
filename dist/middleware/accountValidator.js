@@ -41,7 +41,7 @@ function () {
       if (category === undefined) {
         return res.status(400).json({
           status: 400,
-          error: 'cayegory is a required field'
+          error: 'category is a required field'
         });
       }
 

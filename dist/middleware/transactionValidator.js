@@ -18,8 +18,8 @@ var transactionValidator = function transactionValidator(req, res, next) {
   var accountRef = _account["default"].getAccount(parseInt(accountNumber, 10));
 
   if (!accountRef) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(404).json({
+      status: 404,
       error: "Account ".concat(accountNumber, " does not exist")
     });
   }
