@@ -53,7 +53,10 @@ const modal = () => {
 
   document.querySelectorAll('.close').forEach((element) => {
     element.addEventListener('click', (event) => {
-      event.target.parentNode.style.display = 'none';
+      if (event.currentTarget !== event.target) {
+        return;
+      }
+      event.target.parentNode.parentNode.parentNode.style.display = 'none';
     });
   });
 };
