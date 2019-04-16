@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-undef
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../../app';
+import app from '../../server';
 import {
-  validUser, emptyEmail, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
-  nonStringFirstName, emptyFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
-  emptyLastName, undefineLastName, invalidLastName, invalidPassword,
+  validUser, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
+  nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
+  undefineLastName, invalidLastName, invalidPassword,
   invalidPhoneNumber, invalidSex
 } from '../test-data/users';
 
@@ -56,20 +56,6 @@ describe('Tests to create a user', () => {
   });
 });
 
-describe('Tests for empty email', () => {
-  it('should return 400 error code', (done) => {
-    chai.request(app)
-      .post(url)
-      .send(emptyEmail)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        res.body.should.be.a('object');
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Email should not be empty');
-        done();
-      });
-  });
-});
 
 describe('Tests for undefined email', () => {
   it('should return 400 error code', (done) => {
@@ -127,20 +113,6 @@ describe('Tests for dataType of email --string', () => {
       });
   });
 });
-describe('Tests for empty first name', () => {
-  it('should return 400 error code', (done) => {
-    chai.request(app)
-      .post(url)
-      .send(emptyFirstName)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        res.body.should.be.a('object');
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('First name should not be empty');
-        done();
-      });
-  });
-});
 
 describe('Tests for undefined first name', () => {
   it('should return 400 error code', (done) => {
@@ -180,20 +152,6 @@ describe('Tests for invalid first name', () => {
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equal('Invalid first name');
-        done();
-      });
-  });
-});
-describe('Tests for empty last name', () => {
-  it('should return 400 error code', (done) => {
-    chai.request(app)
-      .post(url)
-      .send(emptyLastName)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        res.body.should.be.a('object');
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Last name should not be empty');
         done();
       });
   });

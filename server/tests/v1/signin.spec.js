@@ -1,8 +1,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../../app';
+import app from '../../server';
 import { validLoginData, invalidLoginData } from '../test-data/users';
-import validator from '../../helper/validator';
+import validator from '../../helpers/validator';
 import user from '../../database/user';
 
 chai.use(chaiHttp);
@@ -49,12 +49,12 @@ describe('Tests for valid input for user login', () => {
         done();
       });
   });
-  it('should give a status code 403', (done) => {
+  it('should give a status code 401', (done) => {
     chai.request(app)
       .post(url)
       .send(invalidLoginData)
       .end((err, res) => {
-        res.body.should.have.status(403);
+        res.body.should.have.status(401);
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.be.equal('Wrong email and password combination');

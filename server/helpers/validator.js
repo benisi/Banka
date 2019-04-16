@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 
 class Validator {
   static isUndefined(data) {
-    if (data === undefined) {
+    if (data === undefined || data === '') {
       return true;
     }
     return false;
@@ -10,13 +10,6 @@ class Validator {
 
   static isString(data) {
     if (typeof data === 'string') {
-      return true;
-    }
-    return false;
-  }
-
-  static isEmpty(data) {
-    if (data === '') {
       return true;
     }
     return false;
@@ -66,6 +59,15 @@ class Validator {
     // eslint-disable-next-line no-useless-escape
     const phoneRegEx = /^[+]?[0-9]{11,14}$/;
     if (phoneRegEx.test(data)) {
+      return true;
+    }
+    return false;
+  }
+
+  static isDateOfBirth(data) {
+    // stack overflow https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html
+    const dateRegex = /^[0-3]?[0-9]\/[0-3]?[0-9]\/(?:[0-9]{2})?[0-9]{2}$/;
+    if (dateRegex.test(data)) {
       return true;
     }
     return false;

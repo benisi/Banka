@@ -1,10 +1,19 @@
-import bcrypt from 'bcrypt';
+"use strict";
 
-const defaultUser = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.defaultClient = exports.adminLoginData = exports.clientLoginData = exports.invalidSex = exports.invalidPhoneNumber = exports.defaultUser = exports.invalidLoginData = exports.validLoginData = exports.invalidPassword = exports.invalidType = exports.invalidIsAdmin = exports.nonStringLastName = exports.undefineLastName = exports.invalidLastName = exports.emptyLastName = exports.nonStringFirstName = exports.undefineFirstName = exports.invalidFirstName = exports.emptyFirstName = exports.nonStringEmail = exports.alreadyInUseUser = exports.undefineEmail = exports.invalidEmail = exports.emptyEmail = exports.validUser = void 0;
+
+var _bcrypt = _interopRequireDefault(require("bcrypt"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var defaultUser = {
   email: 'admin@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('adminpass1', 10),
+  password: _bcrypt["default"].hashSync('adminpass1', 10),
   type: 'staff',
   isAdmin: true,
   stateOfResidence: 'edo',
@@ -13,11 +22,12 @@ const defaultUser = {
   title: 'master',
   sex: 'male'
 };
-const defaultClient = {
+exports.defaultUser = defaultUser;
+var defaultClient = {
   email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('clientpass1', 10),
+  password: _bcrypt["default"].hashSync('clientpass1', 10),
   type: 'client',
   isAdmin: false,
   stateOfResidence: 'edo',
@@ -26,7 +36,8 @@ const defaultClient = {
   title: 'master',
   sex: 'male'
 };
-const validUser = {
+exports.defaultClient = defaultClient;
+var validUser = {
   email: 'user222@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
@@ -39,8 +50,8 @@ const validUser = {
   title: 'master',
   sex: 'male'
 };
-
-const emptyEmail = {
+exports.validUser = validUser;
+var emptyEmail = {
   email: '',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
@@ -53,8 +64,8 @@ const emptyEmail = {
   title: 'master',
   sex: 'male'
 };
-
-const invalidEmail = {
+exports.emptyEmail = emptyEmail;
+var invalidEmail = {
   email: 'benjamin.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
@@ -67,8 +78,8 @@ const invalidEmail = {
   title: 'master',
   sex: 'male'
 };
-
-const undefineEmail = {
+exports.invalidEmail = invalidEmail;
+var undefineEmail = {
   email: undefined,
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
@@ -81,7 +92,8 @@ const undefineEmail = {
   title: 'master',
   sex: 'male'
 };
-const alreadyInUseUser = {
+exports.undefineEmail = undefineEmail;
+var alreadyInUseUser = {
   email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
@@ -94,7 +106,8 @@ const alreadyInUseUser = {
   title: 'master',
   sex: 'male'
 };
-const nonStringEmail = {
+exports.alreadyInUseUser = alreadyInUseUser;
+var nonStringEmail = {
   email: 12344,
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
@@ -106,12 +119,11 @@ const nonStringEmail = {
   dateOfBirth: '02/09/1960',
   title: 'master',
   sex: 'male'
-};
-
-// eslint-disable-next-line import/prefer-default-export
-
+}; // eslint-disable-next-line import/prefer-default-export
 // first name mock data
-const emptyFirstName = {
+
+exports.nonStringEmail = nonStringEmail;
+var emptyFirstName = {
   email: 'user33@gmail.com',
   firstName: '',
   lastName: 'Isidahomen',
@@ -124,8 +136,8 @@ const emptyFirstName = {
   title: 'master',
   sex: 'male'
 };
-
-const invalidFirstName = {
+exports.emptyFirstName = emptyFirstName;
+var invalidFirstName = {
   email: 'user15@gmail.com',
   firstName: 'ben@3#',
   lastName: 'Isidahomen',
@@ -138,8 +150,8 @@ const invalidFirstName = {
   title: 'master',
   sex: 'male'
 };
-
-const undefineFirstName = {
+exports.invalidFirstName = invalidFirstName;
+var undefineFirstName = {
   email: 'user16@gmail.com',
   firstName: undefined,
   lastName: 'Isidahomen',
@@ -152,7 +164,8 @@ const undefineFirstName = {
   title: 'master',
   sex: 'male'
 };
-const nonStringFirstName = {
+exports.undefineFirstName = undefineFirstName;
+var nonStringFirstName = {
   email: 'user11@gmail.com',
   firstName: 1234,
   lastName: 'Isidahomen',
@@ -164,10 +177,10 @@ const nonStringFirstName = {
   dateOfBirth: '02/09/1960',
   title: 'master',
   sex: 'male'
-};
+}; // last name mock data
 
-// last name mock data
-const emptyLastName = {
+exports.nonStringFirstName = nonStringFirstName;
+var emptyLastName = {
   email: 'user3@gmail.com',
   firstName: 'Isidahomen',
   lastName: '',
@@ -180,8 +193,8 @@ const emptyLastName = {
   title: 'master',
   sex: 'male'
 };
-
-const invalidLastName = {
+exports.emptyLastName = emptyLastName;
+var invalidLastName = {
   email: 'user5@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'Isidahomen@54',
@@ -194,8 +207,8 @@ const invalidLastName = {
   title: 'master',
   sex: 'male'
 };
-
-const undefineLastName = {
+exports.invalidLastName = invalidLastName;
+var undefineLastName = {
   email: 'user6@gmail.com',
   firstName: 'Isidahomen',
   lastName: undefined,
@@ -208,7 +221,8 @@ const undefineLastName = {
   title: 'master',
   sex: 'male'
 };
-const nonStringLastName = {
+exports.undefineLastName = undefineLastName;
+var nonStringLastName = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 12345,
@@ -221,8 +235,8 @@ const nonStringLastName = {
   title: 'master',
   sex: 'male'
 };
-
-const invalidIsAdmin = {
+exports.nonStringLastName = nonStringLastName;
+var invalidIsAdmin = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
@@ -235,7 +249,8 @@ const invalidIsAdmin = {
   title: 'master',
   sex: 'male'
 };
-const invalidType = {
+exports.invalidIsAdmin = invalidIsAdmin;
+var invalidType = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
@@ -248,8 +263,8 @@ const invalidType = {
   title: 'master',
   sex: 'male'
 };
-
-const invalidPassword = {
+exports.invalidType = invalidType;
+var invalidPassword = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
@@ -262,7 +277,8 @@ const invalidPassword = {
   title: 'master',
   sex: 'male'
 };
-const invalidPhoneNumber = {
+exports.invalidPassword = invalidPassword;
+var invalidPhoneNumber = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
@@ -275,7 +291,8 @@ const invalidPhoneNumber = {
   title: 'master',
   sex: 'male'
 };
-const invalidSex = {
+exports.invalidPhoneNumber = invalidPhoneNumber;
+var invalidSex = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
   lastName: 'ben',
@@ -288,28 +305,24 @@ const invalidSex = {
   title: 'master',
   sex: 'mammal'
 };
-const validLoginData = {
+exports.invalidSex = invalidSex;
+var validLoginData = {
   email: 'admin@gmail.com',
   password: 'adminpass1'
 };
-const adminLoginData = {
+exports.validLoginData = validLoginData;
+var adminLoginData = {
   email: 'admin@gmail.com',
   password: 'adminpass1'
 };
-const clientLoginData = {
+exports.adminLoginData = adminLoginData;
+var clientLoginData = {
   email: 'user@gmail.com',
   password: 'clientpass1'
 };
-const invalidLoginData = {
+exports.clientLoginData = clientLoginData;
+var invalidLoginData = {
   email: 'doe@gmail.com',
   password: 'clientpass1'
 };
-
-export {
-  validUser, emptyEmail, invalidEmail, undefineEmail, alreadyInUseUser,
-  nonStringEmail, emptyFirstName, invalidFirstName, undefineFirstName,
-  nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
-  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
-  validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber,
-  invalidSex, clientLoginData, adminLoginData, defaultClient
-};
+exports.invalidLoginData = invalidLoginData;
