@@ -1,13 +1,13 @@
 // eslint-disable-next-line no-undef
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
+import app from '../server';
 import {
   validUser, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
   nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
-  undefineLastName, invalidLastName, invalidPassword,
+  undefineLastName, invalidLastName, invalidPassword, invalidDateOfBirth,
   invalidPhoneNumber, invalidSex
-} from '../test-data/users';
+} from './test-data/users';
 
 chai.use(chaiHttp);
 
@@ -72,12 +72,12 @@ describe('Tests for undefined email', () => {
   });
 });
 describe('Tests if email exist', () => {
-  it('should return 400 error code', (done) => {
+  it('should return 409 error code', (done) => {
     chai.request(app)
       .post(url)
       .send(alreadyInUseUser)
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(409);
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equal('Email already exist');
@@ -237,6 +237,19 @@ describe('Tests for invalid sex', () => {
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equal('Invalid sex, only accept [ male, female ]');
+        done();
+      });
+  });
+});
+describe('Tests for invalid date of birth', () => {
+  it('should return 400 error code', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(invalidDateOfBirth)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        res.body.should.be.a('object');
+        expect(res.body).to.have.property('error');
         done();
       });
   });

@@ -1,9 +1,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
-import { validLoginData } from '../test-data/users';
-import { validAccountData } from '../test-data/account';
-import { debitAccountData, creditAccountData } from '../test-data/transaction';
+import app from '../server';
+import { validLoginData } from './test-data/users';
+import { validAccountData } from './test-data/account';
 
 
 chai.use(chaiHttp);
@@ -55,26 +54,11 @@ describe('Test to create a user bank account', () => {
   });
 });
 
-describe('Test to credit account', () => {
+describe('Test for successful deleted account', () => {
   it('should return a status 200', (done) => {
     chai.request(app)
-      .post(`/api/v1/transactions/${accNumber}/credit`)
+      .delete(`/api/v1/accounts/${accNumber}`)
       .set('Authorization', globalToken)
-      .send(creditAccountData)
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        done();
-      });
-  });
-});
-
-
-describe('Test to debit account', () => {
-  it('should return a status 200', (done) => {
-    chai.request(app)
-      .post(`/api/v1/transactions/${accNumber}/debit`)
-      .set('Authorization', globalToken)
-      .send(debitAccountData)
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();

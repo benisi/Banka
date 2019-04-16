@@ -1,5 +1,5 @@
 import chai from 'chai';
-import auth from '../../helpers/auth';
+import auth from '../helpers/auth';
 
 const { should } = chai;
 should();

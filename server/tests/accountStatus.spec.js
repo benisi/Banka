@@ -1,9 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
-import { activateAccountData, validAccountData } from '../test-data/account';
-import { clientLoginData, adminLoginData } from '../test-data/users';
-import account from '../../database/account';
+import app from '../server';
+import {
+  activateAccountData, validAccountData, undefinedAccountStatus, invalidAccountStatus
+} from './test-data/account';
+import { clientLoginData, adminLoginData } from './test-data/users';
+import account from '../database/account';
 
 chai.use(chaiHttp);
 
@@ -91,6 +93,32 @@ describe('Test for permission for user in staff admin route', () => {
       .send(activateAccountData)
       .end((err, res) => {
         expect(res).to.have.status(403);
+        done();
+      });
+  });
+});
+
+describe('Test for undefined status', () => {
+  it('should return a status of 400', (done) => {
+    chai.request(app)
+      .patch(`/api/v1/account/${accNumb}`)
+      .set('Authorization', globalToken)
+      .send(undefinedAccountStatus)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+
+describe('Test for invalid account status', () => {
+  it('should return a status of 400', (done) => {
+    chai.request(app)
+      .patch(`/api/v1/account/${accNumb}`)
+      .set('Authorization', globalToken)
+      .send(invalidAccountStatus)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });

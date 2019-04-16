@@ -1,9 +1,9 @@
-import transaction from '../../database/transaction';
-import account from '../../database/account';
+import transaction from '../database/transaction';
+import account from '../database/account';
 
 class TransactionController {
   static credit(req, res) {
-    const { accountNumber } = req.params;
+    let { accountNumber } = req.params;
     const { amount } = req.body;
     const accountData = account.getAccount(parseInt(accountNumber, 10));
     const type = 'credit';
@@ -16,14 +16,14 @@ class TransactionController {
     }
 
     const { balance } = accountData;
-    const accNumber = parseInt(accountNumber, 10);
+    accountNumber = parseInt(accountNumber, 10);
     const cashierId = parseInt(req.body.id, 10);
     const oldBalance = parseFloat(balance);
     accountData.balance += parseFloat(amount);
     const transactionData = {
       createdOn: new Date(),
       type,
-      accountNumber: accNumber,
+      accountNumber,
       cashier: cashierId,
       amount,
       oldBalance,
@@ -58,7 +58,7 @@ class TransactionController {
   }
 
   static debit(req, res) {
-    const { accountNumber } = req.params;
+    let { accountNumber } = req.params;
     const { amount } = req.body;
     const accountData = account.getAccount(parseInt(accountNumber, 10));
     const type = 'debit';
@@ -77,7 +77,7 @@ class TransactionController {
       });
     }
 
-    const accNumber = parseInt(accountData.accountNumber, 10);
+    accountNumber = parseInt(accountData.accountNumber, 10);
     const cashierId = parseInt(req.body.id, 10);
     const oldBalance = parseFloat(accountData.balance);
     if (oldBalance < parseFloat(amount)) {
@@ -91,7 +91,7 @@ class TransactionController {
     const transactionData = {
       createdOn: new Date(),
       type,
-      accountNumber: accNumber,
+      accountNumber,
       cashier: cashierId,
       amount,
       oldBalance,

@@ -1,8 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
-import { validLoginData } from '../test-data/users';
-import { validAccountData, invalidAccountType, invalidAccountCategory } from '../test-data/account';
+import app from '../server';
+import { validLoginData } from './test-data/users';
+import {
+  validAccountData, invalidAccountType, invalidAccountCategory,
+  undefinedAccountType, undefinedAccountCategory
+} from './test-data/account';
 
 chai.use(chaiHttp);
 const { expect, should } = chai;
@@ -92,5 +95,30 @@ describe('Test for invalid account category', () => {
         expect(res.body.error).to.equal('Invalid category, only accept [ individual, organization ]');
       });
     done();
+  });
+});
+
+describe('Test for undefined type when creating user account', () => {
+  it('should return a status code of 400', (done) => {
+    chai.request(app)
+      .post(url)
+      .set('Authorization', globalToken)
+      .send(undefinedAccountCategory)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+describe('Test for undefined category when creating user account', () => {
+  it('should return a status code of 400', (done) => {
+    chai.request(app)
+      .post(url)
+      .set('Authorization', globalToken)
+      .send(undefinedAccountType)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
   });
 });
