@@ -2,14 +2,14 @@
   "name": "banka",
   "version": "1.0.0",
   "description": "a light weight banking api for Banka",
-  "main": "server/app.js",
+  "main": "server/server.js",
   "engines": {
     "node": "8.10.0",
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "node dist/app.js",
-    "start:dev": "nodemon --exec babel-node server/app.js",
+    "start": "node dist/server.js",
+    "start:dev": "nodemon --exec babel-node server/server.js",
     "build": "babel server --out-dir dist",
     "test:dev": "mocha ./server/tests/* --require @babel/register --exit",
     "test": "nyc --reporter=html --reporter=text mocha ./server/tests/* --require @babel/register --exit",

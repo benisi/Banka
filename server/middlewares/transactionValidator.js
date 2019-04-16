@@ -1,18 +1,7 @@
-import account from '../database/account';
-import validator from '../helper/validator';
+import validator from '../helpers/validator';
 
 const transactionValidator = (req, res, next) => {
-  const { accountNumber } = req.params;
   const { amount } = req.body;
-  const accountRef = account.getAccount(parseInt(accountNumber, 10));
-
-  if (!accountRef) {
-    return res.status(404).json({
-      status: 404,
-      error: `Account ${accountNumber} does not exist`
-    });
-  }
-
   if (validator.isUndefined(amount)) {
     return res.status(400).json({
       status: 400,
@@ -26,8 +15,6 @@ const transactionValidator = (req, res, next) => {
       error: 'Amount must be a number'
     });
   }
-
-  req.body.accountData = accountRef;
 
   return next();
 };

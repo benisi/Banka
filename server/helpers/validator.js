@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 
 class Validator {
   static isUndefined(data) {
-    if (data === undefined) {
+    if (data === undefined || data === '') {
       return true;
     }
     return false;
@@ -10,13 +10,6 @@ class Validator {
 
   static isString(data) {
     if (typeof data === 'string') {
-      return true;
-    }
-    return false;
-  }
-
-  static isEmpty(data) {
-    if (data === '') {
       return true;
     }
     return false;

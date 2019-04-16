@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../app';
+import app from '../../server';
 import { activateAccountData, validAccountData } from '../test-data/account';
 import { clientLoginData, adminLoginData } from '../test-data/users';
 import account from '../../database/account';
