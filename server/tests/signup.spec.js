@@ -1,11 +1,19 @@
 // eslint-disable-next-line no-undef
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+<<<<<<< HEAD:server/tests/signup.spec.js
 import app from '../server';
 import {
   validUser, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
   nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
   undefineLastName, invalidLastName, invalidPassword, invalidDateOfBirth,
+=======
+import app from '../../server';
+import {
+  validUser, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
+  nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
+  undefineLastName, invalidLastName, invalidPassword,
+>>>>>>> chore/165379296/refactor-ui:server/tests/v1/signup.spec.js
   invalidPhoneNumber, invalidSex
 } from './test-data/users';
 

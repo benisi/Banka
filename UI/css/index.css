@@ -105,7 +105,6 @@ a{
     font-weight: bold;
     cursor: pointer;
     display: block;
-    margin: 1rem 2rem;
   }
  main{
   width: 100%;  
@@ -583,13 +582,6 @@ table, th, td {
 @media only screen and (max-width: 600px) {
     .branding-text{
         font-size: 1.5rem;
-    }
-} 
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    .close{
-        margin: 1rem 2rem;
     }
 } 
 

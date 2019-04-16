@@ -1,8 +1,14 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+<<<<<<< HEAD:server/tests/deleteAccount.spec.js
 import app from '../server';
 import { validLoginData } from './test-data/users';
 import { validAccountData } from './test-data/account';
+=======
+import app from '../../server';
+import { validLoginData } from '../test-data/users';
+import { validAccountData } from '../test-data/account';
+>>>>>>> chore/165379296/refactor-ui:server/tests/v1/deleteAccount.spec.js
 
 
 chai.use(chaiHttp);

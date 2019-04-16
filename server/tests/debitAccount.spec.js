@@ -1,11 +1,18 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+<<<<<<< HEAD:server/tests/debitAccount.spec.js
 import app from '../server';
 import { validLoginData } from './test-data/users';
 import { validAccountData } from './test-data/account';
 import {
   debitAccountData, creditAccountData, undefinedDebitAccountData, invalidDebitAccountData
 } from './test-data/transaction';
+=======
+import app from '../../server';
+import { validLoginData } from '../test-data/users';
+import { validAccountData } from '../test-data/account';
+import { debitAccountData, creditAccountData } from '../test-data/transaction';
+>>>>>>> chore/165379296/refactor-ui:server/tests/v1/debitAccount.spec.js
 
 
 chai.use(chaiHttp);

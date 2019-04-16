@@ -1,9 +1,16 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+<<<<<<< HEAD:server/tests/creditAccount.spec.js
 import app from '../server';
 import { validLoginData } from './test-data/users';
 import { validAccountData } from './test-data/account';
 import { creditAccountData } from './test-data/transaction';
+=======
+import app from '../../server';
+import { validLoginData } from '../test-data/users';
+import { validAccountData } from '../test-data/account';
+import { creditAccountData } from '../test-data/transaction';
+>>>>>>> chore/165379296/refactor-ui:server/tests/v1/creditAccount.spec.js
 
 
 chai.use(chaiHttp);
