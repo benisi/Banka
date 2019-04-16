@@ -275,6 +275,19 @@ const invalidPhoneNumber = {
   title: 'master',
   sex: 'male'
 };
+const invalidDateOfBirth = {
+  email: 'user8@gmail.com',
+  firstName: 'Isidahomen',
+  lastName: 'ben',
+  password: 'hfhhfhfhfh3',
+  type: 'staff',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09',
+  title: 'master',
+  sex: 'male'
+};
 const invalidSex = {
   email: 'user8@gmail.com',
   firstName: 'Isidahomen',
@@ -304,6 +317,14 @@ const invalidLoginData = {
   email: 'doe@gmail.com',
   password: 'clientpass1'
 };
+const undefinedEmailLoginData = {
+  email: undefined,
+  password: 'clientpass1'
+};
+const undefinedPasswordLoginData = {
+  email: 'doe@gmail.com',
+  password: undefined
+};
 
 export {
   validUser, emptyEmail, invalidEmail, undefineEmail, alreadyInUseUser,
@@ -311,5 +332,6 @@ export {
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
   nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
   validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber,
-  invalidSex, clientLoginData, adminLoginData, defaultClient
+  invalidSex, clientLoginData, adminLoginData, defaultClient, invalidDateOfBirth,
+  undefinedEmailLoginData, undefinedPasswordLoginData
 };

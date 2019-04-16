@@ -1,8 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
-import { validLoginData } from '../test-data/users';
-import { validAccountData } from '../test-data/account';
+import app from '../server';
+import { validLoginData } from './test-data/users';
+import { validAccountData } from './test-data/account';
+import {
+  debitAccountData, creditAccountData, undefinedDebitAccountData, invalidDebitAccountData
+} from './test-data/transaction';
 
 
 chai.use(chaiHttp);
@@ -54,13 +57,54 @@ describe('Test to create a user bank account', () => {
   });
 });
 
-describe('Test for successful deleted account', () => {
+describe('Test to credit account', () => {
   it('should return a status 200', (done) => {
     chai.request(app)
-      .delete(`/api/v1/accounts/${accNumber}`)
+      .post(`/api/v1/transactions/${accNumber}/credit`)
       .set('Authorization', globalToken)
+      .send(creditAccountData)
       .end((err, res) => {
         expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+
+describe('Test to debit account', () => {
+  it('should return a status 200', (done) => {
+    chai.request(app)
+      .post(`/api/v1/transactions/${accNumber}/debit`)
+      .set('Authorization', globalToken)
+      .send(debitAccountData)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+describe('Test when amount is not a number', () => {
+  it('should return a status 400', (done) => {
+    chai.request(app)
+      .post(`/api/v1/transactions/${accNumber}/debit`)
+      .set('Authorization', globalToken)
+      .send(invalidDebitAccountData)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+
+describe('Test when amount is undefined', () => {
+  it('should return a status 400', (done) => {
+    chai.request(app)
+      .post(`/api/v1/transactions/${accNumber}/debit`)
+      .set('Authorization', globalToken)
+      .send(undefinedDebitAccountData)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });

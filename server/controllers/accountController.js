@@ -1,13 +1,13 @@
-import account from '../../database/account';
-import user from '../../database/user';
+import account from '../database/account';
+import user from '../database/user';
 
 class AccountController {
   static create(req, res) {
     const ownerId = parseInt(req.body.id, 10);
     const ownerData = user.find(ownerId);
     if (!ownerData) {
-      res.status(400).json({
-        status: 400,
+      res.status(404).json({
+        status: 404,
         error: 'Invalid account owner'
       });
     }

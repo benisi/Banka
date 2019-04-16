@@ -1,15 +1,15 @@
 import bcrypt from 'bcrypt';
-import user from '../../database/user';
-import auth from '../../helpers/auth';
-import validator from '../../helpers/validator';
+import user from '../database/user';
+import auth from '../helpers/auth';
+import validator from '../helpers/validator';
 
 class UserController {
   static create(req, res) {
     const { email } = req.body;
     const users = user.findAll();
     if (users.find(entry => entry.email === email)) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(409).json({
+        status: 409,
         error: 'Email already exist'
       });
     }

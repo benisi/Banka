@@ -1,5 +1,5 @@
 import chai from 'chai';
-import account from '../../database/account';
+import account from '../database/account';
 
 const { should } = chai;
 should();

@@ -1,5 +1,5 @@
 import chai from 'chai';
-import model from '../../database/model';
+import model from '../database/model';
 
 const { expect, should } = chai;
 should();

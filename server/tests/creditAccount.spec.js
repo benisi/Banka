@@ -1,9 +1,9 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
-import { validLoginData } from '../test-data/users';
-import { validAccountData } from '../test-data/account';
-import { creditAccountData } from '../test-data/transaction';
+import app from '../server';
+import { validLoginData } from './test-data/users';
+import { validAccountData } from './test-data/account';
+import { creditAccountData } from './test-data/transaction';
 
 
 chai.use(chaiHttp);

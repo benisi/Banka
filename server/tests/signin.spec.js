@@ -1,9 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../server';
-import { validLoginData, invalidLoginData } from '../test-data/users';
-import validator from '../../helpers/validator';
-import user from '../../database/user';
+import app from '../server';
+import {
+  validLoginData, invalidLoginData, undefinedEmailLoginData, undefinedPasswordLoginData
+} from './test-data/users';
+import validator from '../helpers/validator';
+import user from '../database/user';
 
 chai.use(chaiHttp);
 
@@ -69,5 +71,28 @@ describe('Test for bcrypt password match', () => {
     const foundUser = users.find(entry => entry.email === validLoginData.email);
     validator.checkPassword(validLoginData.password, foundUser.password).should.be.equal(true);
     done();
+  });
+});
+
+describe('Tests for undefined email', () => {
+  it('should give a status code of 400', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(undefinedEmailLoginData)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+describe('Tests for undefined password', () => {
+  it('should give a status code of 400', (done) => {
+    chai.request(app)
+      .post(url)
+      .send(undefinedPasswordLoginData)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
   });
 });
