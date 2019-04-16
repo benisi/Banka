@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../app';
+import app from '../../server';
 import { validLoginData } from '../test-data/users';
 import { validAccountData } from '../test-data/account';
 import { creditAccountData } from '../test-data/transaction';
@@ -35,7 +35,7 @@ describe('Test to create a user bank account', () => {
     chai.request(app)
       .post(createUrl)
       .set('Authorization', globalToken)
-      .send(validAccountData, 'watin be this')
+      .send(validAccountData)
       .end((err, res) => {
         expect(res).to.have.status(201);
         const { accountNumber } = res.body.data;

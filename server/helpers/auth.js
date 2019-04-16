@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import user from '../database/user';
 
 class Auth {
   static createToken(payload) {
@@ -25,16 +24,15 @@ class Auth {
           error: 'Invalid token'
         });
       }
-
-      req.body.decoded = decoded.id;
+      req.body.id = decoded.id;
+      req.body.isAdmin = decoded.isAdmin;
+      req.body.role = decoded.type;
       return next();
     });
   }
 
   static allowOnlyAdminStaff(req, res, next) {
-    const userId = parseInt(req.body.decoded, 10);
-    const userData = user.find(userId);
-    const { type, isAdmin } = userData;
+    const { role: type, isAdmin } = req.body;
     if ((!isAdmin && type !== 'staff')) {
       return res.status(403).json({
         status: 403,
@@ -45,9 +43,7 @@ class Auth {
   }
 
   static allowOnlyStaff(req, res, next) {
-    const userId = parseInt(req.body.decoded, 10);
-    const userData = user.find(userId);
-    const { type } = userData;
+    const { role: type } = req.body;
     if (type !== 'staff') {
       return res.status(403).json({
         status: 403,

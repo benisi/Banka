@@ -1,8 +1,5 @@
-import user from '../database/user';
-import account from '../database/account';
-
 class AccountValidator {
-  static create(req, res, next) {
+  static createAccountValidator(req, res, next) {
     const { type, category } = req.body;
 
     if (type === undefined) {
@@ -32,21 +29,10 @@ class AccountValidator {
         error: 'Invalid category, only accept [ individual, organization ]'
       });
     }
-
-    const ownerId = parseInt(req.body.decoded, 10);
-    const ownerData = user.find(ownerId);
-    if (!ownerData) {
-      res.status(400).json({
-        status: 400,
-        error: 'Invalid account owner'
-      });
-    }
-    req.body.ownerData = ownerData;
-    req.body.owner = ownerId;
     return next();
   }
 
-  static status(req, res, next) {
+  static accountStatusValidator(req, res, next) {
     const { status } = req.body;
 
     if (status === undefined) {
@@ -61,35 +47,8 @@ class AccountValidator {
         error: 'Invalid status, only accept [ activate, deactivate ]'
       });
     }
-    const { accountNumber } = req.params;
-    const accountRef = account.getAccount(parseInt(accountNumber, 10));
-
-    if (!accountRef) {
-      return res.status(404).json({
-        status: 404,
-        error: `Account ${accountNumber} does not exist`
-      });
-    }
-
-    req.body.accountRef = accountRef;
-    req.body.accountNumber = accountNumber;
 
     next();
-  }
-
-  static delete(req, res, next) {
-    const { accountNumber } = req.params;
-    const accountRef = account.getAccount(parseInt(accountNumber, 10));
-
-    if (!accountRef) {
-      return res.status(404).json({
-        status: 404,
-        error: `Account ${accountNumber} does not exist`
-      });
-    }
-    const { id } = accountRef;
-    req.body.accountId = id;
-    return next();
   }
 }
 

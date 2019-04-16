@@ -1,9 +1,19 @@
 import account from '../../database/account';
+import user from '../../database/user';
 
 class AccountController {
   static create(req, res) {
+    const ownerId = parseInt(req.body.id, 10);
+    const ownerData = user.find(ownerId);
+    if (!ownerData) {
+      res.status(400).json({
+        status: 400,
+        error: 'Invalid account owner'
+      });
+    }
     const accountData = req.body;
     accountData.accountNumber = account.generateAccountNumber();
+    accountData.owner = ownerId;
     accountData.balance = parseFloat('0.10');
     accountData.status = 'active';
     accountData.createdOn = new Date();
@@ -12,18 +22,29 @@ class AccountController {
     responseData.openingBalance = balance;
     const {
       firstName, lastName, email, title
-    } = accountData.ownerData;
+    } = ownerData;
     const data = {
       firstName, lastName, email, title, ...responseData
     };
-    res.status(201).json({
+    return res.status(201).json({
       status: 201,
       data
     });
   }
 
+
   static status(req, res) {
-    const { status, accountRef, accountNumber } = req.body;
+    const { accountNumber } = req.params;
+    const accountRef = account.getAccount(parseInt(accountNumber, 10));
+
+    if (!accountRef) {
+      return res.status(404).json({
+        status: 404,
+        error: `Account ${accountNumber} does not exist`
+      });
+    }
+
+    const { status } = req.body;
     if (account.changeStatus(accountRef, status)) {
       const newStatus = status === 'activate' ? 'active' : 'dormant';
       return res.status(200).json({
@@ -41,7 +62,16 @@ class AccountController {
   }
 
   static delete(req, res) {
-    const { accountId } = req.body;
+    const { accountNumber } = req.params;
+    const accountRef = account.getAccount(parseInt(accountNumber, 10));
+
+    if (!accountRef) {
+      return res.status(404).json({
+        status: 404,
+        error: `Account ${accountNumber} does not exist`
+      });
+    }
+    const { id: accountId } = accountRef;
     if (!account.delete(accountId)) {
       return res.status(500).json({
         status: 500,

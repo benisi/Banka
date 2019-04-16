@@ -1,8 +1,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../app';
+import app from '../../server';
 import { validLoginData, invalidLoginData } from '../test-data/users';
-import validator from '../../helper/validator';
+import validator from '../../helpers/validator';
 import user from '../../database/user';
 
 chai.use(chaiHttp);

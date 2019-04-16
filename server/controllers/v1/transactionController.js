@@ -1,18 +1,30 @@
 import transaction from '../../database/transaction';
+import account from '../../database/account';
 
 class TransactionController {
   static credit(req, res) {
-    const { accountData, amount } = req.body;
-    const { accountNumber, balance } = accountData;
+    const { accountNumber } = req.params;
+    const { amount } = req.body;
+    const accountData = account.getAccount(parseInt(accountNumber, 10));
+    const type = 'credit';
+
+    if (!accountData) {
+      return res.status(404).json({
+        status: 404,
+        error: `Account ${accountNumber} does not exist`
+      });
+    }
+
+    const { balance } = accountData;
     const accNumber = parseInt(accountNumber, 10);
-    const id = parseInt(req.body.decoded, 10);
+    const cashierId = parseInt(req.body.id, 10);
     const oldBalance = parseFloat(balance);
     accountData.balance += parseFloat(amount);
     const transactionData = {
       createdOn: new Date(),
-      type: 'credit',
+      type,
       accountNumber: accNumber,
-      cashier: id,
+      cashier: cashierId,
       amount,
       oldBalance,
       newBalance: accountData.balance
@@ -46,7 +58,17 @@ class TransactionController {
   }
 
   static debit(req, res) {
-    const { accountData, amount } = req.body;
+    const { accountNumber } = req.params;
+    const { amount } = req.body;
+    const accountData = account.getAccount(parseInt(accountNumber, 10));
+    const type = 'debit';
+
+    if (!accountData) {
+      return res.status(404).json({
+        status: 404,
+        error: `Account ${accountNumber} does not exist`
+      });
+    }
 
     if (accountData.status === 'dormant') {
       return res.status(400).json({
@@ -56,7 +78,7 @@ class TransactionController {
     }
 
     const accNumber = parseInt(accountData.accountNumber, 10);
-    const id = parseInt(req.body.decoded, 10);
+    const cashierId = parseInt(req.body.id, 10);
     const oldBalance = parseFloat(accountData.balance);
     if (oldBalance < parseFloat(amount)) {
       return res.status(400).json({
@@ -68,9 +90,9 @@ class TransactionController {
     accountData.balance -= parseFloat(amount);
     const transactionData = {
       createdOn: new Date(),
-      type: 'debit',
+      type,
       accountNumber: accNumber,
-      cashier: id,
+      cashier: cashierId,
       amount,
       oldBalance,
       newBalance: accountData.balance
@@ -85,7 +107,7 @@ class TransactionController {
     }
 
     const {
-      cashier, id: transactionId, accountNumber, type: transactionType
+      cashier, id: transactionId, type: transactionType
     } = transac;
 
     const data = {
