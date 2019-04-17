@@ -3,7 +3,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 import {
-  validUser, undefineEmail, alreadyInUseUser, invalidEmail, nonStringEmail,
+  validUser, undefineEmail, invalidEmail, nonStringEmail,
   nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
   undefineLastName, invalidLastName, invalidPassword, invalidDateOfBirth,
   invalidPhoneNumber, invalidSex
@@ -48,14 +48,14 @@ describe('Tests to create a user', () => {
       .post(url)
       .send(validUser)
       .end((err, res) => {
+        console.log(res.body.error);
         expect(res).to.have.status(201);
-        res.body.should.be.a('object');
-        expect(res.body.data).to.have.property('token');
+        res.body.data.should.be.a('array');
+        expect(res.body.data[0]).to.have.property('token');
         done();
       });
   });
 });
-
 
 describe('Tests for undefined email', () => {
   it('should return 400 error code', (done) => {
@@ -75,7 +75,7 @@ describe('Tests if email exist', () => {
   it('should return 409 error code', (done) => {
     chai.request(app)
       .post(url)
-      .send(alreadyInUseUser)
+      .send(validUser)
       .end((err, res) => {
         expect(res).to.have.status(409);
         res.body.should.be.a('object');

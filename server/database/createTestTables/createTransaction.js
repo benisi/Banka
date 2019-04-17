@@ -1,4 +1,4 @@
-import pool from '../dbTestConnection';
+import pool from '../dbConnection';
 
 const createTransactionTable = `DROP TABLE IF EXISTS transactions CASCADE;
     CREATE TABLE transactions (

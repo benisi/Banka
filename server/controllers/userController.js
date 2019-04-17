@@ -1,35 +1,56 @@
 import bcrypt from 'bcrypt';
+import pool from '../database/dbConnection';
+import { createUser } from '../database/sqlQueries';
 import user from '../database/user';
 import auth from '../helpers/auth';
 import validator from '../helpers/validator';
 
 class UserController {
   static create(req, res) {
-    const { email } = req.body;
-    const users = user.findAll();
-    if (users.find(entry => entry.email === email)) {
-      return res.status(409).json({
-        status: 409,
-        error: 'Email already exist'
+    const {
+      email, firstName, lastName,
+      stateOfResidence, phoneNumber, title, password, dateOfBirth, sex
+    } = req.body;
+
+    const params = [
+      email,
+      firstName,
+      lastName,
+      bcrypt.hashSync(password, 10),
+      stateOfResidence,
+      phoneNumber,
+      title,
+      dateOfBirth,
+      sex
+    ];
+
+    pool.query(createUser, params)
+      .then((queryData) => {
+        const createdUser = queryData.rows[0];
+        const { id, type, isAdmin } = createdUser;
+        const token = auth.createToken({ id, type, isAdmin });
+        const { password: pass, ...data } = createdUser;
+        data.token = token;
+        return res.status(201).json({
+          status: 201,
+          data: [data]
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.code === '23505') {
+          return res.status(409)
+            .send({
+              status: 409,
+              error: 'Email already exist'
+            });
+        }
+        return res.status(500)
+          .send({
+            status: 500,
+            error: 'Something went wrong'
+          });
       });
-    }
-    const userObj = req.body;
-    userObj.password = bcrypt.hashSync(req.body.password, 10);
-    userObj.isAdmin = false;
-    userObj.type = 'client';
-    const refData = user.create(userObj);
-    if (refData) {
-      const { password, ...data } = refData;
-      data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
-      return res.status(201).json({
-        status: 201,
-        data,
-      });
-    }
-    return res.status(400).json({
-      status: 400,
-      error: 'User validation error'
-    });
   }
 
   static signIn(req, res) {

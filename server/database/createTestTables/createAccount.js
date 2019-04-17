@@ -1,4 +1,4 @@
-import pool from '../dbTestConnection';
+import pool from '../dbConnection';
 
 const createAccountTable = `DROP TABLE IF EXISTS accounts CASCADE;
     CREATE TABLE accounts (
