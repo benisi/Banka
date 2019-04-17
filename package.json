@@ -11,10 +11,13 @@
     "start": "node dist/server.js",
     "start:dev": "nodemon --exec babel-node server/server.js",
     "build": "babel server --out-dir dist",
-    "test:dev": "mocha ./server/tests/* --require @babel/register --exit",
-    "test": "nyc --reporter=html --reporter=text mocha ./server/tests/* --require @babel/register --exit",
+    "test:dev": "npm run createTestTables && mocha ./server/tests/* --require @babel/register --exit",
+    "test": "npm run createTestTables && nyc --reporter=html --reporter=text mocha ./server/tests/* --require @babel/register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "createTables": "babel-node -- ./server/database/createTables/index.js",
+    "createTestTables": "babel-node -- ./server/database/createTestTables/index.js",
+    "heroku-postbuild": "npm run createTables"
   },
   "repository": {
     "type": "git",
