@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const connect = {
-  connectionString: process.env.DATABASE_URL_TEST
+  connectionString: process.env.DATABASE_URL
 };
 
 const pool = new Pool(connect);
