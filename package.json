@@ -8,14 +8,15 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "npm run build && node dist/server.js",
     "start:dev": "nodemon --exec babel-node server/server.js",
-    "build": "babel server --out-dir dist",
+    "build": "npm run clean && babel server --out-dir dist",
     "test:dev": "npm run createTestTables && mocha ./server/tests/* --require @babel/register --exit",
     "test": "npm run createTestTables && nyc --reporter=html --reporter=text mocha ./server/tests/* --require @babel/register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "createTestTables": "babel-node -- ./server/database/createTestTables/index.js"
+    "createTestTables": "babel-node -- ./server/database/createTestTables/index.js",
+    "clean": "rm -rf dist && mkdir dist"
   },
   "repository": {
     "type": "git",
