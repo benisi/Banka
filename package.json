@@ -15,9 +15,7 @@
     "test": "npm run createTestTables && nyc --reporter=html --reporter=text mocha ./server/tests/* --require @babel/register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "createTables": "babel-node -- ./server/database/createTables/index.js",
-    "createTestTables": "babel-node -- ./server/database/createTestTables/index.js",
-    "heroku-postbuild": "npm run createTables"
+    "createTestTables": "babel-node -- ./server/database/createTestTables/index.js"
   },
   "repository": {
     "type": "git",
@@ -46,10 +44,11 @@
     "express": "^4.16.4",
     "express-params-validator": "^1.0.0",
     "jsonwebtoken": "^8.5.0",
+    "make-runnable": "^1.3.6",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "pg": "^7.9.0",
-    "swagger-jsdoc": "^3.2.7",
+    "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
