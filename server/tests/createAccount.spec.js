@@ -1,17 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-<<<<<<< HEAD:server/tests/createAccount.spec.js
 import app from '../server';
 import { validLoginData } from './test-data/users';
 import {
   validAccountData, invalidAccountType, invalidAccountCategory,
   undefinedAccountType, undefinedAccountCategory
 } from './test-data/account';
-=======
-import app from '../../server';
-import { validLoginData } from '../test-data/users';
-import { validAccountData, invalidAccountType, invalidAccountCategory } from '../test-data/account';
->>>>>>> chore/165379296/refactor-ui:server/tests/v1/createAccount.spec.js
 
 chai.use(chaiHttp);
 const { expect, should } = chai;

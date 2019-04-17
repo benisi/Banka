@@ -1,18 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-<<<<<<< HEAD:server/tests/signin.spec.js
 import app from '../server';
 import {
   validLoginData, invalidLoginData, undefinedEmailLoginData, undefinedPasswordLoginData
 } from './test-data/users';
 import validator from '../helpers/validator';
 import user from '../database/user';
-=======
-import app from '../../server';
-import { validLoginData, invalidLoginData } from '../test-data/users';
-import validator from '../../helpers/validator';
-import user from '../../database/user';
->>>>>>> chore/165379296/refactor-ui:server/tests/v1/signin.spec.js
 
 chai.use(chaiHttp);
 

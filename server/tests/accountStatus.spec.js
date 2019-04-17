@@ -1,18 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-<<<<<<< HEAD:server/tests/accountStatus.spec.js
 import app from '../server';
 import {
   activateAccountData, validAccountData, undefinedAccountStatus, invalidAccountStatus
 } from './test-data/account';
 import { clientLoginData, adminLoginData } from './test-data/users';
 import account from '../database/account';
-=======
-import app from '../../server';
-import { activateAccountData, validAccountData } from '../test-data/account';
-import { clientLoginData, adminLoginData } from '../test-data/users';
-import account from '../../database/account';
->>>>>>> chore/165379296/refactor-ui:server/tests/v1/accountStatus.spec.js
 
 chai.use(chaiHttp);
 
