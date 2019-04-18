@@ -38,7 +38,7 @@ describe('Tests for valid input for user login', () => {
       .post(url)
       .send(validLoginData)
       .end((err, res) => {
-        expect(res.body.data).to.have.property('token');
+        expect(res.body.data[0]).to.have.property('token');
         done();
       });
   });

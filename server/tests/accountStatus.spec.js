@@ -25,7 +25,7 @@ describe('User should be able to login', () => {
       .send(adminLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        const { token } = res.body.data;
+        const { token } = res.body.data[0];
         globalToken = token;
         done();
       });
@@ -77,7 +77,7 @@ describe('Client should be able to login', () => {
       .send(clientLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        const { token } = res.body.data;
+        const { token } = res.body.data[0];
         clientToken = token;
         done();
       });

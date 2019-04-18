@@ -72,7 +72,7 @@ class UserController {
         data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
         return res.status(200).json({
           status: 200,
-          data,
+          data: [data],
         });
       })
       .catch(() => {

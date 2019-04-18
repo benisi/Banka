@@ -14,5 +14,5 @@ const invalidDebitAccountData = {
 };
 
 export {
-  creditAccountData, debitAccountData, undefinedDebitAccountData, invalidDebitAccountData
+  creditAccountData, debitAccountData, undefinedDebitAccountData, invalidDebitAccountData,
 };

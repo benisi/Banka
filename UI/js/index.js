@@ -44,24 +44,26 @@ const modal = () => {
   });
   document.querySelectorAll('.modal').forEach((element) => {
     element.addEventListener('click', (event) => {
+      const modalTarget = event.target;
       if (event.currentTarget !== event.target) {
         return;
       }
-      event.target.style.display = 'none';
+      modalTarget.target.style.display = 'none';
     });
   });
 
   document.querySelectorAll('.close').forEach((element) => {
     element.addEventListener('click', (event) => {
+      const closeButtonTarget = event.target;
       if (event.currentTarget !== event.target) {
         return;
       }
-      event.target.parentNode.parentNode.parentNode.style.display = 'none';
+      closeButtonTarget.parentNode.parentNode.parentNode.style.display = 'none';
     });
   });
 };
 
-const alert = (time = 1000, backgroundClass = 'success', message = 'hello') => {
+const alertUser = (time = 1000, backgroundClass = 'success', message = 'hello') => {
   let alertContainer = document.querySelector('.alert-container');
   const alertElement = document.createElement('div');
   alertElement.className = ['alert', backgroundClass].join(' ');
@@ -82,7 +84,7 @@ const alert = (time = 1000, backgroundClass = 'success', message = 'hello') => {
   }, time);
 };
 
-const confirm = (elementIdentifier, headmsg, body, yesCallback) => {
+const confirmAction = (elementIdentifier, headmsg, body, yesCallback) => {
   document.querySelectorAll(elementIdentifier).forEach((element) => {
     element.addEventListener('click', (event) => {
       // create confirm html mockup

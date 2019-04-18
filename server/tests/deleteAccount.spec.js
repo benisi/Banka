@@ -22,7 +22,7 @@ describe('Test to log user in', () => {
       .send(validLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        const { token } = res.body.data;
+        const { token } = res.body.data[0];
         globalToken = token;
         done();
       });

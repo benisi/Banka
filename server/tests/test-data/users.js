@@ -11,7 +11,7 @@ const defaultAdmin = [
   '02/09/1960',
   'male',
   'staff',
-  true
+  true,
 ];
 const defaultTestClient = [
   'client@gmail.com',
@@ -24,7 +24,7 @@ const defaultTestClient = [
   '02/09/1960',
   'male',
   'client',
-  false
+  false,
 ];
 
 const defaultUser = {
@@ -38,7 +38,7 @@ const defaultUser = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const defaultClient = {
   email: 'user@gmail.com',
@@ -51,7 +51,7 @@ const defaultClient = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const validUser = {
   email: 'admin@gmail.com',
@@ -64,7 +64,7 @@ const validUser = {
   phoneNumber: '07035361846',
   title: 'master',
   dateOfBirth: '02/09/1960',
-  sex: 'male'
+  sex: 'male',
 };
 
 const validUser1 = {
@@ -78,7 +78,7 @@ const validUser1 = {
   phoneNumber: '07035361846',
   title: 'master',
   dateOfBirth: '02/09/1960',
-  sex: 'male'
+  sex: 'male',
 };
 
 const emptyEmail = {
@@ -92,7 +92,7 @@ const emptyEmail = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidEmail = {
@@ -106,7 +106,7 @@ const invalidEmail = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const undefineEmail = {
@@ -120,7 +120,7 @@ const undefineEmail = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const alreadyInUseUser = {
   email: 'user@gmail.com',
@@ -133,7 +133,7 @@ const alreadyInUseUser = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const nonStringEmail = {
   email: 12344,
@@ -146,7 +146,7 @@ const nonStringEmail = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 // eslint-disable-next-line import/prefer-default-export
@@ -163,7 +163,7 @@ const emptyFirstName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidFirstName = {
@@ -177,7 +177,7 @@ const invalidFirstName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const undefineFirstName = {
@@ -191,7 +191,7 @@ const undefineFirstName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const nonStringFirstName = {
   email: 'user11@gmail.com',
@@ -204,7 +204,7 @@ const nonStringFirstName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 // last name mock data
@@ -219,7 +219,7 @@ const emptyLastName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidLastName = {
@@ -233,7 +233,7 @@ const invalidLastName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const undefineLastName = {
@@ -247,7 +247,7 @@ const undefineLastName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const nonStringLastName = {
   email: 'user8@gmail.com',
@@ -260,7 +260,7 @@ const nonStringLastName = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidIsAdmin = {
@@ -274,7 +274,7 @@ const invalidIsAdmin = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const invalidType = {
   email: 'user8@gmail.com',
@@ -287,7 +287,7 @@ const invalidType = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidPassword = {
@@ -301,7 +301,24 @@ const invalidPassword = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
+};
+const authTestSignup = {
+  email: 'user8@gmail.com',
+  firstName: 'Isidahomen',
+  lastName: 'ben',
+  password: 'hfhhfhfhfh3',
+  type: 'client',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09/1960',
+  title: 'master',
+  sex: 'male',
+};
+const authTestlogin = {
+  email: 'user8@gmail.com',
+  password: 'hfhhfhfhfh3',
 };
 const invalidPhoneNumber = {
   email: 'user8@gmail.com',
@@ -314,7 +331,7 @@ const invalidPhoneNumber = {
   phoneNumber: '07035361uiio',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const invalidDateOfBirth = {
   email: 'user8@gmail.com',
@@ -327,7 +344,7 @@ const invalidDateOfBirth = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const invalidSex = {
   email: 'user8@gmail.com',
@@ -340,39 +357,40 @@ const invalidSex = {
   phoneNumber: '07035361846',
   dateOfBirth: '02/09/1960',
   title: 'master',
-  sex: 'mammal'
+  sex: 'mammal',
 };
 const validLoginData = {
   email: 'admin@gmail.com',
-  password: 'adminpass1'
+  password: 'adminpass1',
 };
 const adminLoginData = {
   email: 'admin@gmail.com',
-  password: 'adminpass1'
+  password: 'adminpass1',
 };
 const clientLoginData = {
   email: 'client@gmail.com',
-  password: 'clientpass1'
+  password: 'clientpass1',
 };
 const invalidLoginData = {
   email: 'doe@gmail.com',
-  password: 'clientpass1'
+  password: 'clientpass1',
 };
 const undefinedEmailLoginData = {
   email: undefined,
-  password: 'clientpass1'
+  password: 'clientpass1',
 };
 const undefinedPasswordLoginData = {
   email: 'doe@gmail.com',
-  password: undefined
+  password: undefined,
 };
 
 export {
   validUser, emptyEmail, invalidEmail, undefineEmail, alreadyInUseUser,
   nonStringEmail, emptyFirstName, invalidFirstName, undefineFirstName,
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
-  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
+  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword, authTestSignup,
   validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber, validUser1,
   invalidSex, clientLoginData, adminLoginData, defaultClient, invalidDateOfBirth,
-  undefinedEmailLoginData, undefinedPasswordLoginData, defaultAdmin, defaultTestClient
+  undefinedEmailLoginData, undefinedPasswordLoginData, defaultAdmin, defaultTestClient,
+  authTestlogin,
 };

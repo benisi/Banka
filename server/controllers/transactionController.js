@@ -30,8 +30,8 @@ class TransactionController {
       newBalance: accountData.balance,
     };
 
-    const transac = transaction.create(transactionData);
-    if (!transac) {
+    const createdTransaction = transaction.create(transactionData);
+    if (!createdTransaction) {
       return res.status(500).json({
         status: 500,
         error: 'Failed to credit account',
@@ -40,7 +40,7 @@ class TransactionController {
 
     const {
       cashier, id: transactionId, type: transactionType, newBalance: accountBalance,
-    } = transac;
+    } = createdTransaction;
 
     const data = {
       transactionId,
@@ -98,8 +98,8 @@ class TransactionController {
       newBalance: accountData.balance,
     };
 
-    const transac = transaction.create(transactionData);
-    if (!transac) {
+    const createdTransaction = transaction.create(transactionData);
+    if (!createdTransaction) {
       return res.status(500).json({
         status: 500,
         error: 'Failed to credit account',
@@ -108,7 +108,7 @@ class TransactionController {
 
     const {
       cashier, id: transactionId, type: transactionType,
-    } = transac;
+    } = createdTransaction;
 
     const data = {
       transactionId,
@@ -116,7 +116,7 @@ class TransactionController {
       amount,
       cashier,
       transactionType,
-      accountBalance: transac.newBalance.toFixed(2).toString(),
+      accountBalance: createdTransaction.newBalance.toFixed(2).toString(),
     };
 
     return res.status(200).json({

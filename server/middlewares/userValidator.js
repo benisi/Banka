@@ -1,3 +1,4 @@
+
 import validator from '../helpers/validator';
 
 class UserValidator {

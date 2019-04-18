@@ -1,35 +1,35 @@
 const validAccountData = {
   type: 'savings',
-  category: 'individual'
+  category: 'individual',
 };
 const invalidAccountType = {
   type: 'error',
-  category: 'individual'
+  category: 'individual',
 };
 const invalidAccountCategory = {
   type: 'savings',
-  category: 'cooperate'
+  category: 'cooperate',
 };
 const undefinedAccountType = {
   type: undefined,
-  category: 'cooperate'
+  category: 'cooperate',
 };
 const undefinedAccountCategory = {
   type: 'savings',
-  category: undefined
+  category: undefined,
 };
 
 const activateAccountData = {
-  status: 'deactivate'
+  status: 'deactivate',
 };
 const undefinedAccountStatus = {
-  status: undefined
+  status: undefined,
 };
 const invalidAccountStatus = {
-  status: 'error'
+  status: 'error',
 };
 
 export {
   validAccountData, invalidAccountType, invalidAccountCategory, activateAccountData,
-  undefinedAccountType, undefinedAccountCategory, undefinedAccountStatus, invalidAccountStatus
+  undefinedAccountType, undefinedAccountCategory, undefinedAccountStatus, invalidAccountStatus,
 };
