@@ -11,7 +11,7 @@ class Auth {
     if (!token) {
       return res.status(400).json({
         status: 400,
-        error: 'No token supplied'
+        error: 'No token supplied',
       });
     }
 
@@ -21,7 +21,7 @@ class Auth {
       if (err) {
         return res.status(401).json({
           status: 401,
-          error: 'Invalid token'
+          error: 'Invalid token',
         });
       }
       req.body.id = decoded.id;
@@ -29,6 +29,7 @@ class Auth {
       req.body.role = decoded.type;
       return next();
     });
+    return true;
   }
 
   static allowOnlyAdminStaff(req, res, next) {
@@ -36,7 +37,7 @@ class Auth {
     if ((!isAdmin && type !== 'staff')) {
       return res.status(403).json({
         status: 403,
-        error: 'You are not Authorize to perform this operation'
+        error: 'You are not Authorize to perform this operation',
       });
     }
     return next();
@@ -47,7 +48,7 @@ class Auth {
     if (type !== 'staff') {
       return res.status(403).json({
         status: 403,
-        error: 'You are not Authorize to perform this operation'
+        error: 'You are not Authorize to perform this operation',
       });
     }
     return next();

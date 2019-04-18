@@ -9,7 +9,7 @@ const structure = {
   cashier: Number,
   amount: Number,
   oldBalance: Number,
-  newBalance: Number
+  newBalance: Number,
 };
 const transaction = new Transaction(structure);
 

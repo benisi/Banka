@@ -14,6 +14,7 @@ class Account extends Model {
   // eslint-disable-next-line class-methods-use-this
   activate(account) {
     if (typeof account === 'object') {
+      // eslint-disable-next-line no-param-reassign
       account.status = 'active';
       return true;
     }
@@ -39,6 +40,7 @@ class Account extends Model {
   // eslint-disable-next-line class-methods-use-this
   deactivate(account) {
     if (typeof account === 'object') {
+      // eslint-disable-next-line no-param-reassign
       account.status = 'dormant';
       return true;
     }

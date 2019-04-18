@@ -85,6 +85,7 @@ const alert = (time = 1000, backgroundClass = 'success', message = 'hello') => {
 const confirm = (elementIdentifier, headmsg, body, yesCallback) => {
   document.querySelectorAll(elementIdentifier).forEach((element) => {
     element.addEventListener('click', (event) => {
+      // create confirm html mockup
       const data = event.target.dataset.confirmdata;
       const backDrop = document.createElement('div');
       backDrop.className = 'backdrop';

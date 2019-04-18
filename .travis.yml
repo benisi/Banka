@@ -6,6 +6,13 @@ notifications:
 cache:
   directories:
     - "node_modules"
+env:
+  global:
+    - DATABASE_URL_TEST=postgres://postgres@127.0.0.1:5432/test
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database test;' -U postgres
 script: 
   - npm run test
 after_success:
