@@ -4,7 +4,7 @@ import app from '../server';
 import { validLoginData } from './test-data/users';
 import { validAccountData } from './test-data/account';
 import {
-  debitAccountData, creditAccountData, undefinedDebitAccountData, invalidDebitAccountData
+  debitAccountData, creditAccountData, undefinedDebitAccountData, invalidDebitAccountData,
 } from './test-data/transaction';
 
 

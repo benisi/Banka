@@ -8,7 +8,7 @@ class AccountController {
     if (!ownerData) {
       res.status(404).json({
         status: 404,
-        error: 'Invalid account owner'
+        error: 'Invalid account owner',
       });
     }
     const accountData = req.body;
@@ -21,14 +21,14 @@ class AccountController {
     const { balance, ...responseData } = createdAccount;
     responseData.openingBalance = balance;
     const {
-      firstName, lastName, email, title
+      firstName, lastName, email, title,
     } = ownerData;
     const data = {
-      firstName, lastName, email, title, ...responseData
+      firstName, lastName, email, title, ...responseData,
     };
     return res.status(201).json({
       status: 201,
-      data
+      data,
     });
   }
 
@@ -40,7 +40,7 @@ class AccountController {
     if (!accountRef) {
       return res.status(404).json({
         status: 404,
-        error: `Account ${accountNumber} does not exist`
+        error: `Account ${accountNumber} does not exist`,
       });
     }
 
@@ -51,13 +51,13 @@ class AccountController {
         status: 200,
         data: {
           accountNumber,
-          status: newStatus
-        }
+          status: newStatus,
+        },
       });
     }
     return res.status(500).json({
       status: 500,
-      error: `failed to ${status} account`
+      error: `failed to ${status} account`,
     });
   }
 
@@ -68,19 +68,19 @@ class AccountController {
     if (!accountRef) {
       return res.status(404).json({
         status: 404,
-        error: `Account ${accountNumber} does not exist`
+        error: `Account ${accountNumber} does not exist`,
       });
     }
     const { id: accountId } = accountRef;
     if (!account.delete(accountId)) {
       return res.status(500).json({
         status: 500,
-        error: 'failed to delete account'
+        error: 'failed to delete account',
       });
     }
     return res.status(200).json({
       status: 200,
-      message: 'Account successfully deleted'
+      message: 'Account successfully deleted',
     });
   }
 }

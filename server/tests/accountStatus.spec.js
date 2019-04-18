@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 import {
-  activateAccountData, validAccountData, undefinedAccountStatus, invalidAccountStatus
+  activateAccountData, validAccountData, undefinedAccountStatus, invalidAccountStatus,
 } from './test-data/account';
 import { clientLoginData, adminLoginData } from './test-data/users';
 import account from '../database/account';
@@ -24,7 +24,6 @@ describe('User should be able to login', () => {
       .post('/api/v1/auth/signin')
       .send(adminLoginData)
       .end((err, res) => {
-        console.log(res.body);
         expect(res).to.have.status(200);
         const { token } = res.body.data;
         globalToken = token;
@@ -65,7 +64,6 @@ describe('Test to activate user account', () => {
       .set('Authorization', globalToken)
       .send(activateAccountData)
       .end((err, res) => {
-        console.log(res.body);
         expect(res).to.have.status(200);
         done();
       });

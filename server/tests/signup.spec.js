@@ -6,7 +6,7 @@ import {
   validUser, undefineEmail, invalidEmail, nonStringEmail,
   nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
   undefineLastName, invalidLastName, invalidPassword, invalidDateOfBirth,
-  invalidPhoneNumber, invalidSex, validUser1
+  invalidPhoneNumber, invalidSex, validUser1,
 } from './test-data/users';
 
 chai.use(chaiHttp);
@@ -76,7 +76,6 @@ describe('Tests if email exist', () => {
       .post(url)
       .send(validUser)
       .end((err, res) => {
-        console.log(res.body);
         expect(res).to.have.status(409);
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');

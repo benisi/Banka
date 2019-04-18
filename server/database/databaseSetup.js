@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const connect = {
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
 };
 
 const pool = new Pool(connect);
@@ -26,13 +26,12 @@ const createUsersTableQuery = `CREATE TABLE IF NOT EXISTS users (
 
 const createUserTable = () => {
   pool.query(createUsersTableQuery)
-    .then((result) => {
-      console.log(`usersTable: ${result.command}ED`);
+    .then(() => {
       pool.end();
     })
     .catch((error) => {
-      console.log(`users table ${error}`);
       pool.end();
+      throw error;
     });
 };
 
@@ -49,13 +48,12 @@ const createAccountTableQuery = `CREATE TABLE IF NOT EXISTS accounts(
 
 const createAccountTable = () => {
   pool.query(createAccountTableQuery)
-    .then((result) => {
-      console.log(`AccountsTable: ${result.command}ED`);
+    .then(() => {
       pool.end();
     })
     .catch((error) => {
-      console.log(`accounts table ${error}`);
       pool.end();
+      throw error;
     });
 };
 
@@ -72,19 +70,18 @@ const createTransactionTableQuery = `CREATE TABLE IF NOT EXISTS transactions (
 
 const createTransactionTable = () => {
   pool.query(createTransactionTableQuery)
-    .then((result) => {
-      console.log(`transactions Table: ${result.command}ED`);
+    .then(() => {
       pool.end();
     })
     .catch((error) => {
-      console.log(`transactions table ${error}`);
       pool.end();
+      throw error;
     });
 };
 
 
 module.exports = {
-  createUserTable, createAccountTable, createTransactionTable
+  createUserTable, createAccountTable, createTransactionTable,
 };
 
 require('make-runnable');

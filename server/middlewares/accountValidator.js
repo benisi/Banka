@@ -5,28 +5,28 @@ class AccountValidator {
     if (type === undefined) {
       return res.status(400).json({
         status: 400,
-        error: 'Type is a required field'
+        error: 'Type is a required field',
       });
     }
 
     if (category === undefined) {
       return res.status(400).json({
         status: 400,
-        error: 'category is a required field'
+        error: 'category is a required field',
       });
     }
 
     if (!['current', 'savings'].includes(type)) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid type, only accept [ current, savings ]'
+        error: 'Invalid type, only accept [ current, savings ]',
       });
     }
 
     if (!['individual', 'organization'].includes(category)) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid category, only accept [ individual, organization ]'
+        error: 'Invalid category, only accept [ individual, organization ]',
       });
     }
     return next();
@@ -38,17 +38,17 @@ class AccountValidator {
     if (status === undefined) {
       return res.status(400).json({
         status: 400,
-        error: 'status is a required field'
+        error: 'status is a required field',
       });
     }
     if (!['activate', 'deactivate'].includes(status)) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid status, only accept [ activate, deactivate ]'
+        error: 'Invalid status, only accept [ activate, deactivate ]',
       });
     }
 
-    next();
+    return next();
   }
 }
 

@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 import {
-  validLoginData, invalidLoginData, undefinedEmailLoginData, undefinedPasswordLoginData
+  validLoginData, invalidLoginData, undefinedEmailLoginData, undefinedPasswordLoginData,
 } from './test-data/users';
 import validator from '../helpers/validator';
 import user from '../database/user';

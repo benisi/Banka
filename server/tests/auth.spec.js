@@ -5,7 +5,7 @@ const { should } = chai;
 should();
 
 const payload = {
-  id: 1
+  id: 1,
 };
 
 describe('Test to check for the functioning of the auth helper', () => {

@@ -5,14 +5,14 @@ const transactionValidator = (req, res, next) => {
   if (validator.isUndefined(amount)) {
     return res.status(400).json({
       status: 400,
-      error: 'Amount is required'
+      error: 'Amount is required',
     });
   }
 
   if (typeof amount !== 'number') {
     return res.status(400).json({
       status: 400,
-      error: 'Amount must be a number'
+      error: 'Amount must be a number',
     });
   }
 

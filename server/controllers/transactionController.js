@@ -11,7 +11,7 @@ class TransactionController {
     if (!accountData) {
       return res.status(404).json({
         status: 404,
-        error: `Account ${accountNumber} does not exist`
+        error: `Account ${accountNumber} does not exist`,
       });
     }
 
@@ -27,19 +27,19 @@ class TransactionController {
       cashier: cashierId,
       amount,
       oldBalance,
-      newBalance: accountData.balance
+      newBalance: accountData.balance,
     };
 
     const transac = transaction.create(transactionData);
     if (!transac) {
       return res.status(500).json({
         status: 500,
-        error: 'Failed to credit account'
+        error: 'Failed to credit account',
       });
     }
 
     const {
-      cashier, id: transactionId, type: transactionType, newBalance: accountBalance
+      cashier, id: transactionId, type: transactionType, newBalance: accountBalance,
     } = transac;
 
     const data = {
@@ -48,12 +48,12 @@ class TransactionController {
       amount,
       cashier,
       transactionType,
-      accountBalance: accountBalance.toFixed(2).toString()
+      accountBalance: accountBalance.toFixed(2).toString(),
     };
 
     return res.status(200).json({
       status: 200,
-      data
+      data,
     });
   }
 
@@ -66,14 +66,14 @@ class TransactionController {
     if (!accountData) {
       return res.status(404).json({
         status: 404,
-        error: `Account ${accountNumber} does not exist`
+        error: `Account ${accountNumber} does not exist`,
       });
     }
 
     if (accountData.status === 'dormant') {
       return res.status(400).json({
         status: 400,
-        error: 'Cant withdraw from a dormant account, please activate account'
+        error: 'Cant withdraw from a dormant account, please activate account',
       });
     }
 
@@ -83,7 +83,7 @@ class TransactionController {
     if (oldBalance < parseFloat(amount)) {
       return res.status(400).json({
         status: 400,
-        error: 'Insufficient fund'
+        error: 'Insufficient fund',
       });
     }
 
@@ -95,19 +95,19 @@ class TransactionController {
       cashier: cashierId,
       amount,
       oldBalance,
-      newBalance: accountData.balance
+      newBalance: accountData.balance,
     };
 
     const transac = transaction.create(transactionData);
     if (!transac) {
       return res.status(500).json({
         status: 500,
-        error: 'Failed to credit account'
+        error: 'Failed to credit account',
       });
     }
 
     const {
-      cashier, id: transactionId, type: transactionType
+      cashier, id: transactionId, type: transactionType,
     } = transac;
 
     const data = {
@@ -116,12 +116,12 @@ class TransactionController {
       amount,
       cashier,
       transactionType,
-      accountBalance: transac.newBalance.toFixed(2).toString()
+      accountBalance: transac.newBalance.toFixed(2).toString(),
     };
 
     return res.status(200).json({
       status: 200,
-      data
+      data,
     });
   }
 }

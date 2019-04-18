@@ -28,7 +28,7 @@ router.post('/api/v1/transactions/:accountNumber/debit', [auth.verifyToken, auth
 
 router.all('*', (req, res) => res.status(404).json({
   status: 404,
-  error: 'The end point you are looking for cannot be found, kindly contact webmaster if you think this is an error'
+  error: 'The end point you are looking for cannot be found, kindly contact webmaster if you think this is an error',
 }));
 
 export default router;

@@ -15,8 +15,10 @@ const createAccountTable = `DROP TABLE IF EXISTS accounts CASCADE;
 class AccountsTableHandler {
   static createTable() {
     const create = pool.query(createAccountTable)
-      .then(result => console.log(`AccountsTable: ${result[0].command}, ${result[1].command}`))
-      .catch(error => console.log(`accounts table ${error}`));
+      .then()
+      .catch((error) => {
+        throw error;
+      });
     return create;
   }
 }

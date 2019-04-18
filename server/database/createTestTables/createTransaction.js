@@ -15,8 +15,10 @@ const createTransactionTable = `DROP TABLE IF EXISTS transactions CASCADE;
 class TransactionsTableHandler {
   static createTable() {
     const create = pool.query(createTransactionTable)
-      .then(result => console.log(`transactions Table: ${result[0].command}, ${result[1].command}`))
-      .catch(error => console.log(`transactions table ${error}`));
+      .then()
+      .catch((error) => {
+        throw error;
+      });
     return create;
   }
 }

@@ -8,5 +8,5 @@ user.createTable()
   .then(() => user.mockDatabase())
   .then(() => user.mockClient())
   .catch((error) => {
-    console.log(error);
+    throw error;
   });

@@ -23,22 +23,28 @@ const createUsersTable = `DROP TABLE IF EXISTS users CASCADE;
 class UsersTableHandler {
   static createTable() {
     const create = pool.query(createUsersTable)
-      .then(result => console.log(`usersTable: ${result[0].command}, ${result[1].command}`))
-      .catch(error => console.log(`users table ${error}`));
+      .then()
+      .catch((error) => {
+        throw error;
+      });
     return create;
   }
 
   static mockDatabase() {
     const insert = pool.query(createAdminUser, defaultAdmin)
-      .then(result => console.log(result.command))
-      .catch(error => console.log(error));
+      .then()
+      .catch((error) => {
+        throw error;
+      });
     return insert;
   }
 
   static mockClient() {
     const insert = pool.query(createAdminUser, defaultTestClient)
-      .then(result => console.log(`USER TABLE: ${result.command}ED USER`))
-      .catch(error => console.log(error));
+      .then()
+      .catch((error) => {
+        throw error;
+      });
     return insert;
   }
 }

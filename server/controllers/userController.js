@@ -8,7 +8,7 @@ class UserController {
   static create(req, res) {
     const {
       email, firstName, lastName,
-      stateOfResidence, phoneNumber, title, password, dateOfBirth, sex
+      stateOfResidence, phoneNumber, title, password, dateOfBirth, sex,
     } = req.body;
 
     const params = [
@@ -20,7 +20,7 @@ class UserController {
       phoneNumber,
       title,
       dateOfBirth,
-      sex
+      sex,
     ];
 
     pool.query(createUser, params)
@@ -32,7 +32,7 @@ class UserController {
         data.token = token;
         return res.status(201).json({
           status: 201,
-          data: [data]
+          data: [data],
         });
       })
       .catch((err) => {
@@ -40,13 +40,13 @@ class UserController {
           return res.status(409)
             .send({
               status: 409,
-              error: 'Email already exist'
+              error: 'Email already exist',
             });
         }
         return res.status(500)
           .send({
             status: 500,
-            error: 'Something went wrong'
+            error: 'Something went wrong',
           });
       });
   }
@@ -58,28 +58,27 @@ class UserController {
         if (queryData.rowCount < 1) {
           return res.status(401).json({
             status: 401,
-            error: 'Wrong email and password combination'
+            error: 'Wrong email and password combination',
           });
         }
         const hashPassword = queryData.rows[0].password;
         if (!validator.checkPassword(password, hashPassword)) {
           return res.status(401).json({
             status: 401,
-            error: 'Wrong email and password combination'
+            error: 'Wrong email and password combination',
           });
         }
         const { password: pass, ...data } = queryData.rows[0];
         data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
         return res.status(200).json({
           status: 200,
-          data
+          data,
         });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         res.send({
           status: 500,
-          error: 'something went wrong'
+          error: 'something went wrong',
         });
       });
   }

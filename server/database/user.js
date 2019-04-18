@@ -16,7 +16,7 @@ const structure = {
   phoneNumber: String,
   title: String,
   dateOfBirth: String,
-  sex: String
+  sex: String,
 };
 
 const user = new User(structure);

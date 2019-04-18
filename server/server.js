@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 const PORT = process.env.PORT || 3000;
 const corsOptions = {
   origin: '*',
-  credentials: true
+  credentials: true,
 };
 
 // adding cors middleware
@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Your server is running on port ${PORT}`);
 });
 

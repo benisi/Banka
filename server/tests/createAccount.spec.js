@@ -4,7 +4,7 @@ import app from '../server';
 import { validLoginData } from './test-data/users';
 import {
   validAccountData, invalidAccountType, invalidAccountCategory,
-  undefinedAccountType, undefinedAccountCategory
+  undefinedAccountType, undefinedAccountCategory,
 } from './test-data/account';
 
 chai.use(chaiHttp);
@@ -21,7 +21,6 @@ describe('User should be able to login', () => {
       .post('/api/v1/auth/signin')
       .send(validLoginData)
       .end((err, res) => {
-        console.log(res.body);
         expect(res).to.have.status(200);
         const { token } = res.body.data;
         globalToken = token;

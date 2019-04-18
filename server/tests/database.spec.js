@@ -1,18 +1,18 @@
 import chai from 'chai';
-import model from '../database/model';
+import Model from '../database/model';
 
 const { expect, should } = chai;
 should();
 
 const structure = {
   name: String,
-  age: Number
+  age: Number,
 };
 const data = {
   name: 'Ben',
-  age: 22
+  age: 22,
 };
-const myModel = new model(structure);
+const myModel = new Model(structure);
 
 describe('Test for model reliability', () => {
   it('should return an object when creating one', (done) => {
