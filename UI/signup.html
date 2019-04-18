@@ -17,12 +17,12 @@
             <form>
                 <div class="form-control">
                     <label for="email">Enter Email</label>
-                    <input id="email" type="email" placeholder="john@doe.com" autocomplete="email">
+                    <input id="email" type="email" placeholder="john@doe.com" autocomplete="email" required>
                 </div>
                 <div class="form-control">
                     <label for="title">Title</label>
-                    <select id="title">
-                        <option disabled selected>SELECT</option>
+                    <select id="title" required>
+                        <option disabled value="" selected>SELECT</option>
                         <option value="45">ALHAJA</option>
                         <option value="44">ALHAJI</option>
                         <option value="32">BARRISTER</option>
@@ -42,32 +42,32 @@
                 </div>
                 <div class="form-control">
                     <label for="first-name">Enter First Name</label>
-                    <input id="first-name" type="text" placeholder="john" autocomplete="name">
+                    <input id="first-name" type="text" placeholder="john" autocomplete="name" required>
                 </div>
                 <div class="form-control">
                     <label for="last-name">Enter Last Name</label>
-                    <input id="last-name" type="text" placeholder="doe" autocomplete="family-name">
+                    <input id="last-name" type="text" placeholder="doe" autocomplete="family-name" required>
                 </div>
                 <div class="form-control">
                     <label for="date-of-birth">Date of birth</label>
-                    <input id="date-of-birth" type="date">
+                    <input id="date-of-birth" type="date" required>
                 </div>
                 <div class="form-control">
                     <label for="sex">Sex</label>
-                    <select id="sex">
-                        <option disabled selected>SELECT</option>
+                    <select id="sex" required>
+                        <option disabled value="" selected>SELECT</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                 </div>
                 <div class="form-control">
                     <label for="tel">Phone number</label>
-                    <input id="tel" type="tel" placeholder="234703344XXXX">
+                    <input id="tel" type="tel" placeholder="234703344XXXX" pattern="^[+]?[0-9]{11,14}$" required>
                 </div>
                 <div class="form-control">
                     <label for="state">State Of Residence</label>
-                    <select id="state">
-                        <option disabled selected>SELECT</option>
+                    <select id="state" required>
+                        <option disabled value="" selected>SELECT</option>
                         <option>ABIA</option>
                         <option>ADAMAWA</option>
                         <option>AKWA-IBOM</option>
@@ -109,11 +109,11 @@
                 </div>
                 <div class="form-control">
                     <label for="password">Enter Password</label>
-                    <input id="password" type="password" autocomplete="new-password">
+                    <input id="password" type="password" autocomplete="new-password" required>
                 </div>
                 <div class="form-control">
                     <label for="verify-password">Verify Password</label>
-                    <input id="verify-password" type="password" autocomplete="new-password">
+                    <input id="verify-password" type="password" autocomplete="new-password" required>
                 </div>
                 <button class="form-submit pull-right" id="submit">Sign up</button>
                 <div class="clear-fix"></div>

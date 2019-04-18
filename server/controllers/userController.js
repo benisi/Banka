@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
 import pool from '../database/dbConnection';
-import { createUser } from '../database/sqlQueries';
-import user from '../database/user';
+import { createUser, loginUser } from '../database/sqlQueries';
 import auth from '../helpers/auth';
 import validator from '../helpers/validator';
 
@@ -53,21 +52,36 @@ class UserController {
   }
 
   static signIn(req, res) {
-    const users = user.findAll();
     const { email, password } = req.body;
-    const foundUser = users.find(entry => entry.email === email.trim());
-    if (!foundUser || !validator.checkPassword(password, foundUser.password)) {
-      return res.status(401).json({
-        status: 401,
-        error: 'Wrong email and password combination'
+    pool.query(loginUser, [email])
+      .then((queryData) => {
+        if (queryData.rowCount < 1) {
+          return res.status(401).json({
+            status: 401,
+            error: 'Wrong email and password combination'
+          });
+        }
+        const hashPassword = queryData.rows[0].password;
+        if (!validator.checkPassword(password, hashPassword)) {
+          return res.status(401).json({
+            status: 401,
+            error: 'Wrong email and password combination'
+          });
+        }
+        const { password: pass, ...data } = queryData.rows[0];
+        data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
+        return res.status(200).json({
+          status: 200,
+          data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send({
+          status: 500,
+          error: 'something went wrong'
+        });
       });
-    }
-    const { password: pass, ...data } = foundUser;
-    data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
-    return res.status(200).json({
-      status: 200,
-      data
-    });
   }
 }
 

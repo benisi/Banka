@@ -51,7 +51,7 @@
                             <label for="search">Search Account Number</label>
                             <form>
                                 <div class="search-input">
-                                    <input id="search" type="number" >
+                                    <input id="search" type="number" required>
                                     <button class="form-submit"><i class="fa fa-search"></i></button>
                                 </div>
                             </form>
@@ -68,11 +68,11 @@
                             <p>Available Balance : <span>&#8358;</span>1000,000.00</p>
                         </div>
                     </div>
-                    <div data-modalId="confirm">
+                    <div>
                         <div class="icon-input">
-                            <span>&#8358;</span><input id="amount" value="2000" placeholder="10000" type="number">
+                            <span>&#8358;</span><input id="amount" value="" placeholder="10000" type="number" required>
                         </div>
-                        <button class="form-submit w-100 pt-1 modal-action">Credit Account</button>
+                        <button id="amountAction" class="form-submit w-100 pt-1 modal-action" disabled>Credit Account</button>
                     </div>
                 </div>    
             </div>
@@ -83,9 +83,33 @@
     </div>
     <script src="js/index.js"></script>
     <script>
+        document.querySelector('#amount').addEventListener('keyup', (event) =>{
+            const amountSelector = event.target;
+            const amountSubmitButton = document.querySelector('#amountAction');
+            const data = amountSelector.value;   
+            if(Number.isNaN(parseInt(data, 10))){ 
+              amountSubmitButton.disabled = true; 
+              const text = document.createElement('p');
+              text.innerText = 'Please enter a number';
+              text.style.color = 'red';
+              text.className = 'errorText'
+              const errorText = document.querySelector('.errorText');
+                if(!errorText){
+                    amountSelector.parentNode.appendChild(text);  
+                }
+              amountSelector.focus();
+              amountSelector.parentNode.style.border = '1px solid red';  
+            }else{
+                amountSubmitButton.disabled = false; 
+                amountSelector.parentNode.style.border = '1px solid #e3e5e9';
+                const errorText = document.querySelector('.errorText');
+                if(errorText){
+                    errorText.remove();
+                }
+            }
+        });
          confirm(".modal-action", "Confirm Transaction", "Are you sure you want to credit this account", () => {
-            const data = document.querySelector("#amount").value;
-            alert( 2000, "success", `Account was credited with ${data} successfully`)
+                alert( 2000, "success", `Account credit was successful`) 
         });
     </script>
 </body>

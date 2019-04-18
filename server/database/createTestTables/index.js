@@ -5,6 +5,8 @@ import transaction from './createTransaction';
 user.createTable()
   .then(() => account.createTable())
   .then(() => transaction.createTable())
+  .then(() => user.mockDatabase())
+  .then(() => user.mockClient())
   .catch((error) => {
     console.log(error);
   });

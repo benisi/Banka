@@ -1,5 +1,32 @@
 import bcrypt from 'bcrypt';
 
+const defaultAdmin = [
+  'admin@gmail.com',
+  'Benjamin',
+  'Isidahomen',
+  bcrypt.hashSync('adminpass1', 10),
+  'edo',
+  '07035361846',
+  'sir',
+  '02/09/1960',
+  'male',
+  'staff',
+  true
+];
+const defaultTestClient = [
+  'client@gmail.com',
+  'Benjamin',
+  'Isidahomen',
+  bcrypt.hashSync('clientpass1', 10),
+  'edo',
+  '07035361846',
+  'sir',
+  '02/09/1960',
+  'male',
+  'client',
+  false
+];
+
 const defaultUser = {
   email: 'admin@gmail.com',
   firstName: 'Benjamin',
@@ -27,16 +54,30 @@ const defaultClient = {
   sex: 'male'
 };
 const validUser = {
-  email: 'user222@gmail.com',
+  email: 'admin@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: 'hfh3hfhfhfh',
-  type: 'client',
-  isAdmin: false,
+  password: 'adminpass1',
+  type: 'staff',
+  isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
   title: 'master',
+  dateOfBirth: '02/09/1960',
+  sex: 'male'
+};
+
+const validUser1 = {
+  email: 'admin33@gmail.com',
+  firstName: 'Benjamin',
+  lastName: 'Isidahomen',
+  password: 'adminpass1',
+  type: 'staff',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  title: 'master',
+  dateOfBirth: '02/09/1960',
   sex: 'male'
 };
 
@@ -310,7 +351,7 @@ const adminLoginData = {
   password: 'adminpass1'
 };
 const clientLoginData = {
-  email: 'user@gmail.com',
+  email: 'client@gmail.com',
   password: 'clientpass1'
 };
 const invalidLoginData = {
@@ -331,7 +372,7 @@ export {
   nonStringEmail, emptyFirstName, invalidFirstName, undefineFirstName,
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
   nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
-  validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber,
+  validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber, validUser1,
   invalidSex, clientLoginData, adminLoginData, defaultClient, invalidDateOfBirth,
-  undefinedEmailLoginData, undefinedPasswordLoginData
+  undefinedEmailLoginData, undefinedPasswordLoginData, defaultAdmin, defaultTestClient
 };

@@ -1,4 +1,6 @@
 import pool from '../dbConnection';
+import { createAdminUser } from '../sqlQueries';
+import { defaultAdmin, defaultTestClient } from '../../tests/test-data/users';
 
 const createUsersTable = `DROP TABLE IF EXISTS users CASCADE;
     CREATE TABLE users (
@@ -24,6 +26,20 @@ class UsersTableHandler {
       .then(result => console.log(`usersTable: ${result[0].command}, ${result[1].command}`))
       .catch(error => console.log(`users table ${error}`));
     return create;
+  }
+
+  static mockDatabase() {
+    const insert = pool.query(createAdminUser, defaultAdmin)
+      .then(result => console.log(result.command))
+      .catch(error => console.log(error));
+    return insert;
+  }
+
+  static mockClient() {
+    const insert = pool.query(createAdminUser, defaultTestClient)
+      .then(result => console.log(`USER TABLE: ${result.command}ED USER`))
+      .catch(error => console.log(error));
+    return insert;
   }
 }
 

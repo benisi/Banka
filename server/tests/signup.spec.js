@@ -6,7 +6,7 @@ import {
   validUser, undefineEmail, invalidEmail, nonStringEmail,
   nonStringFirstName, undefineFirstName, invalidFirstName, nonStringLastName,
   undefineLastName, invalidLastName, invalidPassword, invalidDateOfBirth,
-  invalidPhoneNumber, invalidSex
+  invalidPhoneNumber, invalidSex, validUser1
 } from './test-data/users';
 
 chai.use(chaiHttp);
@@ -46,9 +46,8 @@ describe('Tests to create a user', () => {
   it('should return 201 success status code', (done) => {
     chai.request(app)
       .post(url)
-      .send(validUser)
+      .send(validUser1)
       .end((err, res) => {
-        console.log(res.body.error);
         expect(res).to.have.status(201);
         res.body.data.should.be.a('array');
         expect(res.body.data[0]).to.have.property('token');
@@ -77,6 +76,7 @@ describe('Tests if email exist', () => {
       .post(url)
       .send(validUser)
       .end((err, res) => {
+        console.log(res.body);
         expect(res).to.have.status(409);
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');

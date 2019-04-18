@@ -87,6 +87,9 @@ a{
 .brand-img img {
     width: 100%;
 }
+button:disabled {
+    background: #dddddd;
+  }
 .clear-fix{
     clear: both;
 }
@@ -214,7 +217,7 @@ a{
 .pull-right{
     float: right;
 }
-.form-submit:hover{
+.form-submit:hover:enabled{
     background-color: var(--accent-color);
     transform: translateY(-3px);
     -moz-box-shadow: 3px 10px 14px 1px  rgba(0,0,0,0.2);
@@ -225,7 +228,7 @@ a{
     transition:all 0.3s ease-in;
 }
 
-.form-submit:active {
+.form-submit:active:enabled {
     transform: translateY(0);
     -webkit-box-shadow: 3px 3px 5px 0 rgba(0,0,0,0.2);
     box-shadow: 3px 3px 5px 0  rgba(0,0,0,0.2);
