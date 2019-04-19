@@ -23,8 +23,6 @@ const defaultTestClient = [
   'sir',
   '02/09/1960',
   'male',
-  'client',
-  false,
 ];
 
 const defaultUser = {

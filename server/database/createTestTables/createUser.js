@@ -1,5 +1,5 @@
 import pool from '../dbConnection';
-import { createAdminUser } from '../sqlQueries';
+import { AdminUser, ClientUser } from '../sqlUser';
 import { defaultAdmin, defaultTestClient } from '../../tests/test-data/users';
 
 const createUsersTable = `DROP TABLE IF EXISTS users CASCADE;
@@ -31,7 +31,7 @@ class UsersTableHandler {
   }
 
   static mockDatabase() {
-    const insert = pool.query(createAdminUser, defaultAdmin)
+    const insert = pool.query(AdminUser.insert(), defaultAdmin)
       .then()
       .catch((error) => {
         throw error;
@@ -40,7 +40,7 @@ class UsersTableHandler {
   }
 
   static mockClient() {
-    const insert = pool.query(createAdminUser, defaultTestClient)
+    const insert = pool.query(ClientUser.insert(), defaultTestClient)
       .then()
       .catch((error) => {
         throw error;

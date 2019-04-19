@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import pool from '../database/dbConnection';
-import { createUser, loginUser } from '../database/sqlQueries';
+import { ClientUser } from '../database/sqlUser';
 import auth from '../helpers/auth';
 import validator from '../helpers/validator';
 
@@ -23,7 +23,7 @@ class UserController {
       sex,
     ];
 
-    pool.query(createUser, params)
+    pool.query(ClientUser.insert(), params)
       .then((queryData) => {
         const createdUser = queryData.rows[0];
         const { id, type, isAdmin } = createdUser;
@@ -53,7 +53,7 @@ class UserController {
 
   static signIn(req, res) {
     const { email, password } = req.body;
-    pool.query(loginUser, [email])
+    pool.query(ClientUser.selectWhere(['email']), [email])
       .then((queryData) => {
         if (queryData.rowCount < 1) {
           return res.status(401).json({
