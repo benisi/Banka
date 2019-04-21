@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import auth from '../helpers/auth';
+import validator from '../helpers/validator';
 import { authTestSignup, authTestlogin } from './test-data/users';
 import app from '../server';
 
@@ -86,6 +87,17 @@ describe('Test for invalid token', () => {
 describe('Test to check for the functioning of the auth helper', () => {
   it('should return a token', (done) => {
     auth.createToken(payload).should.be.a('string');
+    done();
+  });
+});
+
+describe('Test to check for the functioning of the validator helper is boolean', () => {
+  it('should be true', (done) => {
+    expect(validator.itIsBoolean(true)).to.be.equal(true);
+    done();
+  });
+  it('should be false', (done) => {
+    expect(validator.itIsBoolean('jjj')).to.be.equal(false);
     done();
   });
 });

@@ -7,6 +7,7 @@ class Transaction extends SqlModel {
       'accountNumber',
       'cashier',
       'amount',
+      'owner',
       'oldBalance',
       'newBalance',
     ];

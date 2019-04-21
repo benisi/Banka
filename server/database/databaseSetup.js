@@ -82,8 +82,7 @@ const createTransactionTableQuery = `CREATE TABLE IF NOT EXISTS transactions (
   owner INTEGER NOT NULL,
   oldBalance FLOAT(2) NOT NULL,
   newBalance FLOAT(2) NOT NULL,
-  FOREIGN KEY (cashier) REFERENCES users (id) ON DELETE CASCADE,
-  FOREIGN KEY (owner) REFERENCES accounts
+  FOREIGN KEY (cashier) REFERENCES users (id)
 )`;
 
 const createTransactionTable = () => {

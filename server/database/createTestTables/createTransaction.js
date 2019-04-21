@@ -8,9 +8,10 @@ const createTransactionTable = `DROP TABLE IF EXISTS transactions CASCADE;
         cashier INTEGER NOT NULL,
         accountNumber INTEGER NOT NULL,
         amount FLOAT(2) NOT NULL,
+        owner INTEGER NOT NULL,
         oldBalance FLOAT(2) NOT NULL,
         newBalance FLOAT(2) NOT NULL,
-        FOREIGN KEY (cashier) REFERENCES users (id) ON DELETE CASCADE
+        FOREIGN KEY (cashier) REFERENCES users (id)
     )`;
 
 class TransactionsTableHandler {

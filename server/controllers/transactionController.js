@@ -24,7 +24,7 @@ class TransactionController {
         message: 'Something went wrong',
       });
     }
-    const { balance: oldBalance } = accountData.rows[0];
+    const { balance: oldBalance, owner } = accountData.rows[0];
     const updatedAmount = parseFloat(amount + oldBalance);
     try {
       updatedAccount = await accountInstance.updateWhere(['balance'], ['accountnumber'], [accountNumber, updatedAmount]);
@@ -35,7 +35,7 @@ class TransactionController {
       });
     }
 
-    const params = ['credit', accountNumber, cashier, amount, oldBalance,
+    const params = ['credit', accountNumber, cashier, amount, owner, oldBalance,
       updatedAccount.rows[0].balance,
     ];
     try {
@@ -87,7 +87,7 @@ class TransactionController {
         message: 'Something went wrong',
       });
     }
-    const { balance: oldBalance, status } = accountData.rows[0];
+    const { balance: oldBalance, status, owner } = accountData.rows[0];
     if (status === 'dormant') {
       return res.status(400).json({
         status: 400,
@@ -110,7 +110,7 @@ class TransactionController {
           error: 'Failed to debit account',
         });
     }
-    const params = ['debit', accountNumber, cashier, amount, oldBalance,
+    const params = ['debit', accountNumber, cashier, amount, owner, oldBalance,
       updatedAccount.rows[0].balance,
     ];
     try {
@@ -142,7 +142,17 @@ class TransactionController {
   static async getUserTransactions(req, res) {
     const { accountNumber } = req.params;
     const requesterId = req.body.id;
-    const accountData = await Account.init().findWhere(['accountnumber'], accountNumber);
+    let accountData;
+    let transactionRecords;
+    try {
+      accountData = await Account.init().findWhere(['accountnumber'], accountNumber);
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
+      });
+    }
+
     if (accountData.rowCount < 1) {
       return res.status(404).json({
         status: 404,
@@ -155,11 +165,59 @@ class TransactionController {
         message: 'You dont have the permission to view this data',
       });
     }
-    const transactionRecords = await Transaction.init().findWhere(['accountnumber'], accountNumber);
+    try {
+      transactionRecords = await Transaction.init().findWhere(['accountnumber'], accountNumber);
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
+      });
+    }
+
     const data = transactionRecords.rows;
     return res.status(200).json({
       status: 200,
       data,
+    });
+  }
+
+  static async getSingleTransaction(req, res) {
+    const { transactionId } = req.params;
+    const requesterId = req.body.id;
+    let transactionRow;
+    try {
+      transactionRow = await Transaction.init().findWhere(['id'], transactionId);
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
+      });
+    }
+
+    if (transactionRow.rowCount > 0) {
+      const transactionRecord = transactionRow.rows[0];
+      if (parseInt(transactionRecord.owner, 10) !== parseInt(requesterId, 10)) {
+        return res.status(403).json({
+          status: 403,
+          message: 'You dont have the permission to view this data',
+        });
+      }
+      const {
+        createdon: createdOn, type, accountnumber: accountNumber,
+        amount, oldbalance: oldBalance, newbalance: newBalance,
+      } = transactionRecord;
+      return res.status(200).json({
+        status: 200,
+        data: [
+          {
+            transactionId, createdOn, type, accountNumber, amount, oldBalance, newBalance,
+          },
+        ],
+      });
+    }
+    return res.status(404).json({
+      status: 404,
+      message: 'Transaction don\'t exist',
     });
   }
 }

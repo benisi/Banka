@@ -84,6 +84,19 @@ describe('Test to debit account', () => {
   });
 });
 
+describe('Test to debit account with invalid account number', () => {
+  it('should return a status 500', (done) => {
+    chai.request(app)
+      .post('/api/v1/transactions/kkkkkk/debit')
+      .set('Authorization', globalToken)
+      .send(debitAccountData)
+      .end((err, res) => {
+        expect(res).to.have.status(500);
+        done();
+      });
+  });
+});
+
 describe('Test when amount is not a number', () => {
   it('should return a status 400', (done) => {
     chai.request(app)
