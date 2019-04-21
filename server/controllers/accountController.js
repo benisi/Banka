@@ -35,7 +35,7 @@ class AccountController {
       id: owner, firstname: firstName, lastname: lastName, email,
     } = ownerData.rows[0];
     const status = 'active';
-    const balance = 0.10;
+    const balance = parseFloat(0.10).toFixed(2);
     const accountNumber = Utility.generateAccountNumber(type, trackedData.rows[0].id);
     const accountData = [
       accountNumber, owner, type, status, balance, category,

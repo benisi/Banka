@@ -43,7 +43,6 @@ const createAccountTableQuery = `CREATE TABLE IF NOT EXISTS accounts(
   balance FLOAT(2) NOT NULL,
   category CHARACTER VARYING(13) NOT NULL,
   createdOn TIMESTAMP NOT NULL DEFAULT NOW(),
-  owner INTEGER NOT NULL,
   FOREIGN KEY (owner) REFERENCES users (id) ON DELETE CASCADE
 )`;
 
@@ -80,9 +79,11 @@ const createTransactionTableQuery = `CREATE TABLE IF NOT EXISTS transactions (
   cashier INTEGER NOT NULL,
   accountNumber INTEGER NOT NULL,
   amount FLOAT(2) NOT NULL,
+  owner INTEGER NOT NULL,
   oldBalance FLOAT(2) NOT NULL,
   newBalance FLOAT(2) NOT NULL,
-  FOREIGN KEY (cashier) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (cashier) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (owner) REFERENCES accounts
 )`;
 
 const createTransactionTable = () => {

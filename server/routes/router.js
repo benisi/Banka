@@ -16,6 +16,7 @@ router.get('/', (req, resp) => resp.status(200).json({ message: 'Hello there, We
 // User Auth Routes
 router.post('/api/v1/auth/signup', userValidator.signUp, UserController.create);
 router.post('/api/v1/auth/signin', userValidator.signIn, UserController.signIn);
+router.get('/api/v1/accounts/:accountNumber/transactions', [auth.verifyToken], TransactionController.getUserTransactions);
 
 // Bank account route
 router.post('/api/v1/accounts', [auth.verifyToken, accountValidator.createAccountValidator], AccountController.create);

@@ -24,7 +24,7 @@ class TransactionController {
         message: 'Something went wrong',
       });
     }
-    const oldBalance = accountData.rows[0].balance;
+    const { balance: oldBalance } = accountData.rows[0];
     const updatedAmount = parseFloat(amount + oldBalance);
     try {
       updatedAccount = await accountInstance.updateWhere(['balance'], ['accountnumber'], [accountNumber, updatedAmount]);
@@ -136,6 +136,30 @@ class TransactionController {
     return res.status(200).json({
       status: 200,
       data: [data],
+    });
+  }
+
+  static async getUserTransactions(req, res) {
+    const { accountNumber } = req.params;
+    const requesterId = req.body.id;
+    const accountData = await Account.init().findWhere(['accountnumber'], accountNumber);
+    if (accountData.rowCount < 1) {
+      return res.status(404).json({
+        status: 404,
+        message: `Account ${accountNumber} is not in our database`,
+      });
+    }
+    if (parseInt(accountData.rows[0].owner, 10) !== parseInt(requesterId, 10)) {
+      return res.status(403).json({
+        status: 403,
+        message: 'You dont have the permission to view this data',
+      });
+    }
+    const transactionRecords = await Transaction.init().findWhere(['accountnumber'], accountNumber);
+    const data = transactionRecords.rows;
+    return res.status(200).json({
+      status: 200,
+      data,
     });
   }
 }

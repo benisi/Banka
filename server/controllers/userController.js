@@ -22,7 +22,8 @@ class UserController {
       sex,
     ];
     try {
-      const createdUser = await User.init().insert(params);
+      const userInstances = User.init();
+      const createdUser = await userInstances.insert(params);
       const { id, type, isAdmin } = createdUser.rows[0];
       const token = auth.createToken({ id, type, isAdmin });
       const { password: pass, ...data } = createdUser.rows[0];
