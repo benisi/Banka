@@ -4,8 +4,6 @@ import app from '../server';
 import {
   validLoginData, invalidLoginData, undefinedEmailLoginData, undefinedPasswordLoginData,
 } from './test-data/users';
-import validator from '../helpers/validator';
-import user from '../database/user';
 
 chai.use(chaiHttp);
 
@@ -62,15 +60,6 @@ describe('Tests for valid input for user login', () => {
         expect(res.body.error).to.be.equal('Wrong email and password combination');
         done();
       });
-  });
-});
-
-describe('Test for bcrypt password match', () => {
-  it('should return true when password are compared', (done) => {
-    const users = user.findAll();
-    const foundUser = users.find(entry => entry.email === validLoginData.email);
-    validator.checkPassword(validLoginData.password, foundUser.password).should.be.equal(true);
-    done();
   });
 });
 

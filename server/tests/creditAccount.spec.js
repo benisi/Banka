@@ -38,18 +38,9 @@ describe('Test to create a user bank account', () => {
       .send(validAccountData)
       .end((err, res) => {
         expect(res).to.have.status(201);
-        const { accountNumber } = res.body.data;
-        accNumber = accountNumber;
-        done();
-      });
-  });
-  it('should have a property called data', (done) => {
-    chai.request(app)
-      .post(createUrl)
-      .set('Authorization', globalToken)
-      .send(validAccountData)
-      .end((err, res) => {
         expect(res.body).to.have.a.property('data');
+        const { accountNumber } = res.body.data[0];
+        accNumber = accountNumber;
         done();
       });
   });

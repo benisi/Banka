@@ -40,7 +40,7 @@ describe('Test to create a user bank account', () => {
       .send(validAccountData, 'watin be this')
       .end((err, res) => {
         expect(res).to.have.status(201);
-        const { accountNumber } = res.body.data;
+        const { accountNumber } = res.body.data[0];
         accNumber = accountNumber;
         done();
       });

@@ -1,11 +1,10 @@
 import bcrypt from 'bcrypt';
-import pool from '../database/dbConnection';
-import { ClientUser } from '../database/sqlUser';
+import User from '../database/sqlUser';
 import auth from '../helpers/auth';
 import validator from '../helpers/validator';
 
 class UserController {
-  static create(req, res) {
+  static async create(req, res) {
     const {
       email, firstName, lastName,
       stateOfResidence, phoneNumber, title, password, dateOfBirth, sex,
@@ -22,65 +21,55 @@ class UserController {
       dateOfBirth,
       sex,
     ];
-
-    pool.query(ClientUser.insert(), params)
-      .then((queryData) => {
-        const createdUser = queryData.rows[0];
-        const { id, type, isAdmin } = createdUser;
-        const token = auth.createToken({ id, type, isAdmin });
-        const { password: pass, ...data } = createdUser;
-        data.token = token;
-        return res.status(201).json({
-          status: 201,
-          data: [data],
-        });
-      })
-      .catch((err) => {
-        if (err.code === '23505') {
-          return res.status(409)
-            .send({
-              status: 409,
-              error: 'Email already exist',
-            });
-        }
-        return res.status(500)
-          .send({
-            status: 500,
-            error: 'Something went wrong',
-          });
+    try {
+      const createdUser = await User.init().insert(params);
+      const { id, type, isAdmin } = createdUser.rows[0];
+      const token = auth.createToken({ id, type, isAdmin });
+      const { password: pass, ...data } = createdUser.rows[0];
+      data.token = token;
+      return res.status(201).json({
+        status: 201,
+        data: [data],
       });
+    } catch (error) {
+      return res.status(409)
+        .send({
+          status: 409,
+          error: 'Email already exist',
+        });
+    }
   }
 
-  static signIn(req, res) {
+  static async signIn(req, res) {
     const { email, password } = req.body;
-    pool.query(ClientUser.selectWhere(['email']), [email])
-      .then((queryData) => {
-        if (queryData.rowCount < 1) {
-          return res.status(401).json({
-            status: 401,
-            error: 'Wrong email and password combination',
-          });
-        }
-        const hashPassword = queryData.rows[0].password;
-        if (!validator.checkPassword(password, hashPassword)) {
-          return res.status(401).json({
-            status: 401,
-            error: 'Wrong email and password combination',
-          });
-        }
-        const { password: pass, ...data } = queryData.rows[0];
-        data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
-        return res.status(200).json({
-          status: 200,
-          data: [data],
+    try {
+      const queryData = await User.init().findWhere(['email'], [email]);
+      if (queryData.rowCount < 1) {
+        return res.status(401).json({
+          status: 401,
+          error: 'Wrong email and password combination',
         });
-      })
-      .catch(() => {
-        res.send({
-          status: 500,
-          error: 'something went wrong',
+      }
+      const hashPassword = queryData.rows[0].password;
+      if (!validator.checkPassword(password, hashPassword)) {
+        return res.status(401).json({
+          status: 401,
+          error: 'Wrong email and password combination',
         });
+      }
+      const { password: pass, ...data } = queryData.rows[0];
+      data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
+      return res.status(200).json({
+        status: 200,
+        data: [data],
       });
+    } catch (error) {
+      res.send({
+        status: 500,
+        error: 'something went wrong',
+      });
+    }
+    return null;
   }
 }
 

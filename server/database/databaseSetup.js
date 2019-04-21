@@ -38,10 +38,11 @@ const createUserTable = () => {
 const createAccountTableQuery = `CREATE TABLE IF NOT EXISTS accounts(
   id BIGSERIAL PRIMARY KEY NOT NULL,
   type CHARACTER VARYING(7) NOT NULL,
-  status CHARACTER VARYING(6) NOT NULL,
+  accountNumber INTEGER NOT NULL,
+  status CHARACTER VARYING(8) NOT NULL,
   balance FLOAT(2) NOT NULL,
   category CHARACTER VARYING(13) NOT NULL,
-  createdOn TIMESTAMP NOT NULL,
+  createdOn TIMESTAMP NOT NULL DEFAULT NOW(),
   owner INTEGER NOT NULL,
   FOREIGN KEY (owner) REFERENCES users (id) ON DELETE CASCADE
 )`;
@@ -57,12 +58,28 @@ const createAccountTable = () => {
     });
 };
 
+const createAccountTrackingTableQuery = `CREATE TABLE IF NOT EXISTS trackings (
+  id BIGSERIAL PRIMARY KEY NOT NULL,
+  type CHARACTER VARYING(7) NOT NULL
+)`;
+
+const createAccountTrackingTable = () => {
+  pool.query(createAccountTrackingTableQuery).then(() => {
+    pool.end();
+  })
+    .catch((error) => {
+      pool.end();
+      throw new Error(error);
+    });
+};
+
 const createTransactionTableQuery = `CREATE TABLE IF NOT EXISTS transactions (
   id BIGSERIAL PRIMARY KEY NOT NULL,
   type CHARACTER VARYING(7) NOT NULL,
-  createdOn TIMESTAMP NOT NULL,
+  createdOn TIMESTAMP NOT NULL DEFAULT NOW(),
   cashier INTEGER NOT NULL,
   accountNumber INTEGER NOT NULL,
+  amount FLOAT(2) NOT NULL,
   oldBalance FLOAT(2) NOT NULL,
   newBalance FLOAT(2) NOT NULL,
   FOREIGN KEY (cashier) REFERENCES users (id) ON DELETE CASCADE
@@ -81,7 +98,7 @@ const createTransactionTable = () => {
 
 
 module.exports = {
-  createUserTable, createAccountTable, createTransactionTable,
+  createUserTable, createAccountTable, createTransactionTable, createAccountTrackingTable,
 };
 
 require('make-runnable');

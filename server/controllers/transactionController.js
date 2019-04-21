@@ -1,127 +1,141 @@
-import transaction from '../database/transaction';
-import account from '../database/account';
+import Account from '../database/sqlAccount';
+import Transaction from '../database/sqlTransaction';
 
 class TransactionController {
-  static credit(req, res) {
-    let { accountNumber } = req.params;
+  static async credit(req, res) {
+    const { accountNumber } = req.params;
+    const cashier = parseInt(req.body.id, 10);
     const { amount } = req.body;
-    const accountData = account.getAccount(parseInt(accountNumber, 10));
-    const type = 'credit';
-
-    if (!accountData) {
-      return res.status(404).json({
-        status: 404,
-        error: `Account ${accountNumber} does not exist`,
+    const accountInstance = Account.init();
+    let accountData;
+    let updatedAccount;
+    let transactionResult;
+    try {
+      accountData = await accountInstance.findWhere(['accountnumber'], accountNumber);
+      if (accountData.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          message: `Account ${accountNumber} does not exist`,
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
       });
     }
-
-    const { balance } = accountData;
-    accountNumber = parseInt(accountNumber, 10);
-    const cashierId = parseInt(req.body.id, 10);
-    const oldBalance = parseFloat(balance);
-    accountData.balance += parseFloat(amount);
-    const transactionData = {
-      createdOn: new Date(),
-      type,
-      accountNumber,
-      cashier: cashierId,
-      amount,
-      oldBalance,
-      newBalance: accountData.balance,
-    };
-
-    const createdTransaction = transaction.create(transactionData);
-    if (!createdTransaction) {
+    const oldBalance = accountData.rows[0].balance;
+    const updatedAmount = parseFloat(amount + oldBalance);
+    try {
+      updatedAccount = await accountInstance.updateWhere(['balance'], ['accountnumber'], [accountNumber, updatedAmount]);
+    } catch (error) {
       return res.status(500).json({
         status: 500,
         error: 'Failed to credit account',
       });
     }
 
-    const {
-      cashier, id: transactionId, type: transactionType, newBalance: accountBalance,
-    } = createdTransaction;
+    const params = ['credit', accountNumber, cashier, amount, oldBalance,
+      updatedAccount.rows[0].balance,
+    ];
+    try {
+      transactionResult = await Transaction.init().insert(params);
+    } catch (error) {
+      return res.status(500)
+        .json({
+          status: 500,
+          error: 'Failed to credit account',
+        });
+    }
 
+    const {
+      id: transactionId, newbalance: accountBalance, type: transactionType,
+    } = transactionResult.rows[0];
     const data = {
       transactionId,
-      accountNumber: accountNumber.toString(),
+      accountNumber,
       amount,
       cashier,
       transactionType,
-      accountBalance: accountBalance.toFixed(2).toString(),
+      accountBalance,
     };
-
     return res.status(200).json({
       status: 200,
-      data,
+      data: [data],
     });
   }
 
-  static debit(req, res) {
-    let { accountNumber } = req.params;
+  static async debit(req, res) {
+    const { accountNumber } = req.params;
+    const cashier = parseInt(req.body.id, 10);
     const { amount } = req.body;
-    const accountData = account.getAccount(parseInt(accountNumber, 10));
-    const type = 'debit';
-
-    if (!accountData) {
-      return res.status(404).json({
-        status: 404,
-        error: `Account ${accountNumber} does not exist`,
+    let accountData;
+    let updatedAccount;
+    let transactionResult;
+    const accountInstance = Account.init();
+    try {
+      accountData = await accountInstance.findWhere(['accountnumber'], accountNumber);
+      if (accountData.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          message: `Account ${accountNumber} does not exist`,
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
       });
     }
-
-    if (accountData.status === 'dormant') {
+    const { balance: oldBalance, status } = accountData.rows[0];
+    if (status === 'dormant') {
       return res.status(400).json({
         status: 400,
-        error: 'Cant withdraw from a dormant account, please activate account',
+        error: 'Can\'t withdraw from a dormant account, please activate account',
       });
     }
-
-    accountNumber = parseInt(accountData.accountNumber, 10);
-    const cashierId = parseInt(req.body.id, 10);
-    const oldBalance = parseFloat(accountData.balance);
     if (oldBalance < parseFloat(amount)) {
       return res.status(400).json({
         status: 400,
         error: 'Insufficient fund',
       });
     }
-
-    accountData.balance -= parseFloat(amount);
-    const transactionData = {
-      createdOn: new Date(),
-      type,
-      accountNumber,
-      cashier: cashierId,
-      amount,
-      oldBalance,
-      newBalance: accountData.balance,
-    };
-
-    const createdTransaction = transaction.create(transactionData);
-    if (!createdTransaction) {
-      return res.status(500).json({
-        status: 500,
-        error: 'Failed to credit account',
-      });
+    const updatedAmount = parseFloat(oldBalance - amount);
+    try {
+      updatedAccount = await accountInstance.updateWhere(['balance'], ['accountnumber'], [accountNumber, updatedAmount]);
+    } catch (error) {
+      return res.status(500)
+        .json({
+          status: 500,
+          error: 'Failed to debit account',
+        });
     }
-
+    const params = ['debit', accountNumber, cashier, amount, oldBalance,
+      updatedAccount.rows[0].balance,
+    ];
+    try {
+      transactionResult = await Transaction.init().insert(params);
+    } catch (error) {
+      return res.status(500)
+        .json({
+          status: 500,
+          error: 'Failed to debit account',
+        });
+    }
     const {
-      cashier, id: transactionId, type: transactionType,
-    } = createdTransaction;
-
+      id: transactionId, newbalance: accountBalance, type: transactionType,
+    } = transactionResult.rows[0];
     const data = {
       transactionId,
-      accountNumber: accountNumber.toString(),
+      accountNumber,
       amount,
       cashier,
       transactionType,
-      accountBalance: createdTransaction.newBalance.toFixed(2).toString(),
+      accountBalance,
     };
-
     return res.status(200).json({
       status: 200,
-      data,
+      data: [data],
     });
   }
 }

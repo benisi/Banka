@@ -5,7 +5,6 @@ import {
   activateAccountData, validAccountData, undefinedAccountStatus, invalidAccountStatus,
 } from './test-data/account';
 import { clientLoginData, adminLoginData } from './test-data/users';
-import account from '../database/account';
 
 chai.use(chaiHttp);
 
@@ -40,7 +39,7 @@ describe('Test to create a user bank account', () => {
       .send(validAccountData)
       .end((err, res) => {
         expect(res).to.have.status(201);
-        accNumb = res.body.data.accountNumber;
+        accNumb = res.body.data[0].accountNumber;
         done();
       });
   });
@@ -120,21 +119,5 @@ describe('Test for invalid account status', () => {
         expect(res).to.have.status(400);
         done();
       });
-  });
-});
-
-describe('Test to show if we can activate account', () => {
-  it('should return true', (done) => {
-    const activateData = { status: 'active' };
-    expect(account.activate(activateData)).to.be.equal(true);
-    done();
-  });
-});
-
-describe('Test to show if we can deactivate account', () => {
-  it('should return true', (done) => {
-    const activateData = { status: 'dormant' };
-    expect(account.activate(activateData)).to.be.equal(true);
-    done();
   });
 });

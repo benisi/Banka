@@ -1,20 +1,24 @@
-import sqlModel from './sqlModel';
+import SqlModel from './sqlModel';
 
-class User extends sqlModel {}
+class User extends SqlModel {
+  static init(type = 'client') {
+    let structure = [
+      'email',
+      'firstName',
+      'lastName',
+      'password',
+      'stateOfResidence',
+      'phoneNumber',
+      'title',
+      'dateOfBirth',
+      'sex',
+    ];
 
-const structure = [
-  'email',
-  'firstName',
-  'lastName',
-  'password',
-  'stateOfResidence',
-  'phoneNumber',
-  'title',
-  'dateOfBirth',
-  'sex',
-];
+    if (type === 'admin') {
+      structure = [...structure, 'type', 'isAdmin'];
+    }
+    return new User(structure);
+  }
+}
 
-const ClientUser = new User(structure);
-const AdminUser = new User([...structure, 'type', 'isAdmin']);
-
-export { ClientUser, AdminUser };
+export default User;
