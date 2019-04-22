@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import User from '../database/sqlUser';
 import auth from '../helpers/auth';
 import validator from '../helpers/validator';
+import Account from '../database/sqlAccount';
 
 class UserController {
   static async create(req, res) {
@@ -71,6 +72,52 @@ class UserController {
       });
     }
     return null;
+  }
+
+  static async getUserAccounts(req, res) {
+    const { userEmail } = req.params;
+    const { id: requesterId } = req.body;
+    let userAccounts;
+    let accountOwner;
+    try {
+      accountOwner = await User.init().findWhere(['email'], userEmail);
+      if (accountOwner.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          message: 'The data you are looking for cannot be found',
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
+      });
+    }
+    try {
+      userAccounts = await Account.init().findWhere(['owner'], accountOwner.rows[0].id);
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Something went wrong',
+      });
+    }
+    if (userAccounts.rowCount > 0) {
+      if (parseInt(userAccounts.rows[0].owner, 10) !== parseInt(requesterId, 10)) {
+        return res.status(403).json({
+          status: 403,
+          message: 'You dont have the permission to view this data',
+        });
+      }
+      const data = userAccounts.rows;
+      return res.status(200).json({
+        status: 200,
+        data,
+      });
+    }
+    return res.status(404).json({
+      status: 404,
+      message: 'You don\'t have an Account yet',
+    });
   }
 }
 
