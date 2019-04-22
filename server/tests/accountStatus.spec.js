@@ -121,3 +121,16 @@ describe('Test for invalid account status', () => {
       });
   });
 });
+
+describe('Test to activate user account by a client', () => {
+  it('should return a status of 403', (done) => {
+    chai.request(app)
+      .patch(`/api/v1/account/${accNumb}`)
+      .set('Authorization', clientToken)
+      .send(activateAccountData)
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        done();
+      });
+  });
+});

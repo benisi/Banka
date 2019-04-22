@@ -53,6 +53,17 @@ class Auth {
     }
     return next();
   }
+
+  static allowOnlyAdmin(req, res, next) {
+    const { isAdmin } = req.body;
+    if (!isAdmin) {
+      return res.status(403).json({
+        status: 403,
+        error: 'You are not Authorize to perform this operation',
+      });
+    }
+    return next();
+  }
 }
 
 export default Auth;

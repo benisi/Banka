@@ -6,7 +6,7 @@ class SqlModel {
   constructor(fields) {
     this._fields = fields;
     this._table = `${this.constructor.name.toLowerCase()}s`;
-    this._lastPlaceholder = null;
+    this._lastPlaceholder = 0;
   }
 
   insert(data) {
@@ -21,6 +21,11 @@ class SqlModel {
     const sanitizedData = Utility.convertToArray(data);
     const selectQuery = `SELECT ${constraint} FROM ${this._table} WHERE ${constraintValues}`;
     return pool.query(selectQuery, sanitizedData);
+  }
+
+  findAll() {
+    const selectQuery = `SELECT * FROM ${this._table}`;
+    return pool.query(selectQuery);
   }
 
   updateWhere(setValues, selections, data) {
@@ -56,8 +61,8 @@ class SqlModel {
     selections.forEach((key) => {
       setValues += `${key}=$${index + 1}`;
       index += 1;
-      if (index < selections.length - 1) {
-        setValues += ' , ';
+      if (index < selections.length + SqlModel._lastPlaceholder) {
+        setValues += ', ';
       }
     });
     SqlModel._lastPlaceholder = 1;

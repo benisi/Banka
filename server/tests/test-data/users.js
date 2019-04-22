@@ -51,6 +51,19 @@ const defaultClient = {
   title: 'master',
   sex: 'male',
 };
+const adminSignup = {
+  email: 'benocholy2@gmail.com',
+  firstName: 'Benjamin',
+  lastName: 'Isidahomen',
+  password: 'kkkkk98kkkkk',
+  type: 'staff',
+  isSuperAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '02/09/1960',
+  title: 'master',
+  sex: 'male',
+};
 const validUser = {
   email: 'admin@gmail.com',
   firstName: 'Benjamin',
@@ -390,5 +403,5 @@ export {
   validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber, validUser1,
   invalidSex, clientLoginData, adminLoginData, defaultClient, invalidDateOfBirth,
   undefinedEmailLoginData, undefinedPasswordLoginData, defaultAdmin, defaultTestClient,
-  authTestlogin,
+  authTestlogin, adminSignup,
 };

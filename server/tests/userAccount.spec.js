@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
-import { validLoginData, clientLoginData } from './test-data/users';
+import { validLoginData, clientLoginData, adminSignup } from './test-data/users';
 import {
   validAccountData,
 } from './test-data/account';
@@ -167,6 +167,65 @@ describe('Admin and staff should not be able to view user account details becaus
       .set('Authorization', globalToken)
       .end((err, res) => {
         expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+
+describe('Admin and staff should get a list of all user account', () => {
+  it('should give a status code of 200', (done) => {
+    chai.request(app)
+      .get('/api/v1/accounts')
+      .set('Authorization', globalToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+describe('Admin and staff should get a list of all active user account', () => {
+  it('should give a status code of 200', (done) => {
+    chai.request(app)
+      .get('/api/v1/accounts?status=active')
+      .set('Authorization', globalToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+describe('Admin and staff should get an error when they enter anything other than active and dormant', () => {
+  it('should give a status code of 400', (done) => {
+    chai.request(app)
+      .get('/api/v1/accounts?status=error')
+      .set('Authorization', globalToken)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+describe('Test for authorize route staff only signup', () => {
+  it('should return 201 for unauthorize user', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/admin/signup')
+      .set('Authorization', globalToken)
+      .send(adminSignup)
+      .end((err, res) => {
+        expect(res).to.have.a.status(201);
+        done();
+      });
+  });
+});
+describe('Test for authorize route staff only signup error', () => {
+  it('should return 409 conflict', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/admin/signup')
+      .set('Authorization', globalToken)
+      .send(adminSignup)
+      .end((err, res) => {
+        expect(res).to.have.a.status(409);
         done();
       });
   });

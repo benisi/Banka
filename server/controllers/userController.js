@@ -23,10 +23,9 @@ class UserController {
       sex,
     ];
     try {
-      const userInstances = User.init();
-      const createdUser = await userInstances.insert(params);
-      const { id, type, isAdmin } = createdUser.rows[0];
-      const token = auth.createToken({ id, type, isAdmin });
+      const createdUser = await User.init().insert(params);
+      const { id, type, isadmin: isAdmin } = createdUser.rows[0];
+      const token = auth.createToken({ id, type, isAdmin: isAdmin || false });
       const { password: pass, ...data } = createdUser.rows[0];
       data.token = token;
       return res.status(201).json({
@@ -60,7 +59,7 @@ class UserController {
         });
       }
       const { password: pass, ...data } = queryData.rows[0];
-      data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
+      data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isadmin });
       return res.status(200).json({
         status: 200,
         data: [data],
@@ -118,6 +117,45 @@ class UserController {
       status: 404,
       error: 'You don\'t have an Account yet',
     });
+  }
+
+  static async adminCreateAccount(req, res) {
+    const {
+      email, firstName, lastName,
+      stateOfResidence, phoneNumber, title, password, dateOfBirth,
+      sex, isSuperAdmin,
+    } = req.body;
+
+    const params = [
+      email,
+      firstName,
+      lastName,
+      bcrypt.hashSync(password, 10),
+      stateOfResidence,
+      phoneNumber,
+      title,
+      dateOfBirth,
+      sex,
+      'staff',
+      isSuperAdmin,
+    ];
+    try {
+      const createdUser = await User.init('admin').insert(params);
+      const { id, type, isadmin: isAdmin } = createdUser.rows[0];
+      const token = auth.createToken({ id, type, isAdmin });
+      const { password: pass, ...data } = createdUser.rows[0];
+      data.token = token;
+      return res.status(201).json({
+        status: 201,
+        data: [data],
+      });
+    } catch (error) {
+      return res.status(409)
+        .send({
+          status: 409,
+          error: 'Email already exist',
+        });
+    }
   }
 }
 

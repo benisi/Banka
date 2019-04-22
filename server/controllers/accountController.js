@@ -113,7 +113,7 @@ class AccountController {
       }
       return res.status(200).json({
         status: 200,
-        error: `Account ${accountReference} was successfully deleted`,
+        message: `Account ${accountReference} was successfully deleted`,
       });
     } catch (error) {
       return res.status(500).json({
@@ -152,6 +152,27 @@ class AccountController {
     return res.status(200).json({
       status: 200,
       data,
+    });
+  }
+
+  static async getAllAccounts(req, res) {
+    let data;
+    const accountInstance = Account.init();
+    if (req.query.status) {
+      const { status } = req.query;
+      if (!['active', 'dormant'].includes(status)) {
+        return res.status(400).json({
+          status: 400,
+          error: 'only active and dormant allow in query parameter',
+        });
+      }
+      data = await accountInstance.findWhere(['status'], status);
+    } else {
+      data = await accountInstance.findAll();
+    }
+    return res.status(200).json({
+      status: 200,
+      data: data.rows,
     });
   }
 }
