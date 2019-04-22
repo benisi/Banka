@@ -112,18 +112,18 @@ describe('User should be able get all his account', () => {
 });
 
 describe('User should not be able get all his account because input will cause error', () => {
-  it('should give a status code of 500', (done) => {
+  it('should give a status code of 404', (done) => {
     chai.request(app)
       .get(`/api/v1/${true}/accounts`)
       .set('Authorization', globalToken)
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res).to.have.status(404);
         done();
       });
   });
 });
 describe('User should not be able get all his account because token is valid bit account is not his', () => {
-  it('should give a status code of 200', (done) => {
+  it('should give a status code of 403', (done) => {
     chai.request(app)
       .get(`/api/v1/${userEmail}/accounts`)
       .set('Authorization', invaderToken)
