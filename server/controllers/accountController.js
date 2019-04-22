@@ -95,7 +95,7 @@ class AccountController {
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
   }
@@ -108,12 +108,12 @@ class AccountController {
       if (accountResponse.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          message: `Account ${accountReference} is not on our database`,
+          error: `Account ${accountReference} is not on our database`,
         });
       }
       return res.status(200).json({
         status: 200,
-        message: `Account ${accountReference} was successfully deleted`,
+        error: `Account ${accountReference} was successfully deleted`,
       });
     } catch (error) {
       return res.status(500).json({
@@ -121,6 +121,38 @@ class AccountController {
         error: 'Something went wrong',
       });
     }
+  }
+
+  static async accountDetails(req, res) {
+    const { accountNumber } = req.params;
+    let accountResponse;
+    try {
+      accountResponse = await Account.getAccountWithOwnerEmail(accountNumber);
+      if (accountResponse.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: `Account ${accountNumber} is not on our database`,
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        error: 'Something went wrong',
+      });
+    }
+    const {
+      createdon: createdOn, accountnumber, owner, category, id, email: ownerEmail, ...otherData
+    } = accountResponse.rows[0];
+    const data = [{
+      createdOn,
+      accountNumber,
+      ownerEmail,
+      ...otherData,
+    }];
+    return res.status(200).json({
+      status: 200,
+      data,
+    });
   }
 }
 

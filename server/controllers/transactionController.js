@@ -15,13 +15,13 @@ class TransactionController {
       if (accountData.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          message: `Account ${accountNumber} does not exist`,
+          error: `Account ${accountNumber} does not exist`,
         });
       }
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
     const { balance: oldBalance, owner } = accountData.rows[0];
@@ -78,13 +78,13 @@ class TransactionController {
       if (accountData.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          message: `Account ${accountNumber} does not exist`,
+          error: `Account ${accountNumber} does not exist`,
         });
       }
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
     const { balance: oldBalance, status, owner } = accountData.rows[0];
@@ -149,20 +149,20 @@ class TransactionController {
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
 
     if (accountData.rowCount < 1) {
       return res.status(404).json({
         status: 404,
-        message: `Account ${accountNumber} is not in our database`,
+        error: `Account ${accountNumber} is not in our database`,
       });
     }
     if (parseInt(accountData.rows[0].owner, 10) !== parseInt(requesterId, 10)) {
       return res.status(403).json({
         status: 403,
-        message: 'You dont have the permission to view this data',
+        error: 'You dont have the permission to view this data',
       });
     }
     try {
@@ -170,7 +170,7 @@ class TransactionController {
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
 
@@ -190,7 +190,7 @@ class TransactionController {
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
 
@@ -199,7 +199,7 @@ class TransactionController {
       if (parseInt(transactionRecord.owner, 10) !== parseInt(requesterId, 10)) {
         return res.status(403).json({
           status: 403,
-          message: 'You dont have the permission to view this data',
+          error: 'You dont have the permission to view this data',
         });
       }
       const {
@@ -217,7 +217,7 @@ class TransactionController {
     }
     return res.status(404).json({
       status: 404,
-      message: 'Transaction don\'t exist',
+      error: 'Transaction don\'t exist',
     });
   }
 }

@@ -84,13 +84,13 @@ class UserController {
       if (accountOwner.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          message: 'The data you are looking for cannot be found',
+          error: 'The data you are looking for cannot be found',
         });
       }
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
     try {
@@ -98,14 +98,14 @@ class UserController {
     } catch (error) {
       return res.status(500).json({
         status: 500,
-        message: 'Something went wrong',
+        error: 'Something went wrong',
       });
     }
     if (userAccounts.rowCount > 0) {
       if (parseInt(userAccounts.rows[0].owner, 10) !== parseInt(requesterId, 10)) {
         return res.status(403).json({
           status: 403,
-          message: 'You dont have the permission to view this data',
+          error: 'You dont have the permission to view this data',
         });
       }
       const data = userAccounts.rows;
@@ -116,7 +116,7 @@ class UserController {
     }
     return res.status(404).json({
       status: 404,
-      message: 'You don\'t have an Account yet',
+      error: 'You don\'t have an Account yet',
     });
   }
 }

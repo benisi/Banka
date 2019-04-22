@@ -122,8 +122,8 @@ describe('Test for returning 404 for invalid account', () => {
   });
 });
 
-describe('Test for returning 404 for wrong format account number', () => {
-  it('should return 404 for invalid account number transaction history retrieval', (done) => {
+describe('Test for returning 500 for wrong format account number', () => {
+  it('should return 500 for invalid account number transaction history retrieval', (done) => {
     chai.request(app)
       .get('/api/v1/accounts/656565656rr/transactions')
       .set('authorization', invaderToken)
@@ -157,13 +157,25 @@ describe('Test for blocking accesss to invader request for transaction history',
       });
   });
 });
-describe('Test for returning 404 for invalid account', () => {
+describe('Test for returning 404 for account not found', () => {
   it('should return 404 for invalid account number transaction history retrieval', (done) => {
     chai.request(app)
       .get('/api/v1/transactions/9999999')
       .set('authorization', invaderToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
+        done();
+      });
+  });
+});
+
+describe('Test for returning 400 for invalid account', () => {
+  it('should return 400 for invalid account number transaction history retrieval', (done) => {
+    chai.request(app)
+      .get('/api/v1/transactions/kkkkk')
+      .set('authorization', invaderToken)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });

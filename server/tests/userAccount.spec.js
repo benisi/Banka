@@ -14,6 +14,7 @@ const url = '/api/v1/accounts';
 let globalToken;
 let userEmail;
 let invaderToken;
+let validAccountNumber;
 const invalidLoginData = {
   email: 'admin@gmail.com',
   password: 'dkkdkdddk',
@@ -65,6 +66,8 @@ describe('Test to create a user bank account', () => {
       .set('Authorization', globalToken)
       .send(validAccountData)
       .end((err, res) => {
+        const { accountNumber } = res.body.data[0];
+        validAccountNumber = accountNumber;
         expect(res).to.have.status(201);
         done();
       });
@@ -112,12 +115,12 @@ describe('User should be able get all his account', () => {
 });
 
 describe('User should not be able get all his account because input will cause error', () => {
-  it('should give a status code of 404', (done) => {
+  it('should give a status code of 400', (done) => {
     chai.request(app)
       .get(`/api/v1/${true}/accounts`)
       .set('Authorization', globalToken)
       .end((err, res) => {
-        expect(res).to.have.status(404);
+        expect(res).to.have.status(400);
         done();
       });
   });
@@ -129,6 +132,41 @@ describe('User should not be able get all his account because token is valid bit
       .set('Authorization', invaderToken)
       .end((err, res) => {
         expect(res).to.have.status(403);
+        done();
+      });
+  });
+});
+describe('Admin and staff should be able to view user account details', () => {
+  it('should give a status code of 200', (done) => {
+    chai.request(app)
+      .get(`/api/v1/accounts/${validAccountNumber}`)
+      .set('Authorization', globalToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+describe('Admin and staff get a 404 for account that dont exist', () => {
+  it('should give a status code of 404', (done) => {
+    chai.request(app)
+      .get('/api/v1/accounts/7577574')
+      .set('Authorization', globalToken)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});
+
+describe('Admin and staff should not be able to view user account details because format is wrong', () => {
+  it('should give a status code of 400', (done) => {
+    chai.request(app)
+      .get('/api/v1/accounts/jjfjf')
+      .set('Authorization', globalToken)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });
