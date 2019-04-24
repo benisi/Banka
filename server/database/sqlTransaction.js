@@ -3,13 +3,13 @@ import SqlModel from './sqlModel';
 class Transaction extends SqlModel {
   static init() {
     const structure = [
-      'type',
-      'accountNumber',
-      'cashier',
+      '"type"',
+      '"accountNumber"',
+      '"cashier"',
       'amount',
       'owner',
-      'oldBalance',
-      'newBalance',
+      '"oldBalance"',
+      '"newBalance"',
     ];
     const transactionInstance = new Transaction(structure);
     return transactionInstance;

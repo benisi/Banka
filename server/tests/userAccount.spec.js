@@ -105,7 +105,7 @@ describe('User should be able to create a user bank account to test get account 
 describe('User should be able get all his account', () => {
   it('should give a status code of 200', (done) => {
     chai.request(app)
-      .get(`/api/v1/${userEmail}/accounts`)
+      .get(`/api/v1/user/${userEmail}/accounts`)
       .set('Authorization', globalToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -117,7 +117,7 @@ describe('User should be able get all his account', () => {
 describe('User should not be able get all his account because input will cause error', () => {
   it('should give a status code of 400', (done) => {
     chai.request(app)
-      .get(`/api/v1/${true}/accounts`)
+      .get(`/api/v1/user/${true}/accounts`)
       .set('Authorization', globalToken)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -128,7 +128,7 @@ describe('User should not be able get all his account because input will cause e
 describe('User should not be able get all his account because token is valid bit account is not his', () => {
   it('should give a status code of 403', (done) => {
     chai.request(app)
-      .get(`/api/v1/${userEmail}/accounts`)
+      .get(`/api/v1/user/${userEmail}/accounts`)
       .set('Authorization', invaderToken)
       .end((err, res) => {
         expect(res).to.have.status(403);

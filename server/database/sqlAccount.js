@@ -3,17 +3,17 @@ import pool from './dbConnection';
 
 class Account extends SqlModel {
   async changeStatus(accountNumber, newStatus) {
-    return this.updateWhere(['status'], ['accountnumber'], [accountNumber, newStatus]);
+    return this.updateWhere(['status'], ['accountNumber'], [accountNumber, newStatus]);
   }
 
   static async getAccountWithOwnerEmail(accountNumber) {
-    const query = 'SELECT A.*,U.email, U.id FROM accounts A INNER JOIN users U ON A.owner = U.id WHERE accountNumber=$1;';
+    const query = 'SELECT A.*,U.email, U.id FROM accounts A INNER JOIN users U ON A.owner = U.id WHERE "accountNumber"=$1;';
     return pool.query(query, [accountNumber]);
   }
 
   static init() {
     const structure = [
-      'accountNumber',
+      '"accountNumber"',
       'owner',
       'type',
       'status',

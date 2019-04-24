@@ -33,10 +33,17 @@ class UserController {
         data: [data],
       });
     } catch (error) {
-      return res.status(409)
+      if (error.code === '23505') {
+        return res.status(409)
+          .send({
+            status: 409,
+            error: 'Email already exist',
+          });
+      }
+      return res.status(500)
         .send({
-          status: 409,
-          error: 'Email already exist',
+          status: 500,
+          error: 'Something went wrong',
         });
     }
   }
@@ -59,7 +66,7 @@ class UserController {
         });
       }
       const { password: pass, ...data } = queryData.rows[0];
-      data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isadmin });
+      data.token = auth.createToken({ id: data.id, type: data.type, isAdmin: data.isAdmin });
       return res.status(200).json({
         status: 200,
         data: [data],
@@ -141,7 +148,7 @@ class UserController {
     ];
     try {
       const createdUser = await User.init('admin').insert(params);
-      const { id, type, isadmin: isAdmin } = createdUser.rows[0];
+      const { id, type, isAdmin } = createdUser.rows[0];
       const token = auth.createToken({ id, type, isAdmin });
       const { password: pass, ...data } = createdUser.rows[0];
       data.token = token;
@@ -150,10 +157,17 @@ class UserController {
         data: [data],
       });
     } catch (error) {
-      return res.status(409)
+      if (error.code === '23505') {
+        return res.status(409)
+          .send({
+            status: 409,
+            error: 'Email already exist',
+          });
+      }
+      return res.status(500)
         .send({
-          status: 409,
-          error: 'Email already exist',
+          status: 500,
+          error: 'Something went wrong',
         });
     }
   }

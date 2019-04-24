@@ -11,7 +11,7 @@ class TransactionController {
     let updatedAccount;
     let transactionResult;
     try {
-      accountData = await accountInstance.findWhere(['accountnumber'], accountNumber);
+      accountData = await accountInstance.findWhere(['accountNumber'], accountNumber);
       if (accountData.rowCount < 1) {
         return res.status(404).json({
           status: 404,
@@ -27,7 +27,7 @@ class TransactionController {
     const { balance: oldBalance, owner } = accountData.rows[0];
     const updatedAmount = parseFloat(amount + oldBalance);
     try {
-      updatedAccount = await accountInstance.updateWhere(['balance'], ['accountnumber'], [accountNumber, updatedAmount]);
+      updatedAccount = await accountInstance.updateWhere(['balance'], ['accountNumber'], [accountNumber, updatedAmount]);
     } catch (error) {
       return res.status(500).json({
         status: 500,
@@ -74,7 +74,7 @@ class TransactionController {
     let transactionResult;
     const accountInstance = Account.init();
     try {
-      accountData = await accountInstance.findWhere(['accountnumber'], accountNumber);
+      accountData = await accountInstance.findWhere(['accountNumber'], accountNumber);
       if (accountData.rowCount < 1) {
         return res.status(404).json({
           status: 404,
@@ -102,7 +102,7 @@ class TransactionController {
     }
     const updatedAmount = parseFloat(oldBalance - amount);
     try {
-      updatedAccount = await accountInstance.updateWhere(['balance'], ['accountnumber'], [accountNumber, updatedAmount]);
+      updatedAccount = await accountInstance.updateWhere(['balance'], ['accountNumber'], [accountNumber, updatedAmount]);
     } catch (error) {
       return res.status(500)
         .json({
@@ -145,7 +145,7 @@ class TransactionController {
     let accountData;
     let transactionRecords;
     try {
-      accountData = await Account.init().findWhere(['accountnumber'], accountNumber);
+      accountData = await Account.init().findWhere(['accountNumber'], accountNumber);
     } catch (error) {
       return res.status(500).json({
         status: 500,
@@ -166,7 +166,7 @@ class TransactionController {
       });
     }
     try {
-      transactionRecords = await Transaction.init().findWhere(['accountnumber'], accountNumber);
+      transactionRecords = await Transaction.init().findWhere(['accountNumber'], accountNumber);
     } catch (error) {
       return res.status(500).json({
         status: 500,
@@ -203,8 +203,8 @@ class TransactionController {
         });
       }
       const {
-        createdon: createdOn, type, accountnumber: accountNumber,
-        amount, oldbalance: oldBalance, newbalance: newBalance,
+        createdOn, type, accountNumber,
+        amount, oldBalance, newBalance,
       } = transactionRecord;
       return res.status(200).json({
         status: 200,

@@ -46,7 +46,7 @@ class SqlModel {
   static generateConstraint(selections) {
     let constraintValues = '';
     selections.forEach((selection, index) => {
-      constraintValues += `${selection}=$${index + 1}`;
+      constraintValues += `"${selection}"=$${index + 1}`;
       SqlModel._lastPlaceholder = index + 1;
       if (index < selections.length - 1) {
         constraintValues += ' AND ';
@@ -59,7 +59,7 @@ class SqlModel {
     let setValues = '';
     let index = SqlModel._lastPlaceholder;
     selections.forEach((key) => {
-      setValues += `${key}=$${index + 1}`;
+      setValues += `"${key}"=$${index + 1}`;
       index += 1;
       if (index < selections.length + SqlModel._lastPlaceholder) {
         setValues += ', ';

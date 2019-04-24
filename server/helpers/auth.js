@@ -64,6 +64,23 @@ class Auth {
     }
     return next();
   }
+
+  static isSuperAdmin(req, res, next) {
+    const { isSuperAdmin } = req.body;
+    if (isSuperAdmin === undefined) {
+      return res.status(403).json({
+        status: 403,
+        error: 'No admin secret',
+      });
+    }
+    if (typeof isSuperAdmin !== 'boolean') {
+      return res.status(403).json({
+        status: 403,
+        error: 'invalid admin secret',
+      });
+    }
+    return next();
+  }
 }
 
 export default Auth;

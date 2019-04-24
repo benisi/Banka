@@ -32,7 +32,7 @@ class AccountController {
       });
     }
     const {
-      id: owner, firstname: firstName, lastname: lastName, email,
+      id: owner, firstName, lastName, email,
     } = ownerData.rows[0];
     const status = 'active';
     const balance = parseFloat(0.10).toFixed(2);
@@ -68,7 +68,7 @@ class AccountController {
     const { accountNumber } = req.params;
     const accountInstance = Account.init();
     try {
-      const accountData = await accountInstance.findWhere(['accountnumber'], accountNumber);
+      const accountData = await accountInstance.findWhere(['accountNumber'], accountNumber);
       if (accountData.rowCount < 1) {
         return res.status(404).json({
           status: 404,
@@ -104,7 +104,7 @@ class AccountController {
     const { accountNumber } = req.params;
     const accountReference = parseInt(accountNumber, 10);
     try {
-      const accountResponse = await Account.init().delete(['accountnumber'], accountReference);
+      const accountResponse = await Account.init().delete(['accountNumber'], accountReference);
       if (accountResponse.rowCount < 1) {
         return res.status(404).json({
           status: 404,
@@ -141,7 +141,8 @@ class AccountController {
       });
     }
     const {
-      createdon: createdOn, accountnumber, owner, category, id, email: ownerEmail, ...otherData
+      createdon: createdOn, owner, category,
+      id, email: ownerEmail, ...otherData
     } = accountResponse.rows[0];
     const data = [{
       createdOn,
