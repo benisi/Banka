@@ -9,6 +9,7 @@ cache:
 env:
   global:
     - DATABASE_URL_TEST=postgres://postgres@127.0.0.1:5432/test
+     - CXX=g++-4.8
 services:
   - postgresql
 before_script:
@@ -19,3 +20,9 @@ after_success:
   - npm run coverage
   - npm run report-coverage
   - npm run coveralls
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
