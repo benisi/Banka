@@ -32,7 +32,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'Banka is a light weight bank application for performing simple banka service like credit, debit and account creation.',
   },
-  host: 'http://benisi-banka.herokuapp.com',
+  host: 'benisi-banka.herokuapp.com',
   basePath: '/api/v1',
 };
 

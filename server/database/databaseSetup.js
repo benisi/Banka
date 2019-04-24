@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 
 dotenv.config();
@@ -67,7 +67,7 @@ const defaultAdmin = [
   'admin@gmail.com',
   'Benjamin',
   'Isidahomen',
-  bcrypt.hashSync('adminpass1', 10),
+  bcrypt.hashSync('adminpass1'),
   'edo',
   '07035361846',
   'sir',

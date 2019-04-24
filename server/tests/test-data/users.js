@@ -1,10 +1,10 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt-nodejs';
 
 const defaultAdmin = [
   'admin@gmail.com',
   'Benjamin',
   'Isidahomen',
-  bcrypt.hashSync('adminpass1', 10),
+  bcrypt.hashSync('adminpass1'),
   'edo',
   '07035361846',
   'sir',
@@ -17,7 +17,7 @@ const defaultTestClient = [
   'client@gmail.com',
   'Benjamin',
   'Isidahomen',
-  bcrypt.hashSync('clientpass1', 10),
+  bcrypt.hashSync('clientpass1'),
   'edo',
   '07035361846',
   'sir',
@@ -29,7 +29,7 @@ const defaultUser = {
   email: 'admin@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('adminpass1', 10),
+  password: bcrypt.hashSync('adminpass1'),
   type: 'staff',
   isAdmin: true,
   stateOfResidence: 'edo',
@@ -42,7 +42,7 @@ const defaultClient = {
   email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('clientpass1', 10),
+  password: bcrypt.hashSync('clientpass1'),
   type: 'client',
   isAdmin: false,
   stateOfResidence: 'edo',

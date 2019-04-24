@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt-nodejs';
 import User from '../database/sqlUser';
 import auth from '../helpers/auth';
 import validator from '../helpers/validator';
@@ -15,7 +15,7 @@ class UserController {
       email,
       firstName,
       lastName,
-      bcrypt.hashSync(password, 10),
+      bcrypt.hashSync(password),
       stateOfResidence,
       phoneNumber,
       title,
@@ -137,7 +137,7 @@ class UserController {
       email,
       firstName,
       lastName,
-      bcrypt.hashSync(password, 10),
+      bcrypt.hashSync(password),
       stateOfResidence,
       phoneNumber,
       title,
