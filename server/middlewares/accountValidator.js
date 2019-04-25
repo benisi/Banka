@@ -55,8 +55,7 @@ class AccountValidator {
 
   static getAccountValidtor(req, res, next) {
     const { accountNumber } = req.params;
-    const validAccountNumber = parseInt(accountNumber, 10);
-    if (!Number.isInteger(validAccountNumber)) {
+    if (!validator.isInteger(accountNumber)) {
       return res.status(400).json({
         status: 400,
         error: 'account number must be an integer',
@@ -67,8 +66,7 @@ class AccountValidator {
 
   static checkForValidId(req, res, next) {
     const { transactionId } = req.params;
-    const validTransactionId = parseInt(transactionId, 10);
-    if (Number.isInteger(validTransactionId) !== true) {
+    if (!validator.isInteger(transactionId)) {
       return res.status(400).json({
         status: 400,
         error: 'Transaction id must be an integer',

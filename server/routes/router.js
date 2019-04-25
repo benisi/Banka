@@ -24,13 +24,13 @@ router.get('/api/v1/user/:userEmail/accounts', [auth.verifyToken, accountValidat
 
 // Bank account route
 router.post('/api/v1/accounts', [auth.verifyToken, accountValidator.createAccountValidator], AccountController.create);
-router.patch('/api/v1/account/:accountNumber', [auth.verifyToken, auth.allowOnlyAdmin, accountValidator.accountStatusValidator], AccountController.status);
-router.delete('/api/v1/accounts/:accountNumber', [auth.verifyToken, auth.allowOnlyAdminStaff], AccountController.delete);
+router.patch('/api/v1/account/:accountNumber', [auth.verifyToken, auth.allowOnlyAdmin, accountValidator.getAccountValidtor, accountValidator.accountStatusValidator], AccountController.status);
+router.delete('/api/v1/accounts/:accountNumber', [auth.verifyToken, accountValidator.getAccountValidtor, auth.allowOnlyAdminStaff], AccountController.delete);
 router.get('/api/v1/accounts/:accountNumber', [auth.verifyToken, accountValidator.getAccountValidtor, auth.allowOnlyAdminStaff], AccountController.accountDetails);
 router.get('/api/v1/accounts', [auth.verifyToken, auth.allowOnlyAdminStaff], AccountController.getAllAccounts);
 // Transaction route
-router.post('/api/v1/transactions/:accountNumber/credit', [auth.verifyToken, auth.allowOnlyStaff, transactionValidator], TransactionController.credit);
-router.post('/api/v1/transactions/:accountNumber/debit', [auth.verifyToken, auth.allowOnlyStaff, transactionValidator], TransactionController.debit);
+router.post('/api/v1/transactions/:accountNumber/credit', [auth.verifyToken, auth.allowOnlyStaff, accountValidator.getAccountValidtor, transactionValidator], TransactionController.credit);
+router.post('/api/v1/transactions/:accountNumber/debit', [auth.verifyToken, auth.allowOnlyStaff, accountValidator.getAccountValidtor, transactionValidator], TransactionController.debit);
 
 router.all('*', (req, res) => res.status(404).json({
   status: 404,

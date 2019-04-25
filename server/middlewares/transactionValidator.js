@@ -9,6 +9,13 @@ const transactionValidator = (req, res, next) => {
     });
   }
 
+  if (amount < 0) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Amount should not be a negative number',
+    });
+  }
+
   if (typeof amount !== 'number') {
     return res.status(400).json({
       status: 400,

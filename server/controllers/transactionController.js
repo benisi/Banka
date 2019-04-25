@@ -34,9 +34,9 @@ class TransactionController {
         error: 'Failed to credit account',
       });
     }
-
+    const newBalance = updatedAccount.rows[0].balance;
     const params = ['credit', accountNumber, cashier, amount, owner, oldBalance,
-      updatedAccount.rows[0].balance,
+      newBalance,
     ];
     try {
       transactionResult = await Transaction.init().insert(params);
@@ -58,6 +58,8 @@ class TransactionController {
       cashier,
       transactionType,
       accountBalance,
+      oldBalance,
+      newBalance,
     };
     return res.status(200).json({
       status: 200,
@@ -110,8 +112,9 @@ class TransactionController {
           error: 'Failed to debit account',
         });
     }
+    const newBalance = updatedAccount.rows[0].balance;
     const params = ['debit', accountNumber, cashier, amount, owner, oldBalance,
-      updatedAccount.rows[0].balance,
+      newBalance,
     ];
     try {
       transactionResult = await Transaction.init().insert(params);
@@ -132,6 +135,8 @@ class TransactionController {
       cashier,
       transactionType,
       accountBalance,
+      oldBalance,
+      newBalance,
     };
     return res.status(200).json({
       status: 200,

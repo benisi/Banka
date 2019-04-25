@@ -5,7 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
-import swaggerYalm from '../swagger/swagger.json';
+import swaggerYalm from '../docs/swagger.json';
 import router from './routes/router';
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerYalm));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerYalm));
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
