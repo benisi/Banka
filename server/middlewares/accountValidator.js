@@ -1,3 +1,5 @@
+import validator from '../helpers/validator';
+
 class AccountValidator {
   static createAccountValidator(req, res, next) {
     const { type, category } = req.body;
@@ -48,6 +50,39 @@ class AccountValidator {
       });
     }
 
+    return next();
+  }
+
+  static getAccountValidtor(req, res, next) {
+    const { accountNumber } = req.params;
+    if (!validator.isInteger(accountNumber)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'account number must be an integer',
+      });
+    }
+    return next();
+  }
+
+  static checkForValidId(req, res, next) {
+    const { transactionId } = req.params;
+    if (!validator.isInteger(transactionId)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Transaction id must be an integer',
+      });
+    }
+    return next();
+  }
+
+  static checkForValidEmail(req, res, next) {
+    const { userEmail } = req.params;
+    if (!validator.itIsAnEmail(userEmail)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Invalid email',
+      });
+    }
     return next();
   }
 }

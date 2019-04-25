@@ -23,7 +23,8 @@ deposit money..
 
 <b>Api Url:</b>
 
-[Hosted API on Heroku](https://benisi-banka.herokuapp.com/)
+[Hosted API on Heroku](https://benisi-banka.herokuapp.com/)<br/>
+[API documentation](https://benisi-banka.herokuapp.com/swagger/swagger.json)
 
 ## Features
 

@@ -82,35 +82,7 @@
         </footer>
     </div>
     <script src="js/index.js"></script>
-    <script>
-        document.querySelector('#amount').addEventListener('keyup', (event) =>{
-            const amountSelector = event.target;
-            const amountSubmitButton = document.querySelector('#amountAction');
-            const data = amountSelector.value;   
-            if(Number.isNaN(parseInt(data, 10))){ 
-              amountSubmitButton.disabled = true; 
-              const text = document.createElement('p');
-              text.innerText = 'Please enter a number';
-              text.style.color = 'red';
-              text.className = 'errorText'
-              const errorText = document.querySelector('.errorText');
-                if(!errorText){
-                    amountSelector.parentNode.appendChild(text);  
-                }
-              amountSelector.focus();
-              amountSelector.parentNode.style.border = '1px solid red';  
-            }else{
-                amountSubmitButton.disabled = false; 
-                amountSelector.parentNode.style.border = '1px solid #e3e5e9';
-                const errorText = document.querySelector('.errorText');
-                if(errorText){
-                    errorText.remove();
-                }
-            }
-        });
-         confirm(".modal-action", "Confirm Transaction", "Are you sure you want to debit this account", () => {
-                alert( 2000, "success", `Account debit was successful`) 
-        });
-    </script>
+    <script src="js/helper.js"></script>
+    <script src="js/debit-account.js"></script>
 </body>
 </html>

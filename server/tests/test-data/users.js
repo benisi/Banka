@@ -1,57 +1,68 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt-nodejs';
 
 const defaultAdmin = [
   'admin@gmail.com',
   'Benjamin',
   'Isidahomen',
-  bcrypt.hashSync('adminpass1', 10),
+  bcrypt.hashSync('adminpass1'),
   'edo',
   '07035361846',
   'sir',
-  '02/09/1960',
+  '1960-09-02',
   'male',
   'staff',
-  true
+  true,
 ];
 const defaultTestClient = [
   'client@gmail.com',
   'Benjamin',
   'Isidahomen',
-  bcrypt.hashSync('clientpass1', 10),
+  bcrypt.hashSync('clientpass1'),
   'edo',
   '07035361846',
   'sir',
-  '02/09/1960',
+  '1960-09-02',
   'male',
-  'client',
-  false
 ];
 
 const defaultUser = {
   email: 'admin@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('adminpass1', 10),
+  password: bcrypt.hashSync('adminpass1'),
   type: 'staff',
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const defaultClient = {
   email: 'user@gmail.com',
   firstName: 'Benjamin',
   lastName: 'Isidahomen',
-  password: bcrypt.hashSync('clientpass1', 10),
+  password: bcrypt.hashSync('clientpass1'),
   type: 'client',
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
+};
+const adminSignup = {
+  email: 'benocholy2@gmail.com',
+  firstName: 'Benjamin',
+  lastName: 'Isidahomen',
+  password: 'kkkkk98kkkkk',
+  type: 'staff',
+  isSuperAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '1960-09-02',
+  title: 'master',
+  sex: 'male',
 };
 const validUser = {
   email: 'admin@gmail.com',
@@ -63,8 +74,8 @@ const validUser = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   title: 'master',
-  dateOfBirth: '02/09/1960',
-  sex: 'male'
+  dateOfBirth: '1960-09-02',
+  sex: 'male',
 };
 
 const validUser1 = {
@@ -77,8 +88,8 @@ const validUser1 = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   title: 'master',
-  dateOfBirth: '02/09/1960',
-  sex: 'male'
+  dateOfBirth: '1960-09-02',
+  sex: 'male',
 };
 
 const emptyEmail = {
@@ -90,9 +101,9 @@ const emptyEmail = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidEmail = {
@@ -104,9 +115,9 @@ const invalidEmail = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const undefineEmail = {
@@ -118,9 +129,9 @@ const undefineEmail = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const alreadyInUseUser = {
   email: 'user@gmail.com',
@@ -131,9 +142,9 @@ const alreadyInUseUser = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const nonStringEmail = {
   email: 12344,
@@ -144,9 +155,9 @@ const nonStringEmail = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 // eslint-disable-next-line import/prefer-default-export
@@ -161,9 +172,9 @@ const emptyFirstName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidFirstName = {
@@ -175,9 +186,9 @@ const invalidFirstName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const undefineFirstName = {
@@ -189,9 +200,9 @@ const undefineFirstName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const nonStringFirstName = {
   email: 'user11@gmail.com',
@@ -202,9 +213,9 @@ const nonStringFirstName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 // last name mock data
@@ -217,9 +228,9 @@ const emptyLastName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidLastName = {
@@ -231,9 +242,9 @@ const invalidLastName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const undefineLastName = {
@@ -245,9 +256,9 @@ const undefineLastName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const nonStringLastName = {
   email: 'user8@gmail.com',
@@ -258,9 +269,9 @@ const nonStringLastName = {
   isAdmin: false,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidIsAdmin = {
@@ -272,9 +283,9 @@ const invalidIsAdmin = {
   isAdmin: 'true',
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const invalidType = {
   email: 'user8@gmail.com',
@@ -285,9 +296,9 @@ const invalidType = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 
 const invalidPassword = {
@@ -299,9 +310,26 @@ const invalidPassword = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
+};
+const authTestSignup = {
+  email: 'user8@gmail.com',
+  firstName: 'Isidahomen',
+  lastName: 'ben',
+  password: 'hfhhfhfhfh3',
+  type: 'client',
+  isAdmin: true,
+  stateOfResidence: 'edo',
+  phoneNumber: '07035361846',
+  dateOfBirth: '1960-09-02',
+  title: 'master',
+  sex: 'male',
+};
+const authTestlogin = {
+  email: 'user8@gmail.com',
+  password: 'hfhhfhfhfh3',
 };
 const invalidPhoneNumber = {
   email: 'user8@gmail.com',
@@ -312,9 +340,9 @@ const invalidPhoneNumber = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361uiio',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const invalidDateOfBirth = {
   email: 'user8@gmail.com',
@@ -325,9 +353,9 @@ const invalidDateOfBirth = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09',
+  dateOfBirth: '02-09',
   title: 'master',
-  sex: 'male'
+  sex: 'male',
 };
 const invalidSex = {
   email: 'user8@gmail.com',
@@ -338,41 +366,42 @@ const invalidSex = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  dateOfBirth: '02/09/1960',
+  dateOfBirth: '1960-09-02',
   title: 'master',
-  sex: 'mammal'
+  sex: 'mammal',
 };
 const validLoginData = {
   email: 'admin@gmail.com',
-  password: 'adminpass1'
+  password: 'adminpass1',
 };
 const adminLoginData = {
   email: 'admin@gmail.com',
-  password: 'adminpass1'
+  password: 'adminpass1',
 };
 const clientLoginData = {
   email: 'client@gmail.com',
-  password: 'clientpass1'
+  password: 'clientpass1',
 };
 const invalidLoginData = {
   email: 'doe@gmail.com',
-  password: 'clientpass1'
+  password: 'clientpass1',
 };
 const undefinedEmailLoginData = {
   email: undefined,
-  password: 'clientpass1'
+  password: 'clientpass1',
 };
 const undefinedPasswordLoginData = {
   email: 'doe@gmail.com',
-  password: undefined
+  password: undefined,
 };
 
 export {
   validUser, emptyEmail, invalidEmail, undefineEmail, alreadyInUseUser,
   nonStringEmail, emptyFirstName, invalidFirstName, undefineFirstName,
   nonStringFirstName, emptyLastName, invalidLastName, undefineLastName,
-  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword,
+  nonStringLastName, invalidIsAdmin, invalidType, invalidPassword, authTestSignup,
   validLoginData, invalidLoginData, defaultUser, invalidPhoneNumber, validUser1,
   invalidSex, clientLoginData, adminLoginData, defaultClient, invalidDateOfBirth,
-  undefinedEmailLoginData, undefinedPasswordLoginData, defaultAdmin, defaultTestClient
+  undefinedEmailLoginData, undefinedPasswordLoginData, defaultAdmin, defaultTestClient,
+  authTestlogin, adminSignup,
 };

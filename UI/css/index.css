@@ -90,6 +90,9 @@ a{
 button:disabled {
     background: #dddddd;
   }
+#spin{
+    visibility: hidden;
+}
 .clear-fix{
     clear: both;
 }

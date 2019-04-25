@@ -5,7 +5,6 @@ import {
   activateAccountData, validAccountData, undefinedAccountStatus, invalidAccountStatus,
 } from './test-data/account';
 import { clientLoginData, adminLoginData } from './test-data/users';
-import account from '../database/account';
 
 chai.use(chaiHttp);
 
@@ -25,7 +24,7 @@ describe('User should be able to login', () => {
       .send(adminLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        const { token } = res.body.data;
+        const { token } = res.body.data[0];
         globalToken = token;
         done();
       });
@@ -40,7 +39,7 @@ describe('Test to create a user bank account', () => {
       .send(validAccountData)
       .end((err, res) => {
         expect(res).to.have.status(201);
-        accNumb = res.body.data.accountNumber;
+        accNumb = res.body.data[0].accountNumber;
         done();
       });
   });
@@ -77,7 +76,7 @@ describe('Client should be able to login', () => {
       .send(clientLoginData)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        const { token } = res.body.data;
+        const { token } = res.body.data[0];
         clientToken = token;
         done();
       });
@@ -123,18 +122,15 @@ describe('Test for invalid account status', () => {
   });
 });
 
-describe('Test to show if we can activate account', () => {
-  it('should return true', (done) => {
-    const activateData = { status: 'active' };
-    expect(account.activate(activateData)).to.be.equal(true);
-    done();
-  });
-});
-
-describe('Test to show if we can deactivate account', () => {
-  it('should return true', (done) => {
-    const activateData = { status: 'dormant' };
-    expect(account.activate(activateData)).to.be.equal(true);
-    done();
+describe('Test to activate user account by a client', () => {
+  it('should return a status of 403', (done) => {
+    chai.request(app)
+      .patch(`/api/v1/account/${accNumb}`)
+      .set('Authorization', clientToken)
+      .send(activateAccountData)
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        done();
+      });
   });
 });

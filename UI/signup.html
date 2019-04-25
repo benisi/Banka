@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign up - Banka</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -14,59 +15,57 @@
         </div>
         <h2 class="branding-text">Sign up for Banka</h2>
         <div class="form-container card mg-4-b">
-            <form>
+            <form id="signUp">
                 <div class="form-control">
                     <label for="email">Enter Email</label>
-                    <input id="email" type="email" placeholder="john@doe.com" autocomplete="email" required>
+                    <input name="email" id="email" type="email" placeholder="john@doe.com" autocomplete="email" required>
                 </div>
                 <div class="form-control">
                     <label for="title">Title</label>
-                    <select id="title" required>
+                    <select name="title" id="title" required>
                         <option disabled value="" selected>SELECT</option>
-                        <option value="45">ALHAJA</option>
-                        <option value="44">ALHAJI</option>
-                        <option value="32">BARRISTER</option>
-                        <option value="30">CHIEF</option>
-                        <option value="27">DR.</option>
-                        <option value="50">DR. &amp; MRS.</option>
-                        <option value="36">ENGR</option>
-                        <option value="26">MISS</option>
-                        <option value="48">MR &amp; MRS</option>
-                        <option value="31">MR.</option>
-                        <option value="35">MRS</option>
-                        <option value="34">OTUNBA</option>
-                        <option value="33">PASTOR</option>
-                        <option value="28">PROF.</option>
-                        <option value="29">REV.</option>
+                        <option value="ALHAJA">ALHAJA</option>
+                        <option value="BARRISTER">BARRISTER</option>
+                        <option value="CHIEF">CHIEF</option>
+                        <option value="DR.">DR.</option>
+                        <option value="DR.MRS.">DR. &amp; MRS.</option>
+                        <option value="ENGR">ENGR</option>
+                        <option value="MISS">MISS</option>
+                        <option value="MR.">MR.</option>
+                        <option value="MRS">MRS</option>
+                        <option value="OTUNBA">OTUNBA</option>
+                        <option value="PASTOR">PASTOR</option>
+                        <option value="PROF.">PROF.</option>
+                        <option value="REV.">REV.</option>
                     </select>
                 </div>
                 <div class="form-control">
                     <label for="first-name">Enter First Name</label>
-                    <input id="first-name" type="text" placeholder="john" autocomplete="name" required>
+                    <input name="firstName" id="first-name" type="text" placeholder="john" autocomplete="name" required>
                 </div>
                 <div class="form-control">
                     <label for="last-name">Enter Last Name</label>
-                    <input id="last-name" type="text" placeholder="doe" autocomplete="family-name" required>
+                    <input id="last-name" name="lastName" type="text" placeholder="doe" autocomplete="family-name" required>
                 </div>
                 <div class="form-control">
                     <label for="date-of-birth">Date of birth</label>
-                    <input id="date-of-birth" type="date" required>
+                    <input name="dateOfBirth" id="date-of-birth" type="date" required>
                 </div>
                 <div class="form-control">
                     <label for="sex">Sex</label>
-                    <select id="sex" required>
+                    <select name="sex" id="sex" required>
                         <option disabled value="" selected>SELECT</option>
-                        <option>Male</option>
-                        <option>Female</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                     </select>
                 </div>
                 <div class="form-control">
                     <label for="tel">Phone number</label>
-                    <input id="tel" type="tel" placeholder="234703344XXXX" pattern="^[+]?[0-9]{11,14}$" required>
+                    <input name="phoneNumber" id="tel" type="tel" placeholder="234703344XXXX" pattern="^[+]?[0-9]{11,14}$" autocomplete="tel" required>
                 </div>
                 <div class="form-control">
                     <label for="state">State Of Residence</label>
-                    <select id="state" required>
+                    <select name="stateOfResidence" id="state" required>
                         <option disabled value="" selected>SELECT</option>
                         <option>ABIA</option>
                         <option>ADAMAWA</option>
@@ -109,13 +108,13 @@
                 </div>
                 <div class="form-control">
                     <label for="password">Enter Password</label>
-                    <input id="password" type="password" autocomplete="new-password" required>
+                    <input name="password" id="password" type="password" autocomplete="new-password" required>
                 </div>
                 <div class="form-control">
                     <label for="verify-password">Verify Password</label>
-                    <input id="verify-password" type="password" autocomplete="new-password" required>
+                    <input name="verifyPassword" id="verify-password" type="password" autocomplete="new-password" required>
                 </div>
-                <button class="form-submit pull-right" id="submit">Sign up</button>
+                <button class="form-submit pull-right" id="submit">Sign up <i id="spin" class="fas fa-spinner fa-spin"></i></button>
                 <div class="clear-fix"></div>
             </form>
         </div>
@@ -123,5 +122,7 @@
             <p>Already have an account? <a class="footer-link" href="signin.html">Sign in</a></p>
         </footer>
     </div>
+    <script src="js/helper.js"></script>
+    <script src="js/signup.js"></script>
 </body>
 </html>
