@@ -137,7 +137,7 @@ class UserValidator {
     if (!validator.isDateOfBirth(dateOfBirth)) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid date of birth accepts mm/dd/yyyy or dd/mm/yyyyformat',
+        error: 'Invalid date of birth accepts yyyy-mm-dd format',
       });
     }
     if (!validator.isPassword(password)) {

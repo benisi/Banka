@@ -4,8 +4,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
-import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import swaggerYalm from '../swagger/swagger.json';
 import router from './routes/router';
 
 const app = express();
@@ -26,24 +26,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const swaggerDefinition = {
-  info: {
-    title: 'Banka',
-    version: '1.0.0',
-    description: 'Banka is a light weight bank application for performing simple banka service like credit, debit and account creation.',
-  },
-  host: 'benisi-banka.herokuapp.com',
-  basePath: '/api/v1',
-};
-
-const options = {
-  swaggerDefinition,
-  apis: ['./swagger/*.yaml'],
-};
-
-const swaggerSpec = swaggerJSDoc(options);
-
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerYalm));
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
