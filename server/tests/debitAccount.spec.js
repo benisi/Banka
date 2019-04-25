@@ -4,7 +4,8 @@ import app from '../server';
 import { validLoginData } from './test-data/users';
 import { validAccountData } from './test-data/account';
 import {
-  debitAccountData, creditAccountData, undefinedDebitAccountData, invalidDebitAccountData,
+  debitAccountData, creditAccountData, undefinedDebitAccountData,
+  invalidDebitAccountData, negativeDebit,
 } from './test-data/transaction';
 
 
@@ -84,14 +85,28 @@ describe('Test to debit account', () => {
   });
 });
 
+describe('Test to debit negative value from account', () => {
+  it('should return a status 400', (done) => {
+    chai.request(app)
+      .post(`/api/v1/transactions/${accNumber}/debit`)
+      .set('Authorization', globalToken)
+      .send(negativeDebit)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+
+
 describe('Test to debit account with invalid account number', () => {
-  it('should return a status 500', (done) => {
+  it('should return a status 400', (done) => {
     chai.request(app)
       .post('/api/v1/transactions/kkkkkk/debit')
       .set('Authorization', globalToken)
       .send(debitAccountData)
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res).to.have.status(400);
         done();
       });
   });

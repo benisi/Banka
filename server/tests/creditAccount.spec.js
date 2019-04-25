@@ -74,13 +74,13 @@ describe('Test to credit account', () => {
   });
 });
 describe('Test to credit account with invalid account format', () => {
-  it('should return a status 500', (done) => {
+  it('should return a status 400', (done) => {
     chai.request(app)
       .post('/api/v1/transactions/ooii99k/credit')
       .set('Authorization', globalToken)
       .send(creditAccountData)
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res).to.have.status(400);
         done();
       });
   });
@@ -122,13 +122,13 @@ describe('Test for returning 404 for invalid account', () => {
   });
 });
 
-describe('Test for returning 500 for wrong format account number', () => {
+describe('Test for returning 400 for wrong format account number', () => {
   it('should return 500 for invalid account number transaction history retrieval', (done) => {
     chai.request(app)
       .get('/api/v1/accounts/656565656rr/transactions')
       .set('authorization', invaderToken)
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res).to.have.status(400);
         done();
       });
   });

@@ -8,6 +8,13 @@ class Validator {
     return false;
   }
 
+  static isInteger(data) {
+    if (/^\d+$/.test(data)) {
+      return true;
+    }
+    return false;
+  }
+
   static isString(data) {
     if (typeof data === 'string') {
       return true;

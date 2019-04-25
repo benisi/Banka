@@ -12,7 +12,11 @@ const undefinedDebitAccountData = {
 const invalidDebitAccountData = {
   amount: 'jfhf',
 };
+const negativeDebit = {
+  amount: -500,
+};
 
 export {
-  creditAccountData, debitAccountData, undefinedDebitAccountData, invalidDebitAccountData,
+  creditAccountData, debitAccountData, undefinedDebitAccountData,
+  invalidDebitAccountData, negativeDebit,
 };
