@@ -22,7 +22,7 @@ class UserValidator {
     if (!validator.itIsAName(firstName)) {
       return res.status(400).json({
         status: 400,
-        error: 'Invalid first name',
+        error: 'Invalid first name, it must only contain alphabet, (,.\'-) special characters and no white space',
       });
     }
     if (validator.isUndefined(lastName)) {
@@ -49,19 +49,12 @@ class UserValidator {
         error: 'State of residence field is required',
       });
     }
-    if (!validator.isString(stateOfResidence)) {
+    if (typeof stateOfResidence !== 'string') {
       return res.status(400).json({
         status: 400,
         error: 'State of residence must be a string',
       });
     }
-    if (!validator.itIsAName(stateOfResidence)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Invalid state of residence',
-      });
-    }
-    // title
     if (validator.isUndefined(title)) {
       return res.status(400).json({
         status: 400,
@@ -169,6 +162,19 @@ class UserValidator {
         error: 'password is a required field',
       });
     }
+    if (!validator.isString(email)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Email must be a string',
+      });
+    }
+    if (!validator.itIsAnEmail(email)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Invalid email address',
+      });
+    }
+
     return next();
   }
 }

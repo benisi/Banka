@@ -12,7 +12,7 @@ class UserController {
     } = req.body;
 
     const params = [
-      email,
+      email.toLowerCase(),
       firstName,
       lastName,
       bcrypt.hashSync(password),
@@ -48,10 +48,11 @@ class UserController {
     }
   }
 
+  // eslint-disable-next-line consistent-return
   static async signIn(req, res) {
     const { email, password } = req.body;
     try {
-      const queryData = await User.init().findWhere(['email'], [email]);
+      const queryData = await User.init().findWhere(['email'], [email.toLowerCase()]);
       if (queryData.rowCount < 1) {
         return res.status(401).json({
           status: 401,
@@ -77,7 +78,6 @@ class UserController {
         error: 'something went wrong',
       });
     }
-    return null;
   }
 
   static async getUserAccounts(req, res) {
@@ -134,7 +134,7 @@ class UserController {
     } = req.body;
 
     const params = [
-      email,
+      email.toLowerCase(),
       firstName,
       lastName,
       bcrypt.hashSync(password),

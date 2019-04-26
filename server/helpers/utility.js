@@ -1,6 +1,13 @@
 class Utility {
   static convertToArray(data) {
-    return typeof data === 'object' ? [...data] : [data];
+    const outputData = [];
+    if ((typeof data === 'object')) {
+      data.forEach((element) => {
+        outputData.push(typeof element === 'string' ? element.trim() : element);
+      });
+      return outputData;
+    }
+    return [data];
   }
 
   static generateAccountNumber(type, trackId) {

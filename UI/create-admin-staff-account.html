@@ -46,7 +46,7 @@
         <main>
             <div class="content-container container-center">
                 <div class="form-container card mg-4-b">
-                    <form>
+                    <form id="form">
                         <div class="form-control">
                             <label for="email">Enter Email</label>
                             <input id="email" type="email" placeholder="john@doe.com" autocomplete="email" required>
@@ -65,11 +65,11 @@
                         </div>
                         <div class="form-control">
                             <label for="password">Enter Password</label>
-                            <input id="password" type="password" autocomplete="new-password" required>
+                            <input id="password" name="password" type="password" autocomplete="new-password" required>
                         </div>
                         <div class="form-control">
                             <label for="verify-password">Verify Password</label>
-                            <input id="verify-password" type="password" autocomplete="new-password" required>
+                            <input id="verify-password" name="verifyPassword" type="password" autocomplete="new-password" required>
                         </div>
                         <button class="form-submit pull-right" id="submit">Craete Account</button>
                         <div class="clear-fix"></div>
@@ -83,6 +83,6 @@
     </div>
     <script src="js/index.js"></script>
     <script src="js/helper.js"></script>
-    <script src="create-admin-staff-account.html"></script>
+    <script src="js/create-admin-staff-account.js"></script>
 </body>
 </html>

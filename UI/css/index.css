@@ -30,6 +30,9 @@ body, html {
     margin: 0;
     padding: 0;
 }
+select {
+    padding: 1rem;
+}
 
 a{
     text-decoration: none;
@@ -41,6 +44,9 @@ a{
     top: 5rem;
     right: 1rem;
     width: 90%;
+}
+.features{
+    max-width: 100vw;
 }
 .alert{
    padding: 1rem;
@@ -54,6 +60,19 @@ a{
    -webkit-box-shadow: inset 0 0 10px #000000;
    box-shadow:         inset 0 0 10px #000000;
 }
+.topbar-links{
+    display: inline-block;
+}
+.container-index{
+    color: white;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+.topbar-links span{
+    margin-left: 2rem;
+}
 .alert i {
     font-size: 1rem;
     margin-right: 1rem;
@@ -61,6 +80,12 @@ a{
 .success{
     background-color: rgb(3, 88, 3);
     color: white;
+}
+.features-part{
+    width: 100%;
+}
+.features-image{
+    width: 100%;
 }
 .danger{
     background-color: rgb(141, 1, 1);
@@ -73,6 +98,9 @@ a{
     font-size: .8rem;
     left: 0;
     display: block;
+}
+.accent {
+    color: var(--accent-color);
 }
 .branding-text{
     color: var(--accent-color);
@@ -273,6 +301,19 @@ footer {
 }
 .hide{
     display: none;
+}
+.center-img{
+    display: flex;
+    align-self: center
+}
+input[type="checkbox"]{
+    width: 20px; 
+    height: 20px;
+    cursor: pointer;
+  }
+  
+input {
+    border-radius: 0;
 }
 .img-circle{
     border-radius: 50%;
@@ -625,6 +666,13 @@ table, th, td {
 @media only screen and (min-width: 992px) {
     .form-container {
         width: 60%;
+    }
+    .features {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .features-part{
+    width: 300px;
     }
     .content-container{
         display: flex;
