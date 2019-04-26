@@ -26,7 +26,11 @@ signIn.addEventListener('submit', (event) => {
         popUpAlert('Success', 'Login was successful');
         localStorage.setItem('BankaData', JSON.stringify(data.data[0]));
         // redirect user to dashboard on successful sign up
-        window.location.href = 'bank-account-profile.html';
+        if (data.data[0].type === 'staff') {
+          window.location.href = 'account-record.html';
+        } else {
+          window.location.href = 'bank-account-profile.html';
+        }
       }
     });
   return true;
