@@ -15,7 +15,6 @@ signUp.addEventListener('submit', (event) => {
     document.querySelector('#password').focus();
     return false;
   }
-  spinner.classList.toggle('fa');
   // consuming api - sending sign up data to server
   fetch(`${apiBaseUrl}auth/signup`, {
     method: 'POST',
@@ -31,6 +30,7 @@ signUp.addEventListener('submit', (event) => {
       if (data.error) {
         popUpAlert('Validation error', data.error);
       } else {
+        localStorage.setItem('BankaData', JSON.stringify(data.data[0]));
         popUpAlert('Success', `${data.data[0].firstName} your registration was successful, redirecting to dashboard`);
         // redirect user to dashboard on successful sign up
         window.location.href = 'bank-account-profile.html';

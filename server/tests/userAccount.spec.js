@@ -48,12 +48,12 @@ describe('User should not be able to login to test get account end point because
 });
 
 describe('User should not be able to login to test get account end point because credentials are invalid', () => {
-  it('should give a status code of 401 and set user token variable', (done) => {
+  it('should give a status code of 400 and set user token variable', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
       .send({ email: 23333, password: 'ffff' })
       .end((err, res) => {
-        expect(res).to.have.status(401);
+        expect(res).to.have.status(400);
         done();
       });
   });

@@ -9,6 +9,8 @@ import {
   invalidPhoneNumber, invalidSex, validUser1,
 } from './test-data/users';
 
+const superAdminUser = { ...validUser1, isSuperAdmin: 'hello' };
+
 chai.use(chaiHttp);
 
 const url = '/api/v1/auth/signup';
@@ -51,6 +53,28 @@ describe('Tests to create a user', () => {
         expect(res).to.have.status(201);
         res.body.data.should.be.a('array');
         expect(res.body.data[0]).to.have.property('token');
+        done();
+      });
+  });
+});
+describe('Tests to create a admin', () => {
+  it('should return 400 and fail to create super admin', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/admin/signup')
+      .send(validUser1)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
+describe('Tests to create a admin', () => {
+  it('should return 400 and fail to create super adsmin', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/admin/signup')
+      .send(superAdminUser)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });
@@ -150,7 +174,7 @@ describe('Tests for invalid first name', () => {
         expect(res).to.have.status(400);
         res.body.should.be.a('object');
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Invalid first name');
+        expect(res.body.error).to.equal('Invalid first name, it must only contain alphabet, (,.\'-) special characters and no white space');
         done();
       });
   });

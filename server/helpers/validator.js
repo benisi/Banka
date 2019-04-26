@@ -25,8 +25,9 @@ class Validator {
   static itIsAName(data) {
     // regex from stackoverflow
     // eslint-disable-next-line no-useless-escape
-    const nameRegex = /(^[a-z ,.'-]{2,60}$)/i;
-    if (nameRegex.test(data)) {
+    const trimmedName = data.trim();
+    const nameRegex = /(^[a-z,.'-]{2,60}$)/i;
+    if (nameRegex.test(trimmedName) && !/\s/.test(trimmedName)) {
       return true;
     }
     return false;
