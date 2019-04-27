@@ -27,9 +27,9 @@ signIn.addEventListener('submit', (event) => {
         localStorage.setItem('BankaData', JSON.stringify(data.data[0]));
         // redirect user to dashboard on successful sign up
         if (data.data[0].type === 'staff') {
-          window.location.href = 'account-record.html';
+          window.location.href = 'account-list.html';
         } else {
-          window.location.href = 'bank-account-profile.html';
+          window.location.href = 'select-account.html';
         }
       }
     });
