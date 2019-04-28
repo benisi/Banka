@@ -10,6 +10,13 @@ class Utility {
     return [data];
   }
 
+  static trimString(data) {
+    if (typeof data === 'string') {
+      return data.trim();
+    }
+    return data;
+  }
+
   static generateAccountNumber(type, trackId) {
     const accountCode = type === 'current' ? 300 : 120;
     const branchCode = 115;
@@ -17,5 +24,6 @@ class Utility {
     return `${branchCode}${accountCode}${accountId}`;
   }
 }
+
 
 export default Utility;

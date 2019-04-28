@@ -17,7 +17,6 @@ const createUsersTableQuery = `CREATE TABLE IF NOT EXISTS users (
   type CHARACTER VARYING(7) NOT NULL DEFAULT 'client',
   "stateOfResidence" CHARACTER VARYING(50) NOT NULL,
   "phoneNumber" CHARACTER VARYING(50) NOT NULL,
-  title CHARACTER VARYING(50) NOT NULL,
   sex CHARACTER VARYING(6) NOT NULL,
   "dateOfBirth" DATE NOT NULL,
   "isAdmin" BOOLEAN NOT NULL DEFAULT false,
@@ -70,13 +69,12 @@ const defaultAdmin = [
   bcrypt.hashSync('adminpass1'),
   'edo',
   '07035361846',
-  'sir',
   '02/09/1960',
   'male',
   'staff',
   true,
 ];
-const createAdminUserQuery = 'INSERT INTO users(email,"firstName","lastName",password,"stateOfResidence","phoneNumber",title, "dateOfBirth", sex, type, "isAdmin") VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)';
+const createAdminUserQuery = 'INSERT INTO users(email,"firstName","lastName",password,"stateOfResidence","phoneNumber", "dateOfBirth", sex, type, "isAdmin") VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)';
 
 const createAdminUser = () => pool.query(createAdminUserQuery, defaultAdmin);
 

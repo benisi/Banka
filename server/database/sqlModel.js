@@ -18,6 +18,9 @@ class SqlModel {
 
   findWhere(selections, data, constraint = '*') {
     const constraintValues = SqlModel.generateConstraint(selections);
+    if (constraintValues === ' ') {
+      return new Error('Not allowed');
+    }
     const sanitizedData = Utility.convertToArray(data);
     const selectQuery = `SELECT ${constraint} FROM ${this._table} WHERE ${constraintValues}`;
     return pool.query(selectQuery, sanitizedData);

@@ -1,35 +1,25 @@
 import validator from '../helpers/validator';
+import Response from '../helpers/Response';
+import utility from '../helpers/utility';
 
 class AccountValidator {
   static createAccountValidator(req, res, next) {
     const { type, category } = req.body;
 
     if (type === undefined) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Type is a required field',
-      });
+      return Response.error(res, 400, 'Type is a required field');
     }
 
     if (category === undefined) {
-      return res.status(400).json({
-        status: 400,
-        error: 'category is a required field',
-      });
+      return Response.error(res, 400, 'category is a required field');
     }
 
-    if (!['current', 'savings'].includes(type)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Invalid type, only accept [ current, savings ]',
-      });
+    if (!['current', 'savings'].includes(utility.trimString(type))) {
+      return Response.error(res, 400, 'Invalid type, only accept [ current, savings ]');
     }
 
-    if (!['individual', 'organization'].includes(category)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Invalid category, only accept [ individual, organization ]',
-      });
+    if (!['individual', 'organization'].includes(utility.trimString(category))) {
+      return Response.error(res, 400, 'Invalid category, only accept [ individual, organization ]');
     }
     return next();
   }
@@ -38,16 +28,10 @@ class AccountValidator {
     const { status } = req.body;
 
     if (status === undefined) {
-      return res.status(400).json({
-        status: 400,
-        error: 'status is a required field',
-      });
+      return Response.error(res, 400, 'status is a required field');
     }
-    if (!['activate', 'deactivate'].includes(status)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Invalid status, only accept [ activate, deactivate ]',
-      });
+    if (!['activate', 'deactivate'].includes(utility.trimString(status))) {
+      return Response.error(res, 400, 'Invalid status, only accept [ activate, deactivate ]');
     }
 
     return next();
@@ -56,10 +40,7 @@ class AccountValidator {
   static getAccountValidtor(req, res, next) {
     const { accountNumber } = req.params;
     if (!validator.isInteger(accountNumber)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'account number must be an integer',
-      });
+      return Response.error(res, 400, 'account number must be an integer');
     }
     return next();
   }
@@ -67,21 +48,15 @@ class AccountValidator {
   static checkForValidId(req, res, next) {
     const { transactionId } = req.params;
     if (!validator.isInteger(transactionId)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Transaction id must be an integer',
-      });
+      return Response.error(res, 400, 'Transaction id must be an integer');
     }
     return next();
   }
 
   static checkForValidEmail(req, res, next) {
     const { userEmail } = req.params;
-    if (!validator.itIsAnEmail(userEmail)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Invalid email',
-      });
+    if (!validator.isAnEmail(utility.trimString(userEmail))) {
+      return Response.error(res, 400, 'Invalid email');
     }
     return next();
   }

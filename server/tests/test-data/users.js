@@ -7,7 +7,6 @@ const defaultAdmin = [
   bcrypt.hashSync('adminpass1'),
   'edo',
   '07035361846',
-  'sir',
   '1960-09-02',
   'male',
   'staff',
@@ -20,7 +19,6 @@ const defaultTestClient = [
   bcrypt.hashSync('clientpass1'),
   'edo',
   '07035361846',
-  'sir',
   '1960-09-02',
   'male',
 ];
@@ -35,7 +33,7 @@ const defaultUser = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 const defaultClient = {
@@ -48,7 +46,7 @@ const defaultClient = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 const adminSignup = {
@@ -61,7 +59,7 @@ const adminSignup = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 const validUser = {
@@ -73,7 +71,7 @@ const validUser = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  title: 'master',
+
   dateOfBirth: '1960-09-02',
   sex: 'male',
 };
@@ -87,7 +85,7 @@ const validUser1 = {
   isAdmin: true,
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
-  title: 'master',
+
   dateOfBirth: '1960-09-02',
   sex: 'male',
 };
@@ -102,7 +100,7 @@ const emptyEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 
@@ -116,7 +114,7 @@ const invalidEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 
@@ -130,7 +128,7 @@ const undefineEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 const alreadyInUseUser = {
@@ -143,7 +141,7 @@ const alreadyInUseUser = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 const nonStringEmail = {
@@ -156,7 +154,7 @@ const nonStringEmail = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 
@@ -173,7 +171,6 @@ const emptyFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -187,7 +184,6 @@ const invalidFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -201,7 +197,6 @@ const undefineFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 const nonStringFirstName = {
@@ -214,7 +209,6 @@ const nonStringFirstName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -229,7 +223,6 @@ const emptyLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -243,7 +236,6 @@ const invalidLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -257,7 +249,6 @@ const undefineLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 const nonStringLastName = {
@@ -270,7 +261,6 @@ const nonStringLastName = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -284,7 +274,6 @@ const invalidIsAdmin = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 const invalidType = {
@@ -297,7 +286,6 @@ const invalidType = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 
@@ -311,7 +299,6 @@ const invalidPassword = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 const authTestSignup = {
@@ -324,7 +311,6 @@ const authTestSignup = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
   sex: 'male',
 };
 const authTestlogin = {
@@ -341,7 +327,7 @@ const invalidPhoneNumber = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361uiio',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'male',
 };
 const invalidDateOfBirth = {
@@ -354,7 +340,7 @@ const invalidDateOfBirth = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '02-09',
-  title: 'master',
+
   sex: 'male',
 };
 const invalidSex = {
@@ -367,7 +353,7 @@ const invalidSex = {
   stateOfResidence: 'edo',
   phoneNumber: '07035361846',
   dateOfBirth: '1960-09-02',
-  title: 'master',
+
   sex: 'mammal',
 };
 const validLoginData = {

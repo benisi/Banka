@@ -22,10 +22,10 @@ class Validator {
     return false;
   }
 
-  static itIsAName(data) {
+  static isAName(data) {
     // regex from stackoverflow
     // eslint-disable-next-line no-useless-escape
-    const trimmedName = data.trim();
+    const trimmedName = data;
     const nameRegex = /(^[a-z,.'-]{2,60}$)/i;
     if (nameRegex.test(trimmedName) && !/\s/.test(trimmedName)) {
       return true;
@@ -33,7 +33,7 @@ class Validator {
     return false;
   }
 
-  static itIsAnEmail(data) {
+  static isAnEmail(data) {
     // regex from emailregex.com
     // eslint-disable-next-line no-useless-escape
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -43,7 +43,7 @@ class Validator {
     return false;
   }
 
-  static itIsBoolean(data) {
+  static isBoolean(data) {
     if (typeof data === 'boolean') {
       return true;
     }
