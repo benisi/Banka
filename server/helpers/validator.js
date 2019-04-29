@@ -15,6 +15,13 @@ class Validator {
     return false;
   }
 
+  static isNumber(data) {
+    if (/^([0-9]*\.([0-9]+)?|[0-9]+)$/.test(data)) {
+      return true;
+    }
+    return false;
+  }
+
   static isString(data) {
     if (typeof data === 'string') {
       return true;
@@ -25,7 +32,7 @@ class Validator {
   static isAName(data) {
     // regex from stackoverflow
     // eslint-disable-next-line no-useless-escape
-    const trimmedName = data;
+    const trimmedName = data.trim();
     const nameRegex = /(^[a-z,.'-]{2,60}$)/i;
     if (nameRegex.test(trimmedName) && !/\s/.test(trimmedName)) {
       return true;

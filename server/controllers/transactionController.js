@@ -1,6 +1,7 @@
 import Account from '../database/sqlAccount';
 import Transaction from '../database/sqlTransaction';
 import Response from '../helpers/Response';
+import utility from '../helpers/utility';
 
 class TransactionController {
   static async credit(req, res) {
@@ -12,11 +13,11 @@ class TransactionController {
     let updatedAccount;
     let transactionResult;
     try {
-      accountData = await accountInstance.findWhere(['accountNumber'], accountNumber);
+      accountData = await Account.getAccountWithOwnerEmail(accountNumber);
       if (accountData.rowCount < 1) {
         return Response.error(res, 404, `Account ${accountNumber} does not exist`);
       }
-      const { balance: oldBalance, owner } = accountData.rows[0];
+      const { balance: oldBalance, owner, email } = accountData.rows[0];
       const updatedAmount = parseFloat(amount + oldBalance);
 
       updatedAccount = await accountInstance.updateWhere(['balance'], ['accountNumber'], [accountNumber, updatedAmount]);
@@ -41,6 +42,7 @@ class TransactionController {
         oldBalance,
         newBalance,
       };
+      utility.sendMail(accountNumber, amount, email, 'credit');
       return Response.success(res, 200, [data]);
     } catch (error) {
       return Response.error500(res);
@@ -56,17 +58,19 @@ class TransactionController {
     let transactionResult;
     const accountInstance = Account.init();
     try {
-      accountData = await accountInstance.findWhere(['accountNumber'], accountNumber);
+      accountData = await Account.getAccountWithOwnerEmail(accountNumber);
       if (accountData.rowCount < 1) {
         return Response.error(res, 404, `Account ${accountNumber} does not exist`);
       }
 
-      const { balance: oldBalance, status, owner } = accountData.rows[0];
+      const {
+        balance: oldBalance, status, owner, email,
+      } = accountData.rows[0];
       if (status === 'dormant') {
         return Response.error(res, 400, 'Can\'t withdraw from a dormant account, please activate account');
       }
       if (oldBalance < parseFloat(amount)) {
-        return Response(res, 400, 'Insufficient fund');
+        return Response.error(res, 400, 'Insufficient fund');
       }
       const updatedAmount = parseFloat(oldBalance - amount);
       updatedAccount = await accountInstance.updateWhere(['balance'], ['accountNumber'], [accountNumber, updatedAmount]);
@@ -88,6 +92,7 @@ class TransactionController {
         oldBalance,
         newBalance,
       };
+      utility.sendMail(accountNumber, amount, email, 'debit');
       return Response.success(res, 200, [data]);
     } catch (error) {
       return Response.error500(res);

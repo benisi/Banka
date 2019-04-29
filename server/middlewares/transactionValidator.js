@@ -14,6 +14,9 @@ const transactionValidator = (req, res, next) => {
   if (typeof amount !== 'number') {
     return Response.error(res, 400, 'Amount must be a number');
   }
+  if (!validator.isNumber(amount)) {
+    return Response.error(res, 400, 'Amount must be a valid Number, no special character or sign allowed');
+  }
 
   return next();
 };
