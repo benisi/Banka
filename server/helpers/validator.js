@@ -87,6 +87,16 @@ class Validator {
     }
     return false;
   }
+
+  static isAllowedDateOfBirth(data) {
+    const year = data.substr(0, 4);
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - year;
+    if (age < 18) {
+      return false;
+    }
+    return true;
+  }
 }
 
 export default Validator;

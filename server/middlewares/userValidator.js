@@ -66,6 +66,9 @@ class UserValidator {
     if (!validator.isDateOfBirth(utility.trimString(dateOfBirth))) {
       return Response.error(res, 400, 'Invalid date of birth accepts yyyy-mm-dd format');
     }
+    if (!validator.isAllowedDateOfBirth(utility.trimString(dateOfBirth))) {
+      return Response.error(res, 400, 'You must be 18 or above to have an account');
+    }
     if (!validator.isPassword(password)) {
       return Response.error(res, 400, 'Password must have a length of 8 to 20 aplhanumeric characters, can not start with a digit, underscore or special character and must contain at least one digit');
     }
