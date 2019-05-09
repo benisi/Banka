@@ -9,7 +9,6 @@ class User extends SqlModel {
       '"password"',
       '"stateOfResidence"',
       '"phoneNumber"',
-      '"title"',
       '"dateOfBirth"',
       '"sex"',
     ];

@@ -93,11 +93,11 @@ describe('Test to check for the functioning of the auth helper', () => {
 
 describe('Test to check for the functioning of the validator helper is boolean', () => {
   it('should be true', (done) => {
-    expect(validator.itIsBoolean(true)).to.be.equal(true);
+    expect(validator.isBoolean(true)).to.be.equal(true);
     done();
   });
   it('should be false', (done) => {
-    expect(validator.itIsBoolean('jjj')).to.be.equal(false);
+    expect(validator.isBoolean('jjj')).to.be.equal(false);
     done();
   });
 });

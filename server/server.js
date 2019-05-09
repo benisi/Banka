@@ -7,6 +7,9 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerYalm from '../docs/swagger.json';
 import router from './routes/router';
+import userRoute from './routes/userRoute';
+import accountRoute from './routes/accountRoute';
+import transactionRoute from './routes/transactionRoute';
 
 const app = express();
 dotenv.config();
@@ -33,11 +36,14 @@ app.listen(PORT, () => {
   console.log(`Your server is running on port ${PORT}`);
 });
 
+app.use(userRoute);
+app.use(accountRoute);
+app.use(transactionRoute);
 app.use(router);
 
 app.use((err, req, res, next) => {
-  if (!err.statusCode === 500) {
-    // log error message or send an email to Ben
+  if (err) {
+    console.log(err);
     return res.status(500).json({
       status: 500,
       message: 'something went wrong',

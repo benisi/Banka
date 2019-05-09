@@ -15,6 +15,13 @@ class Validator {
     return false;
   }
 
+  static isNumber(data) {
+    if (/^([0-9]*\.([0-9]+)?|[0-9]+)$/.test(data)) {
+      return true;
+    }
+    return false;
+  }
+
   static isString(data) {
     if (typeof data === 'string') {
       return true;
@@ -22,7 +29,7 @@ class Validator {
     return false;
   }
 
-  static itIsAName(data) {
+  static isAName(data) {
     // regex from stackoverflow
     // eslint-disable-next-line no-useless-escape
     const trimmedName = data.trim();
@@ -33,7 +40,7 @@ class Validator {
     return false;
   }
 
-  static itIsAnEmail(data) {
+  static isAnEmail(data) {
     // regex from emailregex.com
     // eslint-disable-next-line no-useless-escape
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -43,7 +50,7 @@ class Validator {
     return false;
   }
 
-  static itIsBoolean(data) {
+  static isBoolean(data) {
     if (typeof data === 'boolean') {
       return true;
     }
@@ -79,6 +86,16 @@ class Validator {
       return true;
     }
     return false;
+  }
+
+  static isAllowedDateOfBirth(data) {
+    const year = data.substr(0, 4);
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - year;
+    if (age < 18) {
+      return false;
+    }
+    return true;
   }
 }
 

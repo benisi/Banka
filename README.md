@@ -1,9 +1,8 @@
 # Banka
 [![Pull Request](https://img.shields.io/github/issues-pr-raw/benisi/Banka.svg)](https://github.com/benisi/Banka/pulls?q=is%3Aopen+is%3Apr)
 [![Pull Request](https://img.shields.io/github/issues-pr-closed-raw/benisi/Banka.svg)](https://github.com/benisi/Banka/pulls?q=is%3Apr+is%3Aclosed)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d16ef5a0b82416786e086b91480a326)](https://app.codacy.com/app/oseikwemeisidahomen/Banka?utm_source=github.com&utm_medium=referral&utm_content=benisi/Banka&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/benisi/Banka.svg?branch=develop)](https://travis-ci.org/benisi/Banka)
-[![Coverage Status](https://coveralls.io/repos/github/benisi/Banka/badge.png?branch=develop)](https://coveralls.io/github/benisi/Banka?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/benisi/Banka/badge.svg?branch=develop)](https://coveralls.io/github/benisi/Banka?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f79362259d34a1443406/maintainability)](https://codeclimate.com/github/benisi/Banka/maintainability)
 
 ## Description
@@ -26,19 +25,6 @@ deposit money..
 [Hosted API on Heroku](https://benisi-banka.herokuapp.com/)<br/>
 [API documentation](https://benisi-banka.herokuapp.com/swagger/swagger.json)
 
-## Features
-
-Below are the basic features of BANKA Application at this point
-
-###
-
--   Users can signup
--   Users can login
--   User can create bank account
--   Admin/Staff can activate or deactivate an account
--   Admin/Staff can delete an account
--   Staff (cashier) can credit an account
--   Staff (cashier) can debit an account
 
 ## Default user credentials for testing
 
@@ -48,84 +34,6 @@ Below are the basic features of BANKA Application at this point
 Make sure you remove all default users if you are running in production, the above users are for 
 testing purposes and it is not recommended to have them if you are using this app for production purpose or atleast just change the credentials
 <br>
-
-## API Endpoints
-
-Make sure you supply an Authorization header or a token param of the token returned when registering/ login in order to have access to application
-<table>
-
-<tr><th>HTTP VERB</th><th>API ENDPOINTS VERSION 1</th><th>FUNCTION</th><th>INPUT</th><th>OUTPUT</th></tr>
-
-<tr>
-<td>POST</td> <td>api/v1/auth/signup</td><td>User Sign Up</td>
-<td>
-{<br> firstName: "string",<br>lastName: "string",<br>email: "string",<br> password: "string",<br>stateOfResidence: "string",<br> phoneNumber: "string",<br> title: "string",<br> dataOfBirth: "string",<br> sex: "string"<br>}
-</td>
-<td>
-{<br> status: "integer",<br>data: "object"<br>}
-</td>
-</tr>
-
-<tr>
-<td>POST</td> <td>api/v1/auth/login</td>  <td>User Login</td>
-<td>
-{<br> email: "string",<br>password: "string"<br>}
-</td>
-<td>
-{<br> status: "integer",<br>data: "object"<br>}
-</td>
-</tr>
-
-<tr>
-<td>POST</td> <td>api/v1/accounts</td>  <td>Create bank account</td>
-<td>
-{<br> type: "string",<br>category: "string"<br>}
-</td>
-<td>
-{<br> status: "integer",<br>data: "object"<br>}
-</td>
-</tr>
-
-<tr>
-<td>PATCH</td> <td>api/v1//account/<account-number></td>  <td>Admin/Staff can activate or deactivate an account</td>
-<td>
-{<br>status: "string" <br>}
-</td>
-<td>
-{<br> status: "integer",<br>data: "object"<br>}
-</td>
-</tr>
-
-<tr>
-<td>DELETE</td> <td>api/v1//accounts/<account-number></td>  <td>Delete a specific bank account</td>
-<td>
-{<br> <br>}
-</td>
-<td>
-{<br> status: "integere",<br>message: "string"<br>}
-</td>
-</tr>
-
-<tr>
-<td>POST</td> <td>api/v1//transactions/<account-number>/debit</td>  <td>Debit a bank account</td>
-<td>
-{<br>amount: "float <br>}
-</td>
-<td>
-{<br> status: "integer",<br>data: "object"<br>}
-</td>
-</tr>
-
-<tr>
-<td>POST</td><td>api/v1//transactions/<account-number>/credit</td><td>Credit a bank account</td>
-<td>
-{<br>amount: float <br>}
-</td>
-<td>
-{<br> status: "integer",<br>data: "object"<br>}
-</td>
-</tr>
-</table>
 
 ## Installation
 

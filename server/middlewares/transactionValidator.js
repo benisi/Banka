@@ -1,26 +1,21 @@
 import validator from '../helpers/validator';
+import Response from '../helpers/Response';
 
 const transactionValidator = (req, res, next) => {
   const { amount } = req.body;
   if (validator.isUndefined(amount)) {
-    return res.status(400).json({
-      status: 400,
-      error: 'Amount is required',
-    });
+    return Response.error(res, 400, 'Amount is requires');
   }
 
   if (amount < 0) {
-    return res.status(400).json({
-      status: 400,
-      error: 'Amount should not be a negative number',
-    });
+    return Response.error(res, 400, 'Amount should not be a negative number');
   }
 
   if (typeof amount !== 'number') {
-    return res.status(400).json({
-      status: 400,
-      error: 'Amount must be a number',
-    });
+    return Response.error(res, 400, 'Amount must be a number');
+  }
+  if (!validator.isNumber(amount)) {
+    return Response.error(res, 400, 'Amount must be a valid Number, no special character or sign allowed');
   }
 
   return next();

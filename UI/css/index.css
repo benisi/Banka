@@ -334,12 +334,8 @@ input {
 }
 
 .light{
-  background-image: url("../asset/background.jpg");
+  background-color: var( --accent-color-2 );
   height: 100%; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 4.4rem 0 0 0;
   max-width: 100vw;
 }
@@ -420,8 +416,8 @@ input {
     z-index: 1;
     overflow-y: hidden;
     overflow-x: hidden;
-    -webkit-transition: transform .6s ease-in;
-    transition: transform .6s ease-in;
+    -webkit-transition: transform .3s ease-in;
+    transition: transform .3s ease-in;
 }
 .side-bar:hover{
     overflow-y: scroll;
@@ -533,6 +529,10 @@ input {
 }
 .side-bar li a:hover, .active-link {
     background-color: var(--accent-color);
+    color: var(--dark-bg-color);
+}
+
+.side-bar li a:hover i {
     color: var(--dark-bg-color);
 }
 

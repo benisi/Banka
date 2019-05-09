@@ -1,28 +1,23 @@
 import jwt from 'jsonwebtoken';
+import Response from './Response';
 
 class Auth {
   static createToken(payload) {
     const key = process.env.SECRET || 'key';
-    return jwt.sign(payload, key, { expiresIn: '2d' });
+    return jwt.sign(payload, key, { expiresIn: '1d' });
   }
 
   static verifyToken(req, res, next) {
     const token = req.headers.authorization || req.body.token;
     if (!token) {
-      return res.status(400).json({
-        status: 400,
-        error: 'No token supplied',
-      });
+      return Response.error(res, 400, 'No token supplied');
     }
 
     const key = process.env.SECRET || 'key';
 
     jwt.verify(token, key, (err, decoded) => {
       if (err) {
-        return res.status(401).json({
-          status: 401,
-          error: 'Invalid token',
-        });
+        return Response.error(res, 401, 'Invalid token');
       }
       req.body.id = decoded.id;
       req.body.isAdmin = decoded.isAdmin;
@@ -35,10 +30,7 @@ class Auth {
   static allowOnlyAdminStaff(req, res, next) {
     const { role: type, isAdmin } = req.body;
     if ((!isAdmin && type !== 'staff')) {
-      return res.status(403).json({
-        status: 403,
-        error: 'You are not Authorize to perform this operation',
-      });
+      return Response.error403(res);
     }
     return next();
   }
@@ -46,10 +38,7 @@ class Auth {
   static allowOnlyStaff(req, res, next) {
     const { role: type } = req.body;
     if (type !== 'staff') {
-      return res.status(403).json({
-        status: 403,
-        error: 'You are not Authorize to perform this operation',
-      });
+      return Response.error403(res);
     }
     return next();
   }
@@ -57,27 +46,18 @@ class Auth {
   static allowOnlyAdmin(req, res, next) {
     const { isAdmin } = req.body;
     if (!isAdmin) {
-      return res.status(403).json({
-        status: 403,
-        error: 'You are not Authorize to perform this operation',
-      });
+      return Response.error403(res);
     }
     return next();
   }
 
-  static isSuperAdmin(req, res, next) {
+  static allowOnlySuperAdmin(req, res, next) {
     const { isSuperAdmin } = req.body;
     if (isSuperAdmin === undefined) {
-      return res.status(400).json({
-        status: 400,
-        error: 'No admin secret',
-      });
+      return Response.error(res, 400, 'No admin secret');
     }
     if (typeof isSuperAdmin !== 'boolean') {
-      return res.status(400).json({
-        status: 400,
-        error: 'invalid admin secret',
-      });
+      return Response.error(res, 400, 'invalid admin secret');
     }
     return next();
   }

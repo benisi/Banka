@@ -9,7 +9,6 @@ const createUsersTable = `DROP TABLE IF EXISTS users CASCADE;
         type CHARACTER VARYING(7) NOT NULL DEFAULT 'client',
         "stateOfResidence" CHARACTER VARYING(50) NOT NULL,
         "phoneNumber" CHARACTER VARYING(50) NOT NULL,
-        title CHARACTER VARYING(50) NOT NULL,
         sex CHARACTER VARYING(6) NOT NULL,
         "dateOfBirth" DATE NOT NULL,
         "isAdmin" BOOLEAN NOT NULL DEFAULT false,

@@ -2,6 +2,7 @@ import User from '../database/sqlUser';
 import Account from '../database/sqlAccount';
 import AccountNumberTracker from '../database/sqlAccountTracking';
 import Utility from '../helpers/utility';
+import Response from '../helpers/Response';
 
 class AccountController {
   static async create(req, res) {
@@ -12,56 +13,33 @@ class AccountController {
     try {
       ownerData = await User.init().find(ownerId);
       if (ownerData.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: 'Invalid account owner',
-        });
+        return Response.error(res, 404, 'Invalid account owner');
       }
+      trackedData = await AccountNumberTracker.init().insert(type.trim());
+      const {
+        id: owner, firstName, lastName, email,
+      } = ownerData.rows[0];
+      const status = 'active';
+      const balance = parseFloat(0.00).toFixed(2);
+      const accountNumber = Utility.generateAccountNumber(type, trackedData.rows[0].id);
+      const accountData = [
+        accountNumber, owner, type, status, balance, category,
+      ];
+      const createdAccount = await Account.init().insert(accountData);
+      const data = {
+        accountNumber,
+        firstName,
+        lastName,
+        email,
+        type: createdAccount.rows[0].type,
+        openingBalance: balance,
+        status,
+        category: createdAccount.rows[0].category,
+      };
+      return Response.success(res, 201, [data]);
     } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
+      return Response.error500(res);
     }
-    try {
-      trackedData = await AccountNumberTracker.init().insert(type);
-    } catch (error) {
-      res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
-    }
-    const {
-      id: owner, firstName, lastName, email,
-    } = ownerData.rows[0];
-    const status = 'active';
-    const balance = parseFloat(0.10).toFixed(2);
-    const accountNumber = Utility.generateAccountNumber(type, trackedData.rows[0].id);
-    const accountData = [
-      accountNumber, owner, type, status, balance, category,
-    ];
-    try {
-      await Account.init().insert(accountData);
-    } catch (error) {
-      res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
-    }
-    const data = {
-      accountNumber,
-      firstName,
-      lastName,
-      email,
-      type,
-      openingBalance: balance,
-      status,
-      category,
-    };
-    return res.status(201).json({
-      status: 201,
-      data: [data],
-    });
   }
 
   static async status(req, res) {
@@ -70,33 +48,18 @@ class AccountController {
     try {
       const accountData = await accountInstance.findWhere(['accountNumber'], accountNumber);
       if (accountData.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: `Account ${accountNumber} does not exist`,
-        });
+        return Response.error(res, 404, `Account ${accountNumber} does not exist`);
       }
-    } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
-    }
-    const { status } = req.body;
-    const newStatus = status === 'activate' ? 'active' : 'dormant';
-    try {
+      const { status } = req.body;
+      const newStatus = status === 'activate' ? 'active' : 'dormant';
       accountInstance.changeStatus(accountNumber, newStatus);
-      return res.status(200).json({
-        status: 200,
-        data: [{
-          accountNumber,
-          status: newStatus,
-        }],
-      });
+      const data = [{
+        accountNumber,
+        status: newStatus,
+      }];
+      return Response.success(res, 200, data);
     } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
+      return Response.error500(res);
     }
   }
 
@@ -106,20 +69,11 @@ class AccountController {
     try {
       const accountResponse = await Account.init().delete(['accountNumber'], accountReference);
       if (accountResponse.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: `Account ${accountReference} is not on our database`,
-        });
+        return Response.error(res, 404, `Account ${accountReference} is not on our database`);
       }
-      return res.status(200).json({
-        status: 200,
-        message: `Account ${accountReference} was successfully deleted`,
-      });
+      return Response.successMessage(res, 200, `Account ${accountReference} was successfully deleted`);
     } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
+      return Response.error500(res);
     }
   }
 
@@ -129,31 +83,22 @@ class AccountController {
     try {
       accountResponse = await Account.getAccountWithOwnerEmail(accountNumber);
       if (accountResponse.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: `Account ${accountNumber} is not on our database`,
-        });
+        return Response.error(res, 404, `Account ${accountNumber} is not on our database`);
       }
+      const {
+        createdOn, owner, category,
+        id, email: ownerEmail, ...otherData
+      } = accountResponse.rows[0];
+      const data = [{
+        createdOn,
+        accountNumber,
+        ownerEmail,
+        ...otherData,
+      }];
+      return Response.success(res, 200, data);
     } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        error: 'Something went wrong',
-      });
+      return Response.error500(res);
     }
-    const {
-      createdon: createdOn, owner, category,
-      id, email: ownerEmail, ...otherData
-    } = accountResponse.rows[0];
-    const data = [{
-      createdOn,
-      accountNumber,
-      ownerEmail,
-      ...otherData,
-    }];
-    return res.status(200).json({
-      status: 200,
-      data,
-    });
   }
 
   static async getAllAccounts(req, res) {
@@ -162,19 +107,13 @@ class AccountController {
     if (req.query.status) {
       const { status } = req.query;
       if (!['active', 'dormant'].includes(status)) {
-        return res.status(400).json({
-          status: 400,
-          error: 'only active and dormant allow in query parameter',
-        });
+        return Response.error(res, 400, 'only active and dormant allow in query parameter');
       }
       data = await accountInstance.findWhere(['status'], status);
     } else {
       data = await accountInstance.findAll();
     }
-    return res.status(200).json({
-      status: 200,
-      data: data.rows,
-    });
+    return Response.success(res, 200, data.rows);
   }
 }
 

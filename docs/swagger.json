@@ -60,7 +60,6 @@
                         "type": "client",
                         "stateOfResidence": "edo state",
                         "phoneNumber": "07035361889",
-                        "title": "master",
                         "sex": "male",
                         "dateOfBirth": "1960-09-01T23:00:00.000Z",
                         "isAdmin": false,
@@ -125,7 +124,6 @@
                         "type": "staff",
                         "stateOfResidence": "edo state",
                         "phoneNumber": "07035361889",
-                        "title": "master",
                         "sex": "male",
                         "dateOfBirth": "1960-09-01T23:00:00.000Z",
                         "isAdmin": false,
@@ -211,7 +209,6 @@
                         "type": "client",
                         "stateOfResidence": "edo state",
                         "phoneNumber": "07035361889",
-                        "title": "master",
                         "sex": "male",
                         "dateOfBirth": "1960-09-01T23:00:00.000Z",
                         "isAdmin": false,
@@ -1015,9 +1012,6 @@
         "stateOfResidence" : {
           "type" : "string"
         },
-        "title" : {
-          "type" : "string"
-        },
         "email" : {
           "type" : "string"
         },
@@ -1051,9 +1045,6 @@
         "stateOfResidence" : {
           "type" : "string"
         },
-        "title" : {
-          "type" : "string"
-        },
         "email" : {
           "type" : "string"
         },
@@ -1072,7 +1063,7 @@
         },
         "isSuperAdmin" : {
           "type" : "boolean",
-          "description" : "use to determine the type of aadmin"
+          "description" : "use to determine the type of admin"
         }
       },
       "xml" : {

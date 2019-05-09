@@ -9,7 +9,9 @@ cache:
 env:
   global:
     - DATABASE_URL_TEST=postgres://postgres@127.0.0.1:5432/test
-     - CXX=g++-4.8
+    - APIKEY=7961599b064e132cb53abb942785ea82-dc5f81da-735dd3ca
+    - DOMAIN=sandbox1beeb80c724a4e5abf75638c32199ed4.mailgun.org
+    - CXX=g++-4.8
 services:
   - postgresql
 before_script:
