@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create Account - Banka</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -17,21 +18,21 @@
             <form id="form">
                 <div class="form-control">
                     <label for="account-type">Account type</label>
-                    <select id="account-type" required>
+                    <select name="type" id="account-type" required>
                         <option disabled value="" selected>SELECT</option>
-                        <option>Savings</option>
-                        <option>Current</option>
+                        <option>savings</option>
+                        <option>current</option>
                     </select>
                 </div>
                 <div class="form-control">
                     <label for="account-category">Account category</label>
-                    <select id="account-category" required>
+                    <select name="category" id="account-category" required>
                         <option disabled value="" selected>SELECT</option>
-                        <option>Individual</option>
-                        <option>Organization</option>
+                        <option>individual</option>
+                        <option>organization</option>
                     </select>
                 </div>
-                <button class="form-submit pull-right" id="submit">Create Account</button>
+                <button class="form-submit pull-right" id="submit">Create Account <i id="spin" class="fas fa-spinner fa-spin"></i></button>
                 <div class="clear-fix"></div>
             </form>
         </div>

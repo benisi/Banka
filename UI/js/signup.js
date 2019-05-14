@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-const apiBaseUrl = 'https://benisi-banka.herokuapp.com/api/v1/';
 const signUp = document.querySelector('#signUp');
 // event listener for form submission
 signUp.addEventListener('submit', (event) => {
