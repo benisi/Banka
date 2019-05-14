@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 
+// base url
+const apiBaseUrl = 'https://benisi-banka.herokuapp.com/api/v1/';
+
 // converts for data to jsons format
 const convertFormDataToJson = (formData, exclude) => {
   const jsonData = {};
