@@ -28,7 +28,6 @@ createAccount.addEventListener('submit', (event) => {
         popUpAlert('Validation error', data.error.toLowerCase());
       } else {
         popUpAlert('Success', 'Account was created successful');
-        localStorage.setItem('BankaData', JSON.stringify(data.data[0]));
         // redirect user to dashboard on successful sign up
         window.location.href = 'select-account.html';
       }
