@@ -210,6 +210,9 @@ button:disabled {
 .ms-2{
     margin: 2rem !important;
 }
+.pd-2 {
+    padding: 1rem;
+}
 .form-container {
     width: 90%;
     padding: 1rem 1.5rem;
@@ -501,7 +504,6 @@ input {
 }
 .bank-accounts {
     padding: 0 !important;
-    width: 80%;
 }
 .paper-body {
     padding-left: 1rem;
@@ -660,7 +662,7 @@ table, th, td {
         width: 90%;
     }
     .bank-accounts {
-        width: 30%;
+        min-width: 20%;
     }
     .content-container{
         display: flex;
@@ -697,7 +699,9 @@ table, th, td {
         display: flex;
         justify-content: center;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: stretch;
+        max-width: 100vw;
     }
     .paper-double{
         width: 40%;
