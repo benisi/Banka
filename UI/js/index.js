@@ -30,6 +30,23 @@ const floatingNavInit = () => {
   });
 };
 
+const populateSidebar = () => {
+  const bankaData = JSON.parse(localStorage.getItem('BankaData'));
+  document.querySelectorAll('.name').forEach((element) => {
+    const nameElement = element;
+    nameElement.innerText = `${bankaData.firstName} ${bankaData.lastName}`;
+  });
+  document.querySelectorAll('.account-type').forEach((element) => {
+    const nameElement = element;
+    nameElement.innerText = `${bankaData.selectedAccount.type}`;
+  });
+  document.querySelectorAll('.account-number').forEach((element) => {
+    const nameElement = element;
+    nameElement.innerText = `${bankaData.selectedAccount.accountNumber}`;
+  });
+};
+
 
 sideBarInit();
 floatingNavInit();
+populateSidebar();

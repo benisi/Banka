@@ -29,9 +29,9 @@
             <div class="user-profile">
                 <img class="img-circle" src="asset/user.jpeg" alt="user photo">
                 <div class="user-profile-details" >
-                    <h3>Benjamin Isidahomen</h3>
-                    <p>Savings Account</p>
-                    <p>002234455</p>
+                    <h3 class="name">name</h3>
+                    <p><span class="account-type"></span> Account</p>
+                    <p class="account-number"></p>
                     <br>
                     <p class="sign-out"><a href="signin.html"><i class="fa fa-power-off"></i>Sign Out</a></p>
                 </div>
@@ -46,7 +46,7 @@
         <main>
             <div class="content-container">
                 <div class="paper-card paper-single transaction">
-                    <h3>Transaction History of Benjamin Isidahomen</h3>
+                    <h3>Transaction History of <span class="name"></span></h3>
                     <div class="table-responsive">
                         <table>
                             <thead>
@@ -59,109 +59,13 @@
                                     <th>View</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>12345</td>
-                                    <td>Credit</td>
-                                    <td>&#8358;20,000.00</td>
-                                    <td>12/03/2019</td>
-                                    <td><a href="#" class="modal-action" data-modalId="modal1"><i class="action-icon fa fa-eye"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>12346</td>
-                                    <td>Credit</td>
-                                    <td>&#8358;60,000.00</td>
-                                    <td>14/03/2019</td>
-                                    <td><a href="#" class="modal-action" data-modalId="modal2"><i class="action-icon fa fa-eye"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>12355</td>
-                                    <td>Debit</td>
-                                    <td>&#8358;80,750.00</td>
-                                    <td>20/03/2019</td>
-                                    <td><a href="#" class="modal-action" data-modalId="modal3"><i class="action-icon fa fa-eye"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>12456</td>
-                                    <td>Debit</td>
-                                    <td>&#8358;9,000.00</td>
-                                    <td>23/03/2019</td>
-                                    <td><a href="#" class="modal-action" data-modalId="modal4"><i class="action-icon fa fa-eye"></i></a></td>
-                                </tr>
-                            </tbody>
+                            <tbody class="data-container"></tbody>
                         </table>
                     </div> 
-                    <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a class="active" href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">&raquo;</a>
-                    </div>                   
+                    <div class="pagination"></div>                   
                 </div>
                 <!-- start of modal -->
-                <div id="modal1" class="modal backdrop">
-                    <div class="modal-card paper-card">
-                        <div class="modal-head">
-                            <i class="close fa fa-times"></i>
-                            <h3>Transaction details</h3>
-                        </div>
-                        <div class="modal-content">
-                            <p>Transaction id : 12345</p>
-                            <p>Transaction type : credit</p>
-                            <p>Amount : &#8358;20,000.00</p>
-                            <p>Transaction Date : 12/03/2019</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="modal2" class="modal backdrop">
-                    <div class="modal-card paper-card">
-                        <div class="modal-head">
-                            <i class="close fa fa-times"></i>
-                            <h3>Transaction details</h3>
-                        </div>
-                        <div class="modal-content">
-                            <p>Transaction id : 12346</p>
-                            <p>Transaction type : credit</p>
-                            <p>Amount : &#8358;60,000.00</p>
-                            <p>Transaction Date : 14/03/2019</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="modal3" class="modal backdrop">
-                    <div class="modal-card paper-card">
-                        <div class="modal-head">
-                            <i class="close fa fa-times"></i>
-                            <h3>Transaction details</h3>
-                        </div>
-                        <div class="modal-content">
-                            <p>Transaction id : 12355</p>
-                            <p>Transaction type : debit</p>
-                            <p>Amount : &#8358;80,750.00</p>
-                            <p>Transaction Date : 20/03/2019</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="modal4" class="modal backdrop">
-                    <div class="modal-card paper-card">
-                        <div class="modal-head">
-                            <i class="close fa fa-times"></i>
-                            <h3>Transaction details</h3>
-                        </div>
-                        <div class="modal-content">
-                            <p>Transaction id : 12456</p>
-                            <p>Transaction type : debit</p>
-                            <p>Amount : &#8358;9,000.00</p>
-                            <p>Transaction Date : 23/03/2019</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="modal-container"></div>
                 <!-- Modal End-->
             </div>
         </main>

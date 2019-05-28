@@ -50,6 +50,7 @@ const accountSelectionHandler = (accountReference) => {
   accountReference.preventDefault();
   const selectedAccountIndex = accountReference.target.dataset.accountid;
   bankaData.selectedAccount = accounts[selectedAccountIndex];
+  bankaData.transactionData = null;
   localStorage.setItem('BankaData', JSON.stringify(bankaData));
   window.location.href = 'bank-account-profile.html';
 };
