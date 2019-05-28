@@ -144,7 +144,7 @@ const modal = () => {
       if (event.currentTarget !== event.target) {
         return;
       }
-      modalTarget.target.style.display = 'none';
+      modalTarget.style.display = 'none';
     });
   });
 
