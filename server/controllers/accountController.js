@@ -103,15 +103,14 @@ class AccountController {
 
   static async getAllAccounts(req, res) {
     let data;
-    const accountInstance = Account.init();
     if (req.query.status) {
       const { status } = req.query;
       if (!['active', 'dormant'].includes(status)) {
         return Response.error(res, 400, 'only active and dormant allow in query parameter');
       }
-      data = await accountInstance.findWhere(['status'], status);
+      data = await Account.getAllAccountWithOwner(status);
     } else {
-      data = await accountInstance.findAll();
+      data = await Account.getAllAccountWithOwner();
     }
     return Response.success(res, 200, data.rows);
   }

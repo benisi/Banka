@@ -82,7 +82,7 @@ const confirmAction = (elementIdentifier, headmsg, body, yesCallback) => {
           return;
         }
         removeFromDom(backDrop);
-        yesCallback(data);
+        yesCallback(data, event);
       });
       noBtn.addEventListener('click', (clickEvent) => {
         if (clickEvent.currentTarget !== clickEvent.target) {
